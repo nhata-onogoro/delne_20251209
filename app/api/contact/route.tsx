@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
                           "https://helperphone.pages.dev"
 
     const emailContent = {
-      to: "n.hata@onogoro.co.jp",
+      to: "s.shimizu@onogoro.co.jp",
       subject: `ヘルパーフォン - お問い合わせ（${lastName} ${firstName}様）`,
       html: `
         <h2>ヘルパーフォン - お問い合わせ</h2>

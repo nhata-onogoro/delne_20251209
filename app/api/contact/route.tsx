@@ -15,53 +15,52 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString(),
     })
 
-    // Cloudflare Email Workers APIエンドポイントのURL
-    // 実際のWorker URLに置き換える必要があります
-    const emailWorkerUrl = process.env.CLOUDFLARE_EMAIL_WORKER_URL || 
-                          "https://helperphone.pages.dev"
-
-    const emailContent = {
-      to: "s.shimizu@onogoro.co.jp",
-      subject: `ヘルパーフォン - お問い合わせ（${lastName} ${firstName}様）`,
-      html: `
-        <h2>ヘルパーフォン - お問い合わせ</h2>
-        <p><strong>会社名:</strong> ${company}</p>
-        <p><strong>お名前:</strong> ${lastName} ${firstName}</p>
-        <p><strong>メールアドレス:</strong> ${email}</p>
-        <p><strong>お問い合わせ内容:</strong></p>
-        <p>${message.replace(/\n/g, "<br>")}</p>
-        <hr>
-        <p><small>送信日時: ${new Date().toLocaleString("ja-JP", {
-          timeZone: "Asia/Tokyo"
-        })}</small></p>
-      `,
-      replyTo: email,
-      from: {
-        name: "ヘルパーフォン",
-        email: "contact@helperphone.jp" // あなたのドメインに変更
-      }
+    // Resend APIキー（環境変数から取得）
+    const resendApiKey = process.env.RESEND_API_KEY
+    
+    if (!resendApiKey) {
+      throw new Error("RESEND_API_KEY not configured")
     }
 
-    // Cloudflare Email Workerに送信
-    const response = await fetch(emailWorkerUrl, {
+    const emailContent = `
+      <h2>ヘルパーフォン - お問い合わせ</h2>
+      <p><strong>会社名:</strong> ${company}</p>
+      <p><strong>お名前:</strong> ${lastName} ${firstName}</p>
+      <p><strong>メールアドレス:</strong> ${email}</p>
+      <p><strong>お問い合わせ内容:</strong></p>
+      <p>${message.replace(/\n/g, "<br>")}</p>
+      <hr>
+      <p><small>送信日時: ${new Date().toLocaleString("ja-JP", {
+        timeZone: "Asia/Tokyo"
+      })}</small></p>
+    `
+
+    // Resend APIに直接送信
+    const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
+        Authorization: `Bearer ${resendApiKey}`,
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.CLOUDFLARE_EMAIL_API_KEY || ""}`,
       },
-      body: JSON.stringify(emailContent),
+      body: JSON.stringify({
+        from: "ヘルパーフォン <noreply@helperphone.jp>", // 認証済みドメインを使用
+        to: ["s.shimizu@onogoro.co.jp"],
+        subject: `ヘルパーフォン - お問い合わせ（${lastName} ${firstName}様）`,
+        html: emailContent,
+        reply_to: email,
+      }),
     })
 
     if (!response.ok) {
-      const errorText = await response.text()
-      console.error(`[v0] Cloudflare Email Worker error: ${response.status} - ${errorText}`)
+      const errorData = await response.text()
+      console.error(`[v0] Resend API error: ${response.status} - ${errorData}`)
       
       // フォールバック: MailChannelsを使用
       return await sendWithMailChannels(company, firstName, lastName, email, message)
     }
 
     const result = await response.json()
-    console.log("[v0] Cloudflare Email Worker経由でメール送信成功:", result)
+    console.log("[v0] Resend API経由でメール送信成功:", result)
 
     return NextResponse.json(
       {
@@ -122,7 +121,7 @@ async function sendWithMailChannels(
       personalizations: [
         {
           to: [{ 
-            email: 'n.hata@onogoro.co.jp', 
+            email: 's.shimizu@onogoro.co.jp', 
             name: '担当者' 
           }],
           reply_to: {
@@ -132,7 +131,7 @@ async function sendWithMailChannels(
         },
       ],
       from: {
-        email: 'info@onogoro.co.jp', 
+        email: 'noreply@helperphone.jp',
         name: 'ヘルパーフォン',
       },
       subject: `ヘルパーフォン - お問い合わせ（${lastName} ${firstName}様）`,

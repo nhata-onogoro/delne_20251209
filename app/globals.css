@@ -1,42 +1,40 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 :root {
   --background: #ffffff;
-  --foreground: #475569;
-  --card: #fff7ed;
-  --card-foreground: #475569;
+  --foreground: #1e293b;
+  --card: #f8fafc;
+  --card-foreground: #1e293b;
   --popover: #ffffff;
-  --popover-foreground: #475569;
-  --primary: #ea580c;
+  --popover-foreground: #1e293b;
+  --primary: #002c5b;
   --primary-foreground: #ffffff;
-  --secondary: #fb923c;
+  --secondary: #64748b;
   --secondary-foreground: #ffffff;
-  --muted: #fff7ed;
-  --muted-foreground: #475569;
-  --accent: #fb923c;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f39c12;
   --accent-foreground: #ffffff;
   --destructive: #dc2626;
   --destructive-foreground: #ffffff;
-  --border: #475569;
+  --border: #e2e8f0;
   --input: #ffffff;
-  --ring: #fb923c;
-  --chart-1: #ea580c;
-  --chart-2: #fb923c;
-  --chart-3: #f97316;
-  --chart-4: #dc2626;
-  --chart-5: #a16207;
+  --ring: #002c5b;
+  --chart-1: #002c5b;
+  --chart-2: #3b82f6;
+  --chart-3: #64748b;
+  --chart-4: #f39c12;
+  --chart-5: #94a3b8;
   --radius: 0.5rem;
-  --sidebar: #fff7ed;
-  --sidebar-foreground: #475569;
-  --sidebar-primary: #ea580c;
+  --sidebar: #f8fafc;
+  --sidebar-foreground: #1e293b;
+  --sidebar-primary: #002c5b;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #fb923c;
+  --sidebar-accent: #f39c12;
   --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #475569;
-  --sidebar-ring: #fb923c;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #002c5b;
 }
 
 .dark {
@@ -46,32 +44,32 @@
   --card-foreground: #f1f5f9;
   --popover: #1e293b;
   --popover-foreground: #f1f5f9;
-  --primary: #ea580c;
+  --primary: #002c5b;
   --primary-foreground: #ffffff;
-  --secondary: #fb923c;
+  --secondary: #64748b;
   --secondary-foreground: #ffffff;
   --muted: #334155;
   --muted-foreground: #94a3b8;
-  --accent: #fb923c;
+  --accent: #f39c12;
   --accent-foreground: #ffffff;
   --destructive: #dc2626;
   --destructive-foreground: #ffffff;
   --border: #334155;
   --input: #1e293b;
-  --ring: #fb923c;
-  --chart-1: #ea580c;
-  --chart-2: #fb923c;
-  --chart-3: #f97316;
-  --chart-4: #dc2626;
-  --chart-5: #a16207;
+  --ring: #002c5b;
+  --chart-1: #002c5b;
+  --chart-2: #3b82f6;
+  --chart-3: #64748b;
+  --chart-4: #f39c12;
+  --chart-5: #94a3b8;
   --sidebar: #1e293b;
   --sidebar-foreground: #f1f5f9;
-  --sidebar-primary: #ea580c;
+  --sidebar-primary: #002c5b;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #fb923c;
+  --sidebar-accent: #f39c12;
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #334155;
-  --sidebar-ring: #fb923c;
+  --sidebar-ring: #002c5b;
 }
 
 @theme inline {
@@ -111,6 +109,8 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: var(--font-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, monospace;
 }
 
 @layer base {
@@ -119,5 +119,22 @@
   }
   body {
     @apply bg-background text-foreground;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+
+  /* Define custom gradient as regular CSS class instead of @utility */
+  .bg-gradient-radial {
+    background: radial-gradient(
+      ellipse 60% 100% at center,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.3) 40%,
+      transparent 70%
+    );
   }
 }

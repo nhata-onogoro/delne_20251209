@@ -24,7 +24,7 @@ export default function PrivacyPolicyPage() {
                 当社は個人情報の重要性を認識し、その保護の徹底をはかることをお約束いたします。
               </p>
 
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">1.1 個人���報の定義</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">1.1 個人情報の定義</h3>
               <p className="text-gray-700 leading-relaxed">
                 本プライバシーポリシーにおいて「個人情報」とは、生存する個人に関する情報であって、
                 当該情報に含まれる氏名、電話番号、メールアドレス、住所、生年月日その他の記述等により
@@ -110,7 +110,7 @@ export default function PrivacyPolicyPage() {
                   公衆衛生の向上又は児童の健全な育成の推進のために特に必要がある場合であって、本人の同意を得ることが困難であるとき
                 </li>
                 <li>
-                  国の機関若しくは地方公共団体又はその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合
+                  国の機関若しくは地方公共団体��はその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合
                 </li>
               </ul>
 
@@ -132,7 +132,7 @@ export default function PrivacyPolicyPage() {
               </div>
             </section>
 
-            <section className="mb-8">
+            <section className="mb-12">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">6. 個人情報の保存期間</h2>
               <p className="text-gray-700 leading-relaxed">
                 当社は、個人情報を利用目的の達成に必要な期間保存するものとします。
@@ -140,7 +140,7 @@ export default function PrivacyPolicyPage() {
               </p>
             </section>
 
-            <section className="mb-8">
+            <section className="mb-12">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">7. 個人情報の開示・訂正・利用停止等</h2>
 
               <div className="space-y-4">

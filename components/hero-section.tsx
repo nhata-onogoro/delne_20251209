@@ -1,111 +1,188 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield, Clock, Heart } from "lucide-react";
+"use client"
+
+import { useState, useEffect, useRef } from "react"
+import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
 
 export function HeroSection() {
-  const bgSrc = "hero-woman-phone-latest.jpg";
+  const [isImageLoaded, setIsImageLoaded] = useState(false)
+  const fallbackTimerRef = useRef<number | null>(null)
+
+  // 現在のブレークポイントに応じた画像URLを返す
+  const pickSrc = () => {
+    if (typeof window === "undefined") return "/care-service-background-mobile.jpg"
+    const mq = window.matchMedia("(min-width: 768px)")
+    return mq.matches ? "/care-service-background-desktop.jpg" : "/care-service-background-mobile.jpg"
+  }
+
+  // 画像をJSで確実にプリロードして、読み込みが終わったら表示フラグON
+  const preload = (src: string) => {
+    try {
+      const img = new Image()
+      img.src = src
+
+      const markLoaded = () => setIsImageLoaded(true)
+
+      if (img.complete) {
+        // キャッシュ済みでも確実に描画可能になるまでdecodeを試みる
+        // @ts-ignore
+        img.decode?.().then(markLoaded).catch(markLoaded)
+      } else {
+        img.onload = markLoaded
+        img.onerror = markLoaded // 失敗しても表示は進める（背景はグラデでフォロー）
+      }
+    } catch {
+      setIsImageLoaded(true)
+    }
+  }
+
+  useEffect(() => {
+    // 初回：現在のサイズに合う画像をプリロード
+    const src = pickSrc()
+    preload(src)
+
+    // 画面幅がmd境界をまたぐ時も再プリロード（向き変更など）
+    const mq = window.matchMedia("(min-width: 768px)")
+    const onChange = () => {
+      setIsImageLoaded(false)
+      preload(pickSrc())
+    }
+    mq.addEventListener?.("change", onChange)
+
+    // フェールセーフ：万一 onload が来なくても一定時間で表示に切り替える
+    fallbackTimerRef.current = window.setTimeout(() => setIsImageLoaded(true), 1500)
+
+    return () => {
+      mq.removeEventListener?.("change", onChange)
+      if (fallbackTimerRef.current) {
+        clearTimeout(fallbackTimerRef.current)
+        fallbackTimerRef.current = null
+      }
+    }
+  }, [])
 
   return (
     <section
       className="
         relative isolate overflow-hidden
-        min-h-[580px] md:min-h-[640px] lg:min-h-[720px]
+        h-[460px] sm:h-[520px] md:h-[560px] lg:h-[640px] xl:h-[720px] 2xl:h-[820px]
+        bg-gray-900
       "
+      aria-busy={!isImageLoaded}
     >
-      {/* 背景：高さ基準でフィット／右寄せ／少し明るく */}
-      <div className="absolute inset-0 -z-10 overflow-hidden flex justify-end">
-        <img
-          src={bgSrc || "/placeholder.svg"}
-          alt="" /* 背景用途なので空ALT */
-          className="
-            h-full w-auto max-w-none
-            object-contain object-right
-            brightness-110 contrast-105 saturate-110
-            select-none pointer-events-none
-          "
-          loading="eager"
-          fetchPriority="high"
-        />
-        {/* 左側を濃くして文字の視認性UP */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/40 to-transparent" />
+      {/* 背景画像：大画面では少し下側を見せる */}
+      <div className="absolute inset-0 z-0">
+        <picture className="block w-full h-full">
+          <source media="(min-width: 768px)" srcSet="/care-service-background-desktop.jpg" />
+          <img
+            src="/care-service-background-mobile.jpg"
+            alt="介護と仕事の両立を支援するAI電話サービス"
+            className="
+              w-full h-full
+              object-cover
+              object-top
+              lg:object-[center_30%]
+              filter contrast-110 brightness-105 saturate-110
+            "
+            loading="eager"
+            fetchPriority="high"
+          />
+        </picture>
+        <div className="absolute inset-0 bg-gradient-radial" />
       </div>
 
-      <div className="container mx-auto max-w-6xl px-4 py-20 sm:py-24 lg:py-32">
-        <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 items-center">
-          {/* テキスト */}
-          <div className="space-y-6 sm:space-y-8 text-white">
-            <div className="space-y-3 sm:space-y-4">
-              {/* ▼ 見出し：スマホは小さめ、折り返し可に変更 */}
-              <h1 className="text-2xl sm:text-4xl lg:text-6xl font-bold leading-snug sm:leading-tight drop-shadow-[0_4px_18px_rgba(0,0,0,0.85)]">
-                {/* ▼ スマホでは nowrap 解除（sm:whitespace-nowrap でタブレット以上のみ固定） */}
-                <span className="whitespace-normal sm:whitespace-nowrap">
-                  仕事中や夜間の電話に悩まない
-                </span>
-
-                {/* ▼ 強制改行はスマホで隠す */}
-                <br className="hidden sm:block" />
-
-                <span className="inline sm:inline-block md:whitespace-nowrap">
-                  AIが、あなたの声で
-                </span>
-
-                {/* ▼ 強制改行はスマホで隠す */}
-                <br className="hidden sm:block" />
-
-                お話しします
-              </h1>
-
-              {/* ▼ 本文：スマホは文字サイズを落とし、nowrap 解除 */}
-              <p className="text-base sm:text-xl leading-relaxed text-white/95 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
-                認知症のご家族からの繰り返しの電話
-                <br className="hidden sm:block" />
-                大切なあの人だけど、仕事中は対応できない
-                <br className="hidden sm:block" />
-                深夜の電話で睡眠不足
-                <br />
-                <span className="font-semibold text-orange-200 inline sm:inline-block sm:whitespace-nowrap">
-                  ヘルパーフォンは、介護と仕事の両立を支援するAI電話サービスです。
-                </span>
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                asChild
-                size="lg"
-                className="bg-orange-600 hover:bg-orange-500 text-base sm:text-lg px-6 sm:px-8 text-white"
-              >
-                <a
-                  href="https://st-amatelus-django-admin-service.btv98tps97t6e.ap-northeast-1.cs.amazonlightsail.com/auth/register/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center"
-                >
-                  無料トライアル実施中
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </a>
-              </Button>
-            </div>
-
-            <div className="flex items-center gap-6 sm:gap-8 pt-1 sm:pt-2">
-              <div className="flex items-center gap-2">
-                <Shield className="w-5 h-5 text-orange-200" />
-                <span className="text-sm sm:text-base text-white/90">安全・安心</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-5 h-5 text-orange-200" />
-                <span className="text-sm sm:text-base text-white/90">24時間対応</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Heart className="w-5 h-5 text-orange-200" />
-                <span className="text-sm sm:text-base text-white/90">ご家族の声で応答</span>
-              </div>
-            </div>
+      {/* コンテンツ（画像読み込み完了後にフェードイン） */}
+      <div className="container mx-auto max-w-6xl px-4 py-8 sm:py-10 lg:py-12 relative z-10 h-full">
+        <div
+          className={[
+            "relative h-full md:flex md:flex-col md:items-center md:justify-center md:text-center md:space-y-8",
+            "transition-opacity duration-500",
+            isImageLoaded ? "opacity-100" : "opacity-0",
+          ].join(" ")}
+        >
+          {/* ▼ モバイル専用タイトル */}
+          <div className="md:hidden absolute left-1/2 top-[40%] -translate-x-1/2 -translate-y-1/2 w-full px-2 text-center">
+            <h1 className="text-xl sm:text-xl md:text-2xl font-black text-white leading-tight w-full bg-black/20 backdrop-blur-sm px-3 py-4 rounded-lg border border-white/5">
+              <span className="block whitespace-nowrap">
+                認知症ご家族からの電話を24時間365日
+              </span>
+              <span className="block whitespace-nowrap">
+                AIがあなたの声で丁寧に応答します
+              </span>
+            </h1>
           </div>
 
-          {/* 右カラム（背景写真に任せるので空でOK） */}
-          <div className="hidden lg:block" />
+          {/* ▼ デスクトップ/タブレット用タイトル */}
+          <div className="hidden md:block">
+            <h1
+              className="
+                font-black text-white leading-tight
+                mx-auto
+                bg-black/20 backdrop-blur-sm px-6 py-4 rounded-lg border border-white/5
+                text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-5xl
+              "
+            >
+              <span className="block whitespace-nowrap">
+                認知症ご家族からの電話を24時間365日
+              </span>
+              <span className="block whitespace-nowrap">
+                AIがあなたの声で丁寧に応答します
+              </span>
+            </h1>
+          </div>
+
+          {/* サブタイトル：md以上のみ表示 */}
+          <div className="hidden md:block" aria-hidden="true">
+            <p
+              className="
+                font-bold text-white leading-relaxed
+                mx-auto mt-4
+                bg-black/15 backdrop-blur-sm px-6 py-4 rounded-lg border border-white/5
+                text-lg lg:text-2xl xl:text-3xl
+              "
+            >
+              <span className="text-yellow-300 font-black drop-shadow-lg">
+                　介護と仕事の両立を支援するAI電話サービス
+              </span>
+            </p>
+          </div>
+
+          {/* CTAボタン：スマホは下部中央固定、md以上は中央揃え */}
+          <div
+            className="
+              absolute left-1/2 -translate-x-1/2 bottom-6
+              md:static md:inset-auto md:translate-x-0 md:bottom-auto md:self-center
+            "
+          >
+            <Button
+              asChild
+              size="lg"
+              className="
+                bg-[#F39C12] hover:bg-[#D35400]
+                text-lg md:text-xl xl:text-2xl
+                px-8 md:px-10 xl:px-12
+                py-3 md:py-4 xl:py-5
+                text-white shadow-lg font-bold transition-colors cursor-pointer
+              "
+            >
+              <a
+                href="https://st-amatelus-django-admin-service.btv98tps97t6e.ap-northeast-1.cs.amazonlightsail.com/auth/register/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center"
+              >
+                無料トライアル実施中
+                <ArrowRight className="ml-2 w-5 h-5 xl:w-6 xl:h-6" />
+              </a>
+            </Button>
+          </div>
         </div>
       </div>
+
+      {/* ローディング時のプレースホルダー（黒一色の印象を軽減） */}
+      {!isImageLoaded && (
+        <div className="absolute inset-0 z-[5] pointer-events-none bg-gradient-to-b from-gray-800/40 via-gray-900/60 to-gray-900/80" />
+      )}
     </section>
-  );
+  )
 }

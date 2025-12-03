@@ -4,27 +4,24 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 export function FaqSection() {
   const faqs = [
     {
-      question: "プライバシーは守られますか？",
+      question: "DELNEはどんなサービスですか？",
       answer:
-        "NTT社の通信基盤を使用し、個人情報は暗号化して厳重に管理。音声データや会話内容の第三者への提供は一切ありません。",
+        "DELNEは、介護と仕事の両立を支えるAI電話サービスです。認知症のご家族からのお電話は、AIが24時間365日ていねいに応対し、仕事中や早朝・深夜の着信を代わりに対応します。通話内容は要点を自動で要約し、SMS/メールでお届けします。",
     },
     {
-      question: "電話代はかかりますか？",
-      answer: "はい。各プランの料金とは別に、各キャリア毎の通常の電話代が発生し���す。",
-    },
-    {
-      question: "サービスを使うには特別な電話番号が必要ですか？",
+      question: "現在の電話番号は変わりますか？",
       answer:
-        "契約完了後、専用の電話番号をお渡しします。お使いの電話から転送設定をするだけで、ご家族からの電話をAIが受け取れるようになります。",
+        "現在ご利用中の電話番号は変わりませんのでご安心ください。サービス利用時に専用電話番号を発行いたします。サービスをご利用の際は、その専用番号へおかけください。",
     },
     {
-      question: "認知症の程度による利用制限はありますか？",
-      answer: "制限はありませんが、本サービスは軽度から中程度の認知症の方に最適のサービスです。",
-    },
-    {
-      question: "本当に自然な会話ができますか？",
+      question: "最短でいつからサービスを利用できますか？",
       answer:
-        "最新のAI技術により、ご家族が違和感を感じない自然な会話を実現しています。実証実験でも高い評価をいただいています。",
+        "無料トライアル中は初期設定完了後すぐに利用可能で、無料期間・通話上限到達後も料金プランページで契約いただくと手続き完了後ただちに利用できます。",
+    },
+    {
+      question: "支払い方法は？",
+      answer:
+        "お支払いは、クレジットカードとLink（Stripe）のみ対応しています。その他の方法（銀行振込・口座振替・請求書払い等）は現在ご利用いただけません。",
     },
   ]
 
@@ -33,26 +30,33 @@ export function FaqSection() {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">よくあるご質問</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">よくあるご質問</h2>
+            <div className="w-32 h-2 bg-yellow-400 mx-auto rounded-full"></div>
           </div>
 
-          <Accordion type="single" collapsible className="space-y-4">
+          <Accordion type="single" collapsible className="space-y-3 md:space-y-4">
             {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="bg-gray-50 rounded-lg px-6">
-                <AccordionTrigger className="text-left font-semibold text-gray-800 hover:text-orange-600">
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+                className="bg-gray-50 rounded-lg px-4 py-1.5 md:px-6 md:py-2 cursor-pointer hover:bg-gray-100 transition-colors"
+              >
+                <AccordionTrigger className="text-base md:text-2xl text-left font-bold text-gray-800 hover:text-[#F39C12] cursor-pointer">
                   Q: {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-gray-600 leading-relaxed">A: {faq.answer}</AccordionContent>
+                <AccordionContent className="text-sm md:text-xl text-gray-600 leading-relaxed font-bold">
+                  A: {faq.answer}
+                </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
 
-          <div className="mt-12 text-center p-8 bg-orange-50 rounded-xl">
-            <p className="text-lg text-gray-800 mb-4">ご不明な点やご質問などありましたら、気軽にお問合せください！</p>
-            <Button className="bg-orange-600 hover:bg-orange-700 text-white">
-              <a href="/contact">
-                お問い合わせ
-              </a>
+          <div className="mt-10 md:mt-12 text-center p-6 md:p-8 bg-[#e6f0f7] rounded-xl">
+            <p className="text-sm md:text-lg text-gray-800 mb-3 md:mb-4 font-bold">
+              ご不明な点やご質問などありましたら、気軽にお問合せください！
+            </p>
+            <Button className="bg-[#F39C12] hover:bg-[#D35400] text-white font-bold cursor-pointer">
+              <a href="/contact">お問い合わせ</a>
             </Button>
           </div>
         </div>

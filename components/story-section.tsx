@@ -2,52 +2,56 @@ export function StorySection() {
   return (
     <section id="story" className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">介護と仕事の両立を支援するAI電話サービス</h2>
+            <h2 className="text-4xl lg:text-5xl font-black text-gray-800 mb-4">
+              こんなお悩み
+              <br className="block md:hidden" />
+              抱えていませんか？
+            </h2>
+            <div className="w-32 h-2 bg-yellow-400 mx-auto rounded-full"></div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <div className="prose prose-lg text-gray-600">
-                <p>
-                  朝7時、母からの電話で目が覚める。
+                <p className="text-lg font-semibold">
+                  大切なプロジェクト発表の朝
                   <br />
-                  「今日は何曜日だっけ？」
-                  <br />
-                  昨日も、一昨日も、同じ質問。
+                  父からの着信、「今日は何日何曜日？」
                 </p>
                 <br />
-                <p>
-                  大切な母だから、優しく答えたい。
+                <p className="text-lg font-semibold">
+                  大切な父だから、優しく答えたい。
                   <br />
                   でも正直、心も体も疲れてしまう。
-                  <br />
-                  出なければ、母が不安を感じてしまう。
-                  <br />
-                  出続けると、生活や、仕事、睡眠に、生活に支障が出る。
                 </p>
                 <br />
-                <p className="text-lg font-semibold text-gray-800">
-                  「お母さんを大切にしたい」という気持ちと、
+                <p className="text-xl font-bold text-gray-800">
+                  「父を大切にしたい」気持ちと
                   <br />
-                  「自分の人生も大切にしたい」という思い。
+                  「自分の仕事も大切にしたい」思い。
                 </p>
                 <br />
-                <p>愛情と現実の狭間で、苦しんでいるあなたを救いたい。</p>
+                {/* ▼ スマホのみ改行 */}
+                <p className="text-xl font-bold text-[#002c5b]">
+                  愛情と現実の狭間で、
+                  <br className="block md:hidden" />
+                  苦しむあなたを救いたい。
+                </p>
               </div>
             </div>
 
             <div className="flex justify-center">
               <img
-                src="/stressed-working-woman.jpg"
+                src="/new-stressed-businessman.png"
                 alt="介護家族の悩み"
                 className="w-full max-w-md h-64 sm:h-80 object-cover rounded-xl shadow-lg"
               />
             </div>
           </div>
 
-          <div className="mt-12 p-8 bg-orange-50 rounded-2xl">
+          <div className="mt-12 p-8 bg-[#e6f0f7] rounded-2xl">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
                 <img
@@ -57,39 +61,25 @@ export function StorySection() {
                 />
               </div>
               <div className="space-y-4">
-                <p className="text-gray-800">
-                  深夜2時、母からの着信音。
+                <p className="text-lg font-semibold text-gray-800">
+                  深夜2時、母からの着信音
                   <br />
-                  「ご飯はまだ？」と聞いてくる。
-                  <br />
-                  「もう食べたでしょう」と答えたいのに、
-                  <br />
-                  つい声を荒げてしまう。
+                  「ご飯はまだ？」に、
+                  <br className="block md:hidden" />
+                  つい強く返してしまう。
                   <br />
                   その後、押し寄せてくる自己嫌悪。
-                  <br />
-                  「私は冷たい人間なのだろうか…」
                 </p>
-                <p className="text-lg text-gray-800 font-semibold">
-                  ヘルパーフォンが、24時間365日、
+                <p className="text-xl font-bold text-gray-800">
+                  「母を大切にしたい」気持ちと
                   <br />
-                  あなたの代わりに、大切なご家族とお話します。
+                  「生活に関わる睡眠を大切にしたい」思い。
                 </p>
-                <p className="text-gray-800">
-                  仕事中や深夜でも、ヘルパーフォンが、
-                  <br />
-                  あなたの声で「大丈夫だよ」と答えてくれる。
-                  <br />
-                  家族への愛情はそのままに、
-                  <br />
-                  あなたの時間と心の余裕を取り戻す。
-                  <br />
-                  それが、私たちの願いです。
-                </p>
-                <p className="text-lg font-semibold text-gray-800">
-                  介護と自分の人生、どちらも諦めない。
-                  <br />
-                  新しい介護のカタチが、ここにあります。
+                {/* ▼ スマホのみ改行 */}
+                <p className="text-xl font-bold text-[#002c5b]">
+                  寝不足のあなたに、
+                  <br className="block md:hidden" />
+                  ひと時の安らぎを届けたい。
                 </p>
               </div>
             </div>

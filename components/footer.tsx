@@ -1,14 +1,24 @@
 import { Button } from "@/components/ui/button"
 import { Mail, Building } from "lucide-react"
+import Image from "next/image"
 
 export function Footer() {
   return (
     <footer className="bg-gray-800 text-white">
       <div className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
-          <p className="text-lg mb-4">
-            ヘルパーフォンは、広島県主催のAI事業「ひろしまAIサンドボックス」に採択されています。
-          </p>
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <Image
+              src="/hiroshima-ai-sandbox-logo-updated.png"
+              alt="ひろしまAIサンドボックス"
+              width={60}
+              height={60}
+              className="object-contain"
+            />
+            <p className="text-lg font-bold">
+              DELNEは、広島県主催のAI事業「ひろしまAIサンドボックス」に採択されています。
+            </p>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 mb-12">
@@ -16,16 +26,16 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="font-semibold text-white text-lg">会社情報</h4>
             <div className="space-y-2">
-              <div className="flex items-center gap-2 text-sm text-gray-300">
+              <div className="flex items-center gap-2 text-sm text-gray-300 font-bold">
                 <Building className="w-4 h-4" />
                 <span>株式会社オノゴロ</span>
               </div>
-              <div className="text-sm text-gray-300">
+              <div className="text-sm text-gray-300 font-bold">
                 <a
                   href="https://onogoro.co.jp/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-primary transition-colors"
+                  className="hover:text-[#F39C12] transition-colors cursor-pointer"
                 >
                   https://onogoro.co.jp/
                 </a>
@@ -38,17 +48,17 @@ export function Footer() {
             <h4 className="font-semibold text-white">リンク</h4>
             <ul className="space-y-2 text-sm text-gray-300">
               <li>
-                <a href="/terms" className="hover:text-primary transition-colors">
+                <a href="/terms" className="hover:text-[#F39C12] transition-colors font-bold cursor-pointer">
                   利用規約
                 </a>
               </li>
               <li>
-                <a href="/privacy-policy" className="hover:text-primary transition-colors">
+                <a href="/privacy-policy" className="hover:text-[#F39C12] transition-colors font-bold cursor-pointer">
                   プライバシーポリシー
                 </a>
               </li>
               <li>
-                <a href="/legal-notice" className="hover:text-primary transition-colors">
+                <a href="/legal-notice" className="hover:text-[#F39C12] transition-colors font-bold cursor-pointer">
                   特定商取引法に基づく表記
                 </a>
               </li>
@@ -57,9 +67,12 @@ export function Footer() {
 
           {/* お問い合わせ */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-white">お問い合わせ</h4>
+            <h4 className="text-white font-bold">お問い合わせ</h4>
             <div className="space-y-3">
-              <Button asChild className="w-full bg-primary hover:bg-primary/90">
+              <Button
+                asChild
+                className="w-full bg-[#F39C12] hover:bg-[#D35400] text-white cursor-pointer transition-colors"
+              >
                 <a href="/contact">
                   <Mail className="w-4 h-4 mr-2" />
                   メールで相談

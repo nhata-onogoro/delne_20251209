@@ -1,9 +1,9 @@
+// app/page.tsx  ← Server Component のまま（"use client" は付けない）
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
 import { StorySection } from "@/components/story-section"
-import { ProblemsSection } from "@/components/problems-section"
-import { SolutionSection } from "@/components/solution-section"
-import { HowToUseSection } from "@/components/how-to-use-section"
+import { ClientSections } from "@/components/client-sections"
+import { StepsSection } from "@/components/steps-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { PricingSection } from "@/components/pricing-section"
 import { FaqSection } from "@/components/faq-section"
@@ -15,9 +15,11 @@ export default function Home() {
       <Header />
       <HeroSection />
       <StorySection />
-      <ProblemsSection />
-      <SolutionSection />
-      <HowToUseSection />
+
+      {/* ここに Client-only セクション（SSR無効）をまとめて描画 */}
+      <ClientSections />
+
+      <StepsSection />
       <TestimonialsSection />
       <PricingSection />
       <FaqSection />

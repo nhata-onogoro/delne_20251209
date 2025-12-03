@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     })
 
     // Resend APIキー（環境変数から取得するように修正）
-    const resendApiKey = process.env.RESEND_API_KEY || "re_i7GxammM_9DLyub5zdxqprwFSftDPYWWf"
+    const resendApiKey = process.env.RESEND_API_KEY || "dummy"
     
     if (!resendApiKey) {
       throw new Error("RESEND_API_KEY not configured")

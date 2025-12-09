@@ -12,14 +12,15 @@ export const metadata: Metadata = {
   generator: "v0.app",
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/delne-logo.png", type: "image/png" },
+      { url: "/favicon.ico", type: "image/x-icon" },
     ],
-    apple: {
-      url: "/delne-logo.png",
-      sizes: "180x180",
-      type: "image/png",
-    },
+    apple: [
+      {
+        url: "/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
   },
 }
 
@@ -37,6 +38,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" className={geistSans.variable}>
+      <head>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+      </head>
       <body className="font-sans antialiased">
         {children}
       </body>

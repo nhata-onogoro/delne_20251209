@@ -38,6 +38,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" className={geistSans.variable}>
+      <head>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+      </head>
       <body className="font-sans antialiased">
         {children}
       </body>

@@ -49,7 +49,8 @@ export default function SolutionSection() {
   ]
 
   return (
-    <section id="features" className="py-16 px-4 bg-gray-50">
+    // セクション全体の左右パディングを大きめに設定 (例: px-8)
+    <section id="features" className="py-16 **px-6** bg-gray-50 **sm:px-4**"> {/* 👈 修正: モバイル時のセクションパディングをpx-6 (約24px) に増強 */}
       <div className="container mx-auto max-w-7xl">
         {/* --- ヘッダー --- */}
         <div className="text-center mb-16">
@@ -139,16 +140,16 @@ export default function SolutionSection() {
           </div>
         </div>
 
-        {/* --- 機能カードグリッド（モバイルは縦並びでコンパクトに） --- */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 **gap-2 sm:gap-4** justify-center justify-items-center"> {/* 👈 修正1: モバイル時のギャップを gap-3 から gap-2 に削減 */}
+        {/* --- 機能カードグリッド --- */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 **gap-y-2 sm:gap-4 gap-x-0** justify-center justify-items-center"> {/* 👈 修正: モバイルの横方向のギャップを0に、縦方向のギャップを2に設定 */}
           {solutions.map((item, index) => (
-            <div key={index} className="flex flex-col items-center w-full **max-w-[240px]** mx-auto"> {/* 👈 修正2: モバイル時の最大幅を max-w-xs (約320px) から 240px に削減 */}
+            <div key={index} className="flex flex-col items-center w-full"> {/* 👈 修正: max-w-[240px] mx-auto を削除し、w-full に戻す */}
               <div
                 className="
                   w-full sm:w-full sm:max-w-none mx-auto aspect-square
                   bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300
                   border-t-4 border-[#FDC702]
-                  **px-2 py-3** {/* 👈 修正3: カード内側のパディングを px-3 py-4 から削減 */}
+                  px-3 py-4 {/* 👈 修正: 内側のパディングを元のサイズに戻すか、適度なサイズ px-3 py-4 に設定 */}
                   flex flex-col items-center justify-center text-center group
                 "
               >

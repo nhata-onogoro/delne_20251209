@@ -22,27 +22,32 @@ export default function SolutionSection() {
   // 指定されたテキストで構成
   const solutions = [
     {
-      icon: <Phone className="w-12 h-12 lg:w-14 lg:h-14 text-[#F39C12]" />,
+      // 変更点: アイコンサイズを w-12 h-12 から w-10 h-10 に縮小
+      icon: <Phone className="**w-10 h-10** lg:w-14 lg:h-14 text-[#F39C12]" />,
       title: "簡単操作",
       description: "電話番号そのままで\n電話するだけで利用可能",
     },
     {
-      icon: <Heart className="w-12 h-12 lg:w-14 lg:h-14 text-[#F39C12]" />,
+      // 変更点: アイコンサイズを w-12 h-12 から w-10 h-10 に縮小
+      icon: <Heart className="**w-10 h-10** lg:w-14 lg:h-14 text-[#F39C12]" />,
       title: "「あなた」の声で応答",
       description: "介護家族様の声で\n自然な会話を実現",
     },
     {
-      icon: <Clock className="w-12 h-12 lg:w-14 lg:h-14 text-[#F39C12]" />,
+      // 変更点: アイコンサイズを w-12 h-12 から w-10 h-10 に縮小
+      icon: <Clock className="**w-10 h-10** lg:w-14 lg:h-14 text-[#F39C12]" />,
       title: "24時間365日対応",
       description: "どんな時でも\n自動応答",
     },
     {
-      icon: <Shield className="w-12 h-12 lg:w-14 lg:h-14 text-[#F39C12]" />,
+      // 変更点: アイコンサイズを w-12 h-12 から w-10 h-10 に縮小
+      icon: <Shield className="**w-10 h-10** lg:w-14 lg:h-14 text-[#F39C12]" />,
       title: "感情ケア",
       description: "医療機関監修の\n専門知見でやさしく応答",
     },
     {
-      icon: <Mail className="w-12 h-12 lg:w-14 lg:h-14 text-[#F39C12]" />,
+      // 変更点: アイコンサイズを w-12 h-12 から w-10 h-10 に縮小
+      icon: <Mail className="**w-10 h-10** lg:w-14 lg:h-14 text-[#F39C12]" />,
       title: "会話内容を通知",
       description: "着信だけでなく\n会話内容も確認可能",
     },
@@ -60,7 +65,7 @@ export default function SolutionSection() {
           <div className="w-24 h-1.5 bg-[#F39C12] mx-auto rounded-full mt-6"></div>
         </div>
 
-        {/* --- 動画セクション --- */}
+        {/* --- 動画セクション (変更なし) --- */}
         <div className="mb-20">
           <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 max-w-5xl mx-auto">
             
@@ -138,30 +143,29 @@ export default function SolutionSection() {
         </div>
 
         {/* --- 機能カードグリッド --- */}
-        {/* スマホで2列表示、カード間のギャップを縮小 (gap-6 -> gap-4) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 **gap-4** justify-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 justify-center">
           {solutions.map((item, index) => (
             <div key={index} className="flex flex-col items-center w-full">
-              {/* 正方形(aspect-square)のカードの中に全て収める */}
+              {/* カード内のパディングを p-3 に、アイコンとタイトルのマージンを縮小 */}
               <div className="
                 w-full aspect-square 
                 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 
                 border-t-4 border-[#FDC702] 
-                **p-3** lg:p-2 xl:p-3 
+                p-3 lg:p-2 xl:p-3 
                 flex flex-col items-center justify-center text-center group
               ">
                 {/* アイコン */}
-                <div className="**mb-2** transform group-hover:-translate-y-1 transition-transform duration-300">
+                <div className="mb-2 transform group-hover:-translate-y-1 transition-transform duration-300">
                   {item.icon}
                 </div>
                 
                 {/* タイトル */}
-                <h3 className="text-lg lg:text-xl font-black text-gray-800 **mb-1** whitespace-pre-line leading-tight">
+                <h3 className="text-lg lg:text-xl font-black text-gray-800 mb-1 whitespace-pre-line leading-tight">
                   {item.title}
                 </h3>
                 
-                {/* 説明文 */}
-                <p className="text-gray-600 text-sm font-bold leading-relaxed whitespace-pre-line">
+                {/* 説明文のフォントを text-sm から text-xs に縮小 */}
+                <p className="text-gray-600 **text-xs** font-bold leading-relaxed whitespace-pre-line">
                   {item.description}
                 </p>
               </div>

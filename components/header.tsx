@@ -103,7 +103,7 @@ export function Header() {
             </Button>
             <Button className="hidden md:inline-flex bg-[#F39C12] text-white hover:bg-[#D35400] transition-colors whitespace-nowrap font-bold cursor-pointer">
               <a
-                href="https://st-amatelus-django-admin-service.btv98tps97t6e.ap-northeast-1.cs.amazonlightsail.com/auth/login/"
+                href="https://app.delne.jp/auth/login/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -157,7 +157,7 @@ export function Header() {
               <div className="pt-4 space-y-2">
                 <Button className="w-full bg-[#F39C12] text-white hover:bg-[#D35400] transition-colors cursor-pointer">
                   <a
-                    href="https://st-amatelus-django-admin-service.btv98tps97t6e.ap-northeast-1.cs.amazonlightsail.com/auth/login/"
+                    href="https://app.delne.jp/auth/login/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

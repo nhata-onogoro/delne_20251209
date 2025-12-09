@@ -139,13 +139,13 @@ export default function SolutionSection() {
           </div>
         </div>
 
-        {/* --- 機能カードグリッド（モバイルでコンパクトに） --- */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4 justify-center">
+        {/* --- 機能カードグリッド（モバイルは縦並びでコンパクトに） --- */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4 justify-center justify-items-center">
           {solutions.map((item, index) => (
             <div key={index} className="flex flex-col items-center w-full">
               <div
                 className="
-                  w-[240px] max-w-[240px] sm:w-full sm:max-w-none mx-auto
+                  w-full max-w-[320px] sm:w-full sm:max-w-none mx-auto aspect-square
                   bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300
                   border-t-4 border-[#FDC702]
                   px-3 py-4

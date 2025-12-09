@@ -60,7 +60,7 @@ export default function SolutionSection() {
           <div className="w-24 h-1.5 bg-[#F39C12] mx-auto rounded-full mt-6"></div>
         </div>
 
-        {/* --- 動画セクション --- */}
+        {/* --- 動画セクション (変更なし) --- */}
         <div className="mb-20">
           <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 max-w-5xl mx-auto">
             
@@ -138,7 +138,9 @@ export default function SolutionSection() {
         </div>
 
         {/* --- 機能カードグリッド --- */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        {/* 変更点: grid-cols-1 を grid-cols-2 に変更し、lg:grid-cols-5 を sm:grid-cols-3, md:grid-cols-5 に分割 (または grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 でも可) */}
+        {/* カード数が奇数のため、justify-center を追加し、中央揃えにする */}
+        <div className="grid **grid-cols-2** sm:grid-cols-3 md:grid-cols-5 gap-6 **justify-center**"> 
           {solutions.map((item, index) => (
             <div key={index} className="flex flex-col items-center w-full">
               {/* 正方形(aspect-square)のカードの中に全て収める */}

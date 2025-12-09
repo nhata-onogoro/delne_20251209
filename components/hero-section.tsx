@@ -52,7 +52,7 @@ export function HeroSection() {
     <section
       className="
         relative isolate overflow-hidden
-        h-[600px] sm:h-[640px] md:h-[640px] lg:h-[720px] 2xl:h-[800px]
+        h-[600px] sm:h-[640px] md:h-[640px] lg:h-[640px] 2xl:h-[800px]
         bg-slate-50 -mt-px
       "
     >

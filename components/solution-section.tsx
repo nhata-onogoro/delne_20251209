@@ -145,8 +145,8 @@ export default function SolutionSection() {
             <div key={index} className="flex flex-col items-center w-full">
               <div
                 className="
-                  w-full max-w-[150px] sm:max-w-none mx-auto
-                  bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 
+                  w-[240px] max-w-[240px] sm:w-full sm:max-w-none mx-auto
+                  bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300
                   border-t-4 border-[#FDC702]
                   px-3 py-4
                   flex flex-col items-center justify-center text-center group

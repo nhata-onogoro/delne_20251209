@@ -1,12 +1,9 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { Geist } from "next/font/google"
+import { GeistSans } from "geist/font/sans"
 import "./globals.css"
 
-const geistSans = Geist({
-  subsets: ["latin"],
-  variable: "--font-geist-sans",
-})
+const geistSans = GeistSans
 
 export const metadata: Metadata = {
   title: "AIケアサービス - 認知症患者様とご家族のための音声対話サービス",

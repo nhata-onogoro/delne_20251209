@@ -92,7 +92,7 @@ export function HeroSection() {
             bg-white/70 md:bg-white/50 
             rounded-[1.5rem] md:rounded-[2rem] 
             shadow-lg ring-1 ring-white/40
-            p-6 sm:p-8 md:p-10 lg:p-12
+            p-6 sm:p-8 md:p-10 lg:p-10
             max-w-[90%] sm:max-w-md md:max-w-5xl mx-auto
             flex flex-col items-center text-center gap-3 md:gap-8
           "

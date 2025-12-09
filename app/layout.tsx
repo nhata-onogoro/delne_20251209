@@ -11,7 +11,8 @@ export const metadata: Metadata = {
     "認知症患者様とご家族をつなぐ革新的な音声対話サービス。簡単な操作で安心のコミュニケーションを実現します。",
   generator: "v0.app",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/icon.svg",
+    apple: "/delne-logo.png",
   },
 }
 

@@ -92,7 +92,7 @@ export function HeroSection() {
             bg-white/70 md:bg-white/50 
             rounded-[1.5rem] md:rounded-[2rem] 
             shadow-lg ring-1 ring-white/40
-            p-6 sm:p-8 md:p-10 lg:p-14
+            p-6 sm:p-8 md:p-10 lg:p-12
             max-w-[90%] sm:max-w-md md:max-w-5xl mx-auto
             flex flex-col items-center text-center gap-3 md:gap-8
           "
@@ -122,7 +122,7 @@ export function HeroSection() {
               <span
                 className="
                   block w-full
-                  text-sm sm:text-lg md:text-4xl lg:text-5xl
+                  text-sm sm:text-lg md:text-4xl lg:text-4xl
                   mb-1 md:mb-3
                   font-bold
                 "
@@ -134,7 +134,7 @@ export function HeroSection() {
               <span
                 className="
                   block w-full
-                  text-[1.15rem] sm:text-2xl md:text-5xl lg:text-6xl
+                  text-[1.15rem] sm:text-2xl md:text-5xl lg:text-5xl
                   tracking-tighter md:tracking-tight
                   bg-gradient-to-br from-[#072C5A] to-[#1e40af] bg-clip-text text-transparent
                   font-black
@@ -150,7 +150,7 @@ export function HeroSection() {
               className="
                 hidden md:block
                 text-slate-600 font-bold
-                text-lg sm:text-xl md:text-2xl lg:text-3xl
+                text-lg sm:text-xl md:text-2xl lg:text-2xl
                 mt-2
               "
             >

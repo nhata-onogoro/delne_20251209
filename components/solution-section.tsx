@@ -50,7 +50,7 @@ export default function SolutionSection() {
 
   return (
     // セクション全体の左右パディングを大きめに設定 (例: px-8)
-    <section id="features" className="py-16 **px-6** bg-gray-50 **sm:px-4**"> {/* 👈 修正: モバイル時のセクションパディングをpx-6 (約24px) に増強 */}
+    <section id="features" className="py-16 px-6 bg-gray-50 sm:px-4"> {/* 👈 修正: モバイル時のセクションパディングをpx-6 (約24px) に増強 */}
       <div className="container mx-auto max-w-7xl">
         {/* --- ヘッダー --- */}
         <div className="text-center mb-16">
@@ -141,9 +141,9 @@ export default function SolutionSection() {
         </div>
 
         {/* --- 機能カードグリッド --- */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 **gap-y-2 sm:gap-4 gap-x-0** justify-center justify-items-center"> {/* 👈 修正: モバイルの横方向のギャップを0に、縦方向のギャップを2に設定 */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4 justify-center justify-items-center">
           {solutions.map((item, index) => (
-            <div key={index} className="flex flex-col items-center w-full"> {/* 👈 修正: max-w-[240px] mx-auto を削除し、w-full に戻す */}
+            <div key={index} className="flex flex-col items-center w-full">
               <div
                 className="
                   w-full sm:w-full sm:max-w-none mx-auto aspect-square

@@ -41,10 +41,16 @@ export function FaqSection() {
                 value={`item-${index}`}
                 className="bg-gray-50 rounded-lg px-4 py-1.5 md:px-6 md:py-2 cursor-pointer hover:bg-gray-100 transition-colors"
               >
-                <AccordionTrigger className="text-base md:text-2xl text-left font-bold text-gray-800 hover:text-[#F39C12] cursor-pointer">
+                <AccordionTrigger
+                  value={`item-${index}`}
+                  className="text-base md:text-2xl text-left font-bold text-gray-800 hover:text-[#F39C12] cursor-pointer"
+                >
                   Q: {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-sm md:text-xl text-gray-600 leading-relaxed font-bold">
+                <AccordionContent
+                  value={`item-${index}`}
+                  className="text-sm md:text-xl text-gray-600 leading-relaxed font-bold"
+                >
                   A: {faq.answer}
                 </AccordionContent>
               </AccordionItem>

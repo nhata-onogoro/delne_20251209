@@ -142,9 +142,9 @@ export default function DemoSection() {
                 href={`tel:${DEMO_PHONE_LINK}`}
                 className="
                   block w-full text-center mx-auto
-                  text-3xl sm:text-4xl md:text-5xl lg:text-[3.2rem]
+                  text-2xl sm:text-3xl md:text-4xl lg:text-5xl
                   font-black text-[#072C5A] tracking-wider
-                  break-words
+                  whitespace-nowrap
                   hover:opacity-80 transition-opacity leading-none
                 "
               >

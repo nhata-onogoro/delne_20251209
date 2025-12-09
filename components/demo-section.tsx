@@ -51,7 +51,7 @@ export default function DemoSection() {
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         {/* ヘッダー部分 */}
         <div className="text-center mb-16 md:mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-800 mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-gray-800 mb-6 text-balance">
             AIがの声を体験してみる
           </h2>
           <div className="w-24 h-1.5 bg-[#F39C12] mx-auto rounded-full mt-6"></div>
@@ -60,7 +60,7 @@ export default function DemoSection() {
         {/* グリッド: 左右のカラム */}
         <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-stretch">
           {/* 左カラム：音声再現デモ */}
-          <div className="bg-[#e6f0f7] p-8 md:p-12 rounded-[2rem] shadow-lg border border-blue-50 flex flex-col h-full items-center text-center">
+          <div className="bg-[#e6f0f7] p-6 sm:p-8 md:p-12 rounded-[2rem] shadow-lg border border-blue-50 flex flex-col h-full items-center text-center w-full">
             <div className="w-24 h-24 bg-[#002c5b] rounded-full flex items-center justify-center mb-8 shadow-md shrink-0">
               <Mic className="w-12 h-12 text-white" />
             </div>
@@ -123,7 +123,7 @@ export default function DemoSection() {
           </div>
 
           {/* 右カラム：電話体験デモ */}
-          <div className="bg-[#e6f0f7] p-8 md:p-12 rounded-[2rem] shadow-lg border border-blue-50 flex flex-col h-full items-center text-center">
+          <div className="bg-[#e6f0f7] p-6 sm:p-8 md:p-12 rounded-[2rem] shadow-lg border border-blue-50 flex flex-col h-full items-center text-center w-full">
             <div className="w-24 h-24 bg-[#002c5b] rounded-full flex items-center justify-center mb-8 shadow-md shrink-0">
               <Phone className="w-12 h-12 text-white" />
             </div>
@@ -141,10 +141,10 @@ export default function DemoSection() {
               <a
                 href={`tel:${DEMO_PHONE_LINK}`}
                 className="
-                  block w-fit mx-auto
-                  text-4xl md:text-5xl lg:text-[3.2rem] 
-                  font-black text-[#072C5A] tracking-wider 
-                  whitespace-nowrap
+                  block w-full text-center mx-auto
+                  text-3xl sm:text-4xl md:text-5xl lg:text-[3.2rem]
+                  font-black text-[#072C5A] tracking-wider
+                  break-words
                   hover:opacity-80 transition-opacity leading-none
                 "
               >

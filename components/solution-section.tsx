@@ -19,35 +19,30 @@ export default function SolutionSection() {
     }
   }
 
-  // 指定されたテキストで構成
+  // アイコンサイズを w-10 h-10 に縮小
   const solutions = [
     {
-      // 変更点: アイコンサイズを w-12 h-12 から w-10 h-10 に縮小
-      icon: <Phone className="**w-10 h-10** lg:w-14 lg:h-14 text-[#F39C12]" />,
+      icon: <Phone className="w-10 h-10 lg:w-14 lg:h-14 text-[#F39C12]" />,
       title: "簡単操作",
       description: "電話番号そのままで\n電話するだけで利用可能",
     },
     {
-      // 変更点: アイコンサイズを w-12 h-12 から w-10 h-10 に縮小
-      icon: <Heart className="**w-10 h-10** lg:w-14 lg:h-14 text-[#F39C12]" />,
+      icon: <Heart className="w-10 h-10 lg:w-14 lg:h-14 text-[#F39C12]" />,
       title: "「あなた」の声で応答",
       description: "介護家族様の声で\n自然な会話を実現",
     },
     {
-      // 変更点: アイコンサイズを w-12 h-12 から w-10 h-10 に縮小
-      icon: <Clock className="**w-10 h-10** lg:w-14 lg:h-14 text-[#F39C12]" />,
+      icon: <Clock className="w-10 h-10 lg:w-14 lg:h-14 text-[#F39C12]" />,
       title: "24時間365日対応",
       description: "どんな時でも\n自動応答",
     },
     {
-      // 変更点: アイコンサイズを w-12 h-12 から w-10 h-10 に縮小
-      icon: <Shield className="**w-10 h-10** lg:w-14 lg:h-14 text-[#F39C12]" />,
+      icon: <Shield className="w-10 h-10 lg:w-14 lg:h-14 text-[#F39C12]" />,
       title: "感情ケア",
       description: "医療機関監修の\n専門知見でやさしく応答",
     },
     {
-      // 変更点: アイコンサイズを w-12 h-12 から w-10 h-10 に縮小
-      icon: <Mail className="**w-10 h-10** lg:w-14 lg:h-14 text-[#F39C12]" />,
+      icon: <Mail className="w-10 h-10 lg:w-14 lg:h-14 text-[#F39C12]" />,
       title: "会話内容を通知",
       description: "着信だけでなく\n会話内容も確認可能",
     },
@@ -57,7 +52,7 @@ export default function SolutionSection() {
     <section id="features" className="py-16 px-4 bg-gray-50">
       <div className="container mx-auto max-w-7xl">
         
-        {/* --- ヘッダー --- */}
+        {/* --- ヘッダー (変更なし) --- */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-black text-gray-800 mb-4">
             DELNEの機能紹介
@@ -143,28 +138,30 @@ export default function SolutionSection() {
         </div>
 
         {/* --- 機能カードグリッド --- */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 justify-center">
+        {/* スマホで強制的に2列表示 (grid-cols-2) とし、カード間のギャップを縮小 (gap-4) */}
+        <div className="grid **grid-cols-2** sm:grid-cols-3 md:grid-cols-5 **gap-4** justify-center">
           {solutions.map((item, index) => (
             <div key={index} className="flex flex-col items-center w-full">
-              {/* カード内のパディングを p-3 に、アイコンとタイトルのマージンを縮小 */}
+              
+              {/* カード内のパディングを p-3 に縮小 */}
               <div className="
                 w-full aspect-square 
                 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 
                 border-t-4 border-[#FDC702] 
-                p-3 lg:p-2 xl:p-3 
+                **p-3** lg:p-2 xl:p-3 
                 flex flex-col items-center justify-center text-center group
               ">
-                {/* アイコン */}
-                <div className="mb-2 transform group-hover:-translate-y-1 transition-transform duration-300">
+                {/* アイコンとタイトルのマージンを縮小 (mb-2, mb-1) */}
+                <div className="**mb-2** transform group-hover:-translate-y-1 transition-transform duration-300">
                   {item.icon}
                 </div>
                 
-                {/* タイトル */}
-                <h3 className="text-lg lg:text-xl font-black text-gray-800 mb-1 whitespace-pre-line leading-tight">
+                {/* タイトル (text-lgを維持) */}
+                <h3 className="text-lg lg:text-xl font-black text-gray-800 **mb-1** whitespace-pre-line leading-tight">
                   {item.title}
                 </h3>
                 
-                {/* 説明文のフォントを text-sm から text-xs に縮小 */}
+                {/* 説明文のフォントを text-xs に縮小 */}
                 <p className="text-gray-600 **text-xs** font-bold leading-relaxed whitespace-pre-line">
                   {item.description}
                 </p>

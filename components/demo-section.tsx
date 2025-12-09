@@ -177,7 +177,7 @@ export default function DemoSection() {
                   <li>
                     デモ電話には
                     <a
-                      href="https://delne.jp/privacy-policy"
+                      href="/privacy-policy"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-600 hover:text-[#F39C12] underline font-bold mx-1 cursor-pointer"

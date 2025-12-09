@@ -140,7 +140,7 @@ export function HeroSection() {
                   font-black
                 "
               >
-                AIが24時間365日丁寧に応答する
+                AIが24時間365日丁寧に応答
               </span>
               
             </h1>

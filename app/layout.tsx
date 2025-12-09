@@ -12,14 +12,15 @@ export const metadata: Metadata = {
   generator: "v0.app",
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/delne-logo.png", type: "image/png" },
+      { url: "/favicon.ico", type: "image/x-icon" },
     ],
-    apple: {
-      url: "/delne-logo.png",
-      sizes: "180x180",
-      type: "image/png",
-    },
+    apple: [
+      {
+        url: "/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
   },
 }
 

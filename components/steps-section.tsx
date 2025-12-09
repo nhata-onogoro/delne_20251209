@@ -83,7 +83,7 @@ export function StepsSection() {
           {/* CTAボタン */}
           <div className="text-center mt-16 md:mt-20">
             <a
-              href="https://st-amatelus-django-admin-service.btv98tps97t6e.ap-northeast-1.cs.amazonlightsail.com/auth/register/"
+              href="https://app.delne.jp/auth/disclaimer/"
               target="_blank"
               rel="noopener noreferrer"
               className="

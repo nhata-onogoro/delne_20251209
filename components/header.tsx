@@ -94,7 +94,7 @@ export function Header() {
           <div className="flex items-center space-x-4">
             <Button className="bg-[#F39C12] text-white hover:bg-[#D35400] transition-colors whitespace-nowrap font-bold cursor-pointer">
               <a
-                href="https://st-amatelus-django-admin-service.btv98tps97t6e.ap-northeast-1.cs.amazonlightsail.com/auth/register/"
+                href="https://app.delne.jp/auth/disclaimer/"
                 target="_blank"
                 rel="noopener noreferrer"
               >

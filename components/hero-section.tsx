@@ -162,7 +162,7 @@ export function HeroSection() {
           {/* CTAボタン */}
           <div className="w-full flex justify-center mt-1 md:mt-4">
             <a
-              href="https://st-amatelus-django-admin-service.btv98tps97t6e.ap-northeast-1.cs.amazonlightsail.com/auth/register/"
+              href="https://app.delne.jp/auth/disclaimer/"
               target="_blank"
               rel="noopener noreferrer"
               className="

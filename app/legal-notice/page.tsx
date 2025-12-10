@@ -44,7 +44,7 @@ export default function LegalNoticePage() {
                 </tr>
                 <tr className="border-b">
                   <th className="py-4 px-4 text-left w-1/4 align-top font-semibold text-gray-900">電話番号</th>
-                  <td className="py-4 px-4 text-gray-700">080-5614-3039</td>
+                  <td className="py-4 px-4 text-gray-700">082-258-1607</td>
                 </tr>
                 <tr className="border-b">
                   <th className="py-4 px-4 text-left w-1/4 align-top font-semibold text-gray-900">電話受付時間</th>

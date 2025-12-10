@@ -59,7 +59,7 @@ export default function DemoSection() {
         {/* ヘッダー部分 */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-gray-800 mb-6 text-balance">
-            AIがの声を体験してみる
+            AIの声を体験してみる
           </h2>
           <div className="w-24 h-1.5 bg-[#F39C12] mx-auto rounded-full mt-6"></div>
         </div>

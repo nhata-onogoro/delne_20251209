@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Play, Pause, Phone, Mic } from "lucide-react"
 import { useState, useRef } from "react"
+import { trackButtonClick } from "@/lib/analytics"
 
 export default function DemoSection() {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -19,10 +20,12 @@ export default function DemoSection() {
         if (isPlaying) {
           audioRef.current.pause()
           setIsPlaying(false)
+          trackButtonClick("demo_audio_pause", "demo")
         } else {
           audioRef.current.currentTime = 0
           await audioRef.current.play()
           setIsPlaying(true)
+          trackButtonClick("demo_audio_play", "demo")
         }
       } catch (error) {
         console.error("Audio playback error:", error)
@@ -44,6 +47,7 @@ export default function DemoSection() {
     } else {
       alert(`PCでご覧の方は、電話機能のある端末からデモ専用番号（${DEMO_PHONE_NUMBER}）へおかけください。`)
     }
+    trackButtonClick("demo_call", "demo")
   }
 
   return (

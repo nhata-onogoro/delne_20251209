@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { MessageCircle, X, Send, Sparkles } from "lucide-react"
+import { trackButtonClick } from "@/lib/analytics"
 
 export default function FeedbackChat() {
   const [isOpen, setIsOpen] = useState(false)
@@ -33,7 +34,10 @@ export default function FeedbackChat() {
     }
   }, [isOpen])
 
-  const handleOpen = () => setIsOpen(true)
+  const handleOpen = () => {
+    trackButtonClick("feedback_open", "feedback")
+    setIsOpen(true)
+  }
   const handleClose = () => setIsOpen(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -53,6 +57,7 @@ export default function FeedbackChat() {
       if (response.ok) {
         setIsSubmitted(true)
         setFeedback("")
+        trackButtonClick("feedback_submit", "feedback")
         setTimeout(() => {
           setIsSubmitted(false)
           handleClose()

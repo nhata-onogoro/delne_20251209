@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
+import { trackButtonClick } from "@/lib/analytics"
 // Button コンポーネントがインポートされていないため、ここでは削除します
 // import { Button } from "@/components/ui/button"
 import { ArrowRight, Phone } from "lucide-react"
@@ -50,6 +51,7 @@ export function HeroSection() {
 
   return (
     <section
+      id="hero"
       className="
         relative isolate overflow-hidden
         h-[600px] sm:h-[640px] md:h-[640px] lg:h-[640px] 2xl:h-[800px]
@@ -165,6 +167,7 @@ export function HeroSection() {
               href="https://app.delne.jp/auth/disclaimer/"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackButtonClick("hero_free_trial", "hero")}
               className="
                 inline-flex items-center justify-center gap-1.5
                 bg-[#F39C12] hover:bg-[#E67E22]

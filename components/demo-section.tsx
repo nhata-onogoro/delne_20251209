@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Play, Pause, Phone, Mic } from "lucide-react"
 import { useState, useRef } from "react"
 import { trackButtonClick } from "@/lib/analytics"
+import { trackAudioSamplePlay, trackCtaClick } from "@/lib/gtag"
 
 export default function DemoSection() {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -26,6 +27,7 @@ export default function DemoSection() {
           await audioRef.current.play()
           setIsPlaying(true)
           trackButtonClick("demo_audio_play", "demo")
+          trackAudioSamplePlay("demo_voice_sample")
         }
       } catch (error) {
         console.error("Audio playback error:", error)
@@ -48,6 +50,7 @@ export default function DemoSection() {
       alert(`PCでご覧の方は、電話機能のある端末からデモ専用番号（${DEMO_PHONE_NUMBER}）へおかけください。`)
     }
     trackButtonClick("demo_call", "demo")
+    trackCtaClick("call_now", { ctaType: "demo" })
   }
 
   return (

@@ -11,12 +11,6 @@ type GtagEventParams = {
   value?: number
 }
 
-declare global {
-  interface Window {
-    gtag?: (command: string, eventName: string, params?: GtagEventParams) => void
-  }
-}
-
 const isBrowser = typeof window !== "undefined"
 
 export const sendAnalyticsEvent = ({ action, category, label, value }: AnalyticsEvent) => {

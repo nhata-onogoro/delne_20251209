@@ -3,6 +3,7 @@
 import { Clock, Heart, Mail, Phone, Shield, Play, Pause } from "lucide-react"
 import { useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
+import { trackButtonClick } from "@/lib/analytics"
 
 export default function SolutionSection() {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -15,6 +16,7 @@ export default function SolutionSection() {
       } else {
         videoRef.current.play()
       }
+      trackButtonClick(isPlaying ? "solution_video_pause" : "solution_video_play", "features")
       setIsPlaying(!isPlaying)
     }
   }

@@ -1,6 +1,7 @@
 "use client"
 
 import { ArrowRight } from "lucide-react"
+import { trackButtonClick } from "@/lib/analytics"
 
 export function StepsSection() {
   const steps = [
@@ -25,7 +26,7 @@ export function StepsSection() {
   ]
 
   return (
-    <section className="py-20 md:py-24 bg-[#e6f0f7]">
+    <section id="steps" className="py-20 md:py-24 bg-[#e6f0f7]">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* ヘッダー */}
@@ -86,9 +87,10 @@ export function StepsSection() {
               href="https://app.delne.jp/auth/disclaimer/"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackButtonClick("steps_free_trial", "steps")}
               className="
                 inline-flex items-center gap-3
-                bg-[#F39C12] hover:bg-[#D35400] 
+                bg-[#F39C12] hover:bg-[#D35400]
                 text-xl md:text-2xl px-12 py-8 
                 text-white shadow-xl hover:shadow-2xl hover:-translate-y-1 
                 font-bold rounded-full transition-all duration-300

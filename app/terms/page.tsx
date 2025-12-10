@@ -298,7 +298,7 @@ export default function TermsPage() {
             <section className="mb-12">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">附則</h2>
               <p className="text-gray-700 leading-relaxed">
-                本規約は 2025 年 10 月 1
+                本規約は 2025 年 12 月 15
                 日より施行します。改訂時は本サービス上または当社ウェブサイト上で掲示し、同時に効力を生じます。
               </p>
             </section>

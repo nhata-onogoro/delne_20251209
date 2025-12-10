@@ -1,5 +1,6 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
+import Script from "next/script"
 import { GeistSans } from "geist/font/sans"
 import "./globals.css"
 
@@ -45,6 +46,19 @@ export default function RootLayout({
           sizes="180x180"
           href="/apple-touch-icon.png"
         />
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-L54FDVD433"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-L54FDVD433');
+          `}
+        </Script>
       </head>
       <body className="font-sans antialiased">
         {children}

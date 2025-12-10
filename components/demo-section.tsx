@@ -138,18 +138,17 @@ export default function DemoSection() {
             <div className="w-full bg-white p-8 rounded-2xl shadow-sm border border-gray-100 md:h-[220px] flex flex-col justify-center items-center">
               <p className="text-lg md:text-xl font-bold text-gray-500 mb-3">デモ専用ダイヤル（24時間対応）</p>
 
-              <a
-                href={`tel:${DEMO_PHONE_LINK}`}
+              <p
                 className="
                   block w-full text-center mx-auto
                   text-2xl sm:text-3xl md:text-4xl lg:text-5xl
                   font-black text-[#072C5A] tracking-wider
                   whitespace-nowrap
-                  hover:opacity-80 transition-opacity leading-none
+                  leading-none
                 "
               >
                 {DEMO_PHONE_NUMBER}
-              </a>
+              </p>
             </div>
 
             {/* ボタンエリア: mt-8 で隙間を詰める */}

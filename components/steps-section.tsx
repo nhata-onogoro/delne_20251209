@@ -8,7 +8,7 @@ export function StepsSection() {
       step: "STEP1",
       title: "アカウント登録",
       description: "無料トライアルボタンから\n簡単5分で登録可能。",
-      image: "/22080803_l.jpg",
+      image: "/step1.jpg",
     },
     {
       step: "STEP2",

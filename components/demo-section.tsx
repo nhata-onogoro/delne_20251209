@@ -47,7 +47,7 @@ export default function DemoSection() {
   }
 
   return (
-    <section className="py-20 md:py-24 bg-white overflow-x-clip">
+    <section id="demo" className="py-20 md:py-24 bg-white overflow-x-clip">
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         {/* ヘッダー部分 */}
         <div className="text-center mb-16 md:mb-20">

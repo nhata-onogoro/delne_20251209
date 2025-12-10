@@ -72,6 +72,12 @@ export function Header() {
               機能紹介
             </button>
             <button
+              onClick={() => handleNavigation("demo")}
+              className="text-white hover:text-[#F39C12] transition-colors whitespace-nowrap font-bold cursor-pointer"
+            >
+              デモ体験
+            </button>
+            <button
               onClick={() => handleNavigation("testimonials")}
               className="text-white hover:text-[#F39C12] transition-colors whitespace-nowrap font-bold cursor-pointer"
             >
@@ -131,16 +137,22 @@ export function Header() {
                 ストーリー
               </button>
               <button
-                onClick={() => handleNavigation("features")}
-                className="block text-white hover:text-[#F39C12] transition-colors w-full text-left font-bold cursor-pointer"
-              >
-                機能紹介
-              </button>
-              <button
-                onClick={() => handleNavigation("testimonials")}
-                className="block text-white hover:text-[#F39C12] transition-colors w-full text-left font-bold cursor-pointer"
-              >
-                お客様の声
+              onClick={() => handleNavigation("features")}
+              className="block text-white hover:text-[#F39C12] transition-colors w-full text-left font-bold cursor-pointer"
+            >
+              機能紹介
+            </button>
+            <button
+              onClick={() => handleNavigation("demo")}
+              className="block text-white hover:text-[#F39C12] transition-colors w-full text-left font-bold cursor-pointer"
+            >
+              デモ体験
+            </button>
+            <button
+              onClick={() => handleNavigation("testimonials")}
+              className="block text-white hover:text-[#F39C12] transition-colors w-full text-left font-bold cursor-pointer"
+            >
+              お客様の声
               </button>
               <button
                 onClick={() => handleNavigation("pricing")}

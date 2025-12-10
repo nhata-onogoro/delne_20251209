@@ -48,15 +48,15 @@ export default function RootLayout({
         />
         <Script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-L54FDVD433"
+          src="https://www.googletagmanager.com/gtag/js?id=G-KPPZ1W3GDE"
         />
         <Script id="gtag-init" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            function gtag(){dataLayer.push(arguments);} 
             gtag('js', new Date());
 
-            gtag('config', 'G-L54FDVD433');
+            gtag('config', 'G-KPPZ1W3GDE');
           `}
         </Script>
       </head>

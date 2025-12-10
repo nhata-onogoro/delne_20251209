@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { trackButtonClick } from "@/lib/analytics"
+import { trackCtaClick } from "@/lib/gtag"
 // Button コンポーネントがインポートされていないため、ここでは削除します
 // import { Button } from "@/components/ui/button"
 import { ArrowRight, Phone } from "lucide-react"
@@ -167,7 +168,10 @@ export function HeroSection() {
               href="https://app.delne.jp/auth/disclaimer/"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackButtonClick("hero_free_trial", "hero")}
+              onClick={() => {
+                trackButtonClick("hero_free_trial", "hero")
+                trackCtaClick("free_trial", { ctaType: "hero" })
+              }}
               className="
                 inline-flex items-center justify-center gap-1.5
                 bg-[#F39C12] hover:bg-[#E67E22]

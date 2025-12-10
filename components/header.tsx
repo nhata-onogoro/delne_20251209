@@ -7,6 +7,7 @@ import { useRouter, usePathname } from "next/navigation"
 import Image from "next/image"
 import Script from "next/script"   // ← 追加
 import { trackButtonClick } from "@/lib/analytics"
+import { trackCtaClick } from "@/lib/gtag"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -103,7 +104,10 @@ export function Header() {
           <div className="flex items-center space-x-4">
             <Button
               className="bg-[#F39C12] text-white hover:bg-[#D35400] transition-colors whitespace-nowrap font-bold cursor-pointer"
-              onClick={() => trackButtonClick("header_free_trial", "header_cta")}
+              onClick={() => {
+                trackButtonClick("header_free_trial", "header_cta")
+                trackCtaClick("free_trial", { ctaType: "header" })
+              }}
             >
               <a
                 href="https://app.delne.jp/auth/disclaimer/"

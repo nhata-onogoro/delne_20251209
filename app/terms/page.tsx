@@ -19,8 +19,8 @@ export default function TermsPage() {
             <header className="mb-12 text-center">
               <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">サービス利用規約</h1>
               <div className="text-sm text-gray-600 space-y-1 text-right">
-                <p>制定日：2025年10月1日</p>
-                <p>最終改定日：2025年10月1日</p>
+                <p>制定日：2025年12月15日</p>
+                <p>最終改定日：2025年12月15日</p>
               </div>
             </header>
 
@@ -134,11 +134,11 @@ export default function TermsPage() {
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">第7条（利用料金と支払方法）</h2>
               <ol className="list-decimal pl-6 space-y-2 text-gray-700">
                 <li>
-                  <strong>料金体系：</strong>定額制プラン（一定時間/回数含む）、上限超過分の従量課金、有償オプション。
+                  <strong>料金体系：</strong>定額制プラン（一定時間）、上限超過分の従量課金、有償オプション。
                 </li>
                 <li>
                   <strong>支払方法：</strong>
-                  当社指定方法（例：クレジットカード/コンビニ振込等）により支払う。時期や手数料は申込画面等のルールに従う。
+                  当社指定方法（例：クレジットカード）により支払う。時期や手数料は申込画面等のルールに従う。
                 </li>
                 <li>
                   <strong>返金：</strong>ユーザー都合の中途解約等による返金は、当社が別途認める場合を除き行いません。
@@ -194,7 +194,7 @@ export default function TermsPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">第12条（損害賠償）</h2>
               <ol className="list-decimal pl-6 space-y-2 text-gray-700">
-                <li>ユーザーは本サービス利用により当社/第三者に損害を与えた場合、その���害を賠償します。</li>
+                <li>ユーザーは本サービス利用により当社/第三者に損害を与えた場合、その当該損害を賠償します。</li>
                 <li>
                   当社は本サービス関連でユーザーが被った損害につき一切責任を負いません（当社の故意または重過失を除く）。
                 </li>
@@ -218,7 +218,7 @@ export default function TermsPage() {
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">第14条（登録取消等）</h2>
               <ol className="list-decimal pl-6 space-y-2 text-gray-700">
                 <li>
-                  当社は、規約違反、虚偽登録、支払不能・法的手続の申立、長期不使用等、当社が不適当と判断した��合、利用停止・登録取消できます。
+                  当社は、規約違反、虚偽登録、支払不能・法的手続の申立、長期不使用等、当社が不適当と判断した場合、利用停止・登録取消できます。
                 </li>
                 <li>該当時、ユーザーは当然に期限の利益を失い、直ちに全債務を支払うものとします。</li>
                 <li>当社/ユーザーは、30日前までの通知により登録を取消すことができます。</li>
@@ -284,7 +284,7 @@ export default function TermsPage() {
               <ol className="list-decimal pl-6 space-y-2 text-gray-700">
                 <li>個人情報保護法令を遵守し、適切に取扱います。</li>
                 <li>
-                  利用目的：本サービス提供・運営、課金/決済、問い��わせ対応、品質改善のための統計・分析、法令の範囲内利用。
+                  利用目的：本サービス提供・運営、課金/決済、問い合わせ対応、品質改善のための統計・分析、法令の範囲内利用。
                 </li>
                 <li>第三者提供の制限：法令上許容や緊急時等を除き同意なく提供しません。</li>
                 <li>安全管理措置と委託先の適切な監督を行います。</li>
@@ -298,7 +298,7 @@ export default function TermsPage() {
             <section className="mb-12">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">附則</h2>
               <p className="text-gray-700 leading-relaxed">
-                本規約は 2025 年 10 月 1
+                本規約は 2025 年 12 月 15
                 日より施行します。改訂時は本サービス上または当社ウェブサイト上で掲示し、同時に効力を生じます。
               </p>
             </section>

@@ -1,21 +1,28 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { Inter } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import { Suspense } from "react"
+import Script from "next/script"
+import { GeistSans } from "geist/font/sans"
 import "./globals.css"
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-})
+const geistSans = GeistSans
 
 export const metadata: Metadata = {
-  title: "AIケアサービス - 認知症患者様とご家族のための音声対話サービス",
+  title: "AI電話サービス-DELNE",
   description:
     "認知症患者様とご家族をつなぐ革新的な音声対話サービス。簡単な操作で安心のコミュニケーションを実現します。",
   generator: "v0.app",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", type: "image/x-icon" },
+    ],
+    apple: [
+      {
+        url: "/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+  },
 }
 
 export const viewport: Viewport = {
@@ -31,12 +38,30 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ja">
-      <body className={`font-sans ${inter.variable}`}>
-        <Suspense fallback={<div>Loading...</div>}>
-          {children}
-          <Analytics />
-        </Suspense>
+    <html lang="ja" className={geistSans.variable}>
+      <head>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-KPPZ1W3GDE"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);} 
+            gtag('js', new Date());
+
+            gtag('config', 'G-KPPZ1W3GDE');
+          `}
+        </Script>
+      </head>
+      <body className="font-sans antialiased">
+        {children}
       </body>
     </html>
   )

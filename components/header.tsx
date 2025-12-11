@@ -6,6 +6,8 @@ import { useState } from "react"
 import { useRouter, usePathname } from "next/navigation"
 import Image from "next/image"
 import Script from "next/script"   // ← 追加
+import { trackButtonClick } from "@/lib/analytics"
+import { trackCtaClick } from "@/lib/gtag"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -13,6 +15,7 @@ export function Header() {
   const pathname = usePathname()
 
   const handleNavigation = (sectionId: string) => {
+    trackButtonClick(`nav_${sectionId}`, "header_nav")
     if (pathname === "/") {
       // On home page, scroll to section
       const element = document.getElementById(sectionId)
@@ -33,6 +36,7 @@ export function Header() {
   }
 
   const goToHome = () => {
+    trackButtonClick("nav_home_logo", "header_nav")
     router.push("/")
   }
 
@@ -72,6 +76,12 @@ export function Header() {
               機能紹介
             </button>
             <button
+              onClick={() => handleNavigation("demo")}
+              className="text-white hover:text-[#F39C12] transition-colors whitespace-nowrap font-bold cursor-pointer"
+            >
+              デモ体験
+            </button>
+            <button
               onClick={() => handleNavigation("testimonials")}
               className="text-white hover:text-[#F39C12] transition-colors whitespace-nowrap font-bold cursor-pointer"
             >
@@ -92,18 +102,27 @@ export function Header() {
           </nav>
 
           <div className="flex items-center space-x-4">
-            <Button className="bg-[#F39C12] text-white hover:bg-[#D35400] transition-colors whitespace-nowrap font-bold cursor-pointer">
+            <Button
+              className="bg-[#F39C12] text-white hover:bg-[#D35400] transition-colors whitespace-nowrap font-bold cursor-pointer"
+              onClick={() => {
+                trackButtonClick("header_free_trial", "header_cta")
+                trackCtaClick("free_trial", { ctaType: "header" })
+              }}
+            >
               <a
-                href="https://st-amatelus-django-admin-service.btv98tps97t6e.ap-northeast-1.cs.amazonlightsail.com/auth/register/"
+                href="https://app.delne.jp/auth/disclaimer/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 無料トライアル
               </a>
             </Button>
-            <Button className="hidden md:inline-flex bg-[#F39C12] text-white hover:bg-[#D35400] transition-colors whitespace-nowrap font-bold cursor-pointer">
+            <Button
+              className="hidden md:inline-flex bg-[#F39C12] text-white hover:bg-[#D35400] transition-colors whitespace-nowrap font-bold cursor-pointer"
+              onClick={() => trackButtonClick("header_login", "header_cta")}
+            >
               <a
-                href="https://st-amatelus-django-admin-service.btv98tps97t6e.ap-northeast-1.cs.amazonlightsail.com/auth/login/"
+                href="https://app.delne.jp/auth/login/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -131,16 +150,22 @@ export function Header() {
                 ストーリー
               </button>
               <button
-                onClick={() => handleNavigation("features")}
-                className="block text-white hover:text-[#F39C12] transition-colors w-full text-left font-bold cursor-pointer"
-              >
-                機能紹介
-              </button>
-              <button
-                onClick={() => handleNavigation("testimonials")}
-                className="block text-white hover:text-[#F39C12] transition-colors w-full text-left font-bold cursor-pointer"
-              >
-                お客様の声
+              onClick={() => handleNavigation("features")}
+              className="block text-white hover:text-[#F39C12] transition-colors w-full text-left font-bold cursor-pointer"
+            >
+              機能紹介
+            </button>
+            <button
+              onClick={() => handleNavigation("demo")}
+              className="block text-white hover:text-[#F39C12] transition-colors w-full text-left font-bold cursor-pointer"
+            >
+              デモ体験
+            </button>
+            <button
+              onClick={() => handleNavigation("testimonials")}
+              className="block text-white hover:text-[#F39C12] transition-colors w-full text-left font-bold cursor-pointer"
+            >
+              お客様の声
               </button>
               <button
                 onClick={() => handleNavigation("pricing")}
@@ -155,9 +180,12 @@ export function Header() {
                 よくあるご質問
               </button>
               <div className="pt-4 space-y-2">
-                <Button className="w-full bg-[#F39C12] text-white hover:bg-[#D35400] transition-colors cursor-pointer">
+                <Button
+                  className="w-full bg-[#F39C12] text-white hover:bg-[#D35400] transition-colors cursor-pointer"
+                  onClick={() => trackButtonClick("header_login_mobile", "header_cta")}
+                >
                   <a
-                    href="https://st-amatelus-django-admin-service.btv98tps97t6e.ap-northeast-1.cs.amazonlightsail.com/auth/login/"
+                    href="https://app.delne.jp/auth/login/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

@@ -1,7 +1,7 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import { trackButtonClick } from "@/lib/analytics"
 
 export function StepsSection() {
   const steps = [
@@ -9,62 +9,70 @@ export function StepsSection() {
       step: "STEP1",
       title: "アカウント登録",
       description: "無料トライアルボタンから\n簡単5分で登録可能。",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS37s7_-SNAJB3K28iZvQ7vCVWS7R-5QbbqLw&s",
+      image: "/step1.jpg",
     },
     {
       step: "STEP2",
       title: "音声登録",
       description: "録音した声をAIが学習し\nあなたの声を再現します。",
-      image: "/step2-voice-recording-updated.jpg",
+      image: "/step2.png",
     },
     {
       step: "STEP3",
       title: "利用開始",
-      description: "電話の転送設定を行えば、\nご家族へ電話するだけで利用可能。",
-      image: "/phone-number-setup-call-forwarding.png",
+      description: "DELNEが発行する\n「専用番号」にかけるだけで\nすぐにご利用いただけます。",
+      image: "/step3-phone-call.jpg",
     },
   ]
 
   return (
-    <section className="py-20 bg-[#e6f0f7]">
+    <section id="steps" className="py-20 md:py-24 bg-[#e6f0f7]">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
+          {/* ヘッダー */}
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-black text-gray-800 mb-6">
               かんたん3ステップで
               <br className="block md:hidden" />
               ご利用開始！
             </h2>
-            <div className="w-32 h-2 bg-yellow-400 mx-auto rounded-full" />
+            <div className="w-24 h-1.5 bg-[#F39C12] mx-auto rounded-full mt-6"></div>
           </div>
 
+          {/* ステップカード */}
           <div className="grid md:grid-cols-3 gap-8 md:gap-10">
             {steps.map((step, index) => (
               <div
                 key={index}
-                className="bg-white px-8 pt-6 pb-8 md:px-10 md:pt-6 md:pb-10 rounded-2xl shadow-md text-center flex flex-col"
+                className="bg-white px-6 pt-8 pb-10 md:px-8 md:pt-8 md:pb-12 rounded-[2rem] shadow-md text-center flex flex-col items-center h-full hover:shadow-lg transition-shadow duration-300"
               >
                 {/* STEP ラベル */}
-                <div className="inline-flex flex-col items-center gap-2 select-none mb-5 md:mb-6">
-                  <span className="text-2xl md:text-3xl font-extrabold tracking-wider text-gray-800">{step.step}</span>
-                  <span className="block h-1.5 w-20 md:w-24 rounded-full bg-gray-400" aria-hidden="true" />
+                <div className="flex flex-col items-center gap-2 select-none mb-6">
+                  {/* 文字色を少し濃いネイビーにして引き締めました */}
+                  <span className="text-3xl font-black tracking-wider text-[#072C5A] font-sans">{step.step}</span>
+                  {/* アンダーバーをブランドカラーのオレンジに変更 */}
+                  <span className="block h-1.5 w-20 rounded-full bg-[#F39C12]" aria-hidden="true" />
                 </div>
 
-                {/* 画像 */}
-                <div className="mb-5 md:mb-6">
-                  <div className="rounded-lg overflow-hidden ring-1 ring-gray-800">
-                    <img src={step.image || "/placeholder.svg"} alt={step.title} className="w-full h-48 object-cover" />
+                {/* 画像エリア */}
+                <div className="mb-6 w-full">
+                  <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm aspect-[4/3] w-full relative">
+                    {/* 画像の装飾として、実際の画像がない場合のプレースホルダー色を設定 */}
+                    <img
+                      src={step.image || "/placeholder.svg"}
+                      alt={step.title}
+                      className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
                 </div>
 
                 {/* タイトル＋説明 */}
-                <div className="space-y-3 md:space-y-4">
+                <div className="space-y-4 w-full">
                   <h3 className="text-2xl lg:text-3xl font-black text-gray-800">{step.title}</h3>
-                  <p className="text-base md:text-lg font-bold text-gray-700 leading-relaxed">
+                  <p className="text-base md:text-lg font-bold text-gray-600 leading-relaxed">
                     {step.description.split("\n").map((line, i) => (
-                      <span key={i}>
+                      <span key={i} className="block">
                         {line}
-                        {i < step.description.split("\n").length - 1 && <br />}
                       </span>
                     ))}
                   </p>
@@ -73,22 +81,24 @@ export function StepsSection() {
             ))}
           </div>
 
-          <div className="text-center mt-16">
-            <Button
-              asChild
-              size="lg"
-              className="bg-[#F39C12] hover:bg-[#D35400] text-xl px-10 py-4 text-white shadow-lg font-bold cursor-pointer"
+          {/* CTAボタン */}
+          <div className="text-center mt-16 md:mt-20">
+            <a
+              href="https://app.delne.jp/auth/disclaimer/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackButtonClick("steps_free_trial", "steps")}
+              className="
+                inline-flex items-center gap-3
+                bg-[#F39C12] hover:bg-[#D35400]
+                text-xl md:text-2xl px-12 py-8 
+                text-white shadow-xl hover:shadow-2xl hover:-translate-y-1 
+                font-bold rounded-full transition-all duration-300
+              "
             >
-              <a
-                href="https://st-amatelus-django-admin-service.btv98tps97t6e.ap-northeast-1.cs.amazonlightsail.com/auth/register/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center"
-              >
-                無料トライアル実施中
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </a>
-            </Button>
+              無料トライアル実施中
+              <ArrowRight className="w-6 h-6 stroke-[3]" />
+            </a>
           </div>
         </div>
       </div>

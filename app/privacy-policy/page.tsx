@@ -12,8 +12,8 @@ export default function PrivacyPolicyPage() {
             <header className="mb-12 text-center">
               <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">プライバシーポリシー</h1>
               <div className="text-sm text-gray-600 space-y-1 text-right">
-                <p>制定日：2025年10月1日</p>
-                <p>最終改定日：2025年10月1日</p>
+                <p>制定日：2025年12月15日</p>
+                <p>最終改定日：2025年12月15日</p>
               </div>
             </header>
 
@@ -110,7 +110,7 @@ export default function PrivacyPolicyPage() {
                   公衆衛生の向上又は児童の健全な育成の推進のために特に必要がある場合であって、本人の同意を得ることが困難であるとき
                 </li>
                 <li>
-                  国の機関若しくは地方公共団体��はその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合
+                  国の機関若しくは地方公共団体又はその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合
                 </li>
               </ul>
 
@@ -194,7 +194,7 @@ export default function PrivacyPolicyPage() {
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">株式会社オノゴロ 個人情報相談窓口</h3>
                 <div className="space-y-2 text-gray-700">
                   <p>〒730-0051 広島市中区大手町2-8-2 フージャース広島大手町ビル11F</p>
-                  <p>メール：info@onogoro.co.jp</p>
+                  <p>メール：ai.support@onogoro.co.jp</p>
                   <p>営業時間：平日9:00-18:00（土日祝日及び年末年始を除く）</p>
                 </div>
               </div>

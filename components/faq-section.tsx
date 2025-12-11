@@ -6,12 +6,12 @@ export function FaqSection() {
     {
       question: "DELNEはどんなサービスですか？",
       answer:
-        "DELNEは、介護と仕事の両立を支えるAI電話サービスです。認知症のご家族からのお電話は、AIが24時間365日ていねいに応対し、仕事中や早朝・深夜の着信を代わりに対応します。通話内容は要点を自動で要約し、SMS/メールでお届けします。",
+        "DELNEは、介護と仕事の両立を支えるAI電話サービスです。認知症のご家族からのお電話は、AIが24時間365日丁寧に応対し、仕事中や早朝・深夜の着信を代わりに対応します。通話内容は要点を自動で要約し、SMS/メールでお届けします。",
     },
     {
       question: "現在の電話番号は変わりますか？",
       answer:
-        "現在ご利用中の電話番号は変わりませんのでご安心ください。サービス利用時に専用電話番号を発行いたします。サービスをご利用の際は、その専用番号へおかけください。",
+        "現在ご利用中の電話番号は変わりませんのでご安心ください。サービス利用時に専用電話番号を発行いたします。サービスをご利用の際は、その専用番号へおかけ頂くことでAIと会話が可能となります。",
     },
     {
       question: "最短でいつからサービスを利用できますか？",
@@ -41,10 +41,16 @@ export function FaqSection() {
                 value={`item-${index}`}
                 className="bg-gray-50 rounded-lg px-4 py-1.5 md:px-6 md:py-2 cursor-pointer hover:bg-gray-100 transition-colors"
               >
-                <AccordionTrigger className="text-base md:text-2xl text-left font-bold text-gray-800 hover:text-[#F39C12] cursor-pointer">
+                <AccordionTrigger
+                  value={`item-${index}`}
+                  className="text-base md:text-2xl text-left font-bold text-gray-800 hover:text-[#F39C12] cursor-pointer"
+                >
                   Q: {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-sm md:text-xl text-gray-600 leading-relaxed font-bold">
+                <AccordionContent
+                  value={`item-${index}`}
+                  className="text-sm md:text-xl text-gray-600 leading-relaxed font-bold"
+                >
                   A: {faq.answer}
                 </AccordionContent>
               </AccordionItem>

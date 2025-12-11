@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button"
 import { Mail, Building } from "lucide-react"
 import Image from "next/image"
 
@@ -69,15 +68,18 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="text-white font-bold">お問い合わせ</h4>
             <div className="space-y-3">
-              <Button
-                asChild
-                className="w-full bg-[#F39C12] hover:bg-[#D35400] text-white cursor-pointer transition-colors"
+              <a
+                href="/contact"
+                className="
+                  inline-flex items-center justify-center
+                  w-full bg-[#F39C12] hover:bg-[#D35400] 
+                  text-white cursor-pointer transition-colors
+                  px-4 py-2 rounded-md font-medium
+                "
               >
-                <a href="/contact">
-                  <Mail className="w-4 h-4 mr-2" />
-                  メールで相談
-                </a>
-              </Button>
+                <Mail className="w-4 h-4 mr-2" />
+                メールで相談
+              </a>
             </div>
           </div>
         </div>

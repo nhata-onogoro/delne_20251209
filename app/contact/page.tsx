@@ -176,7 +176,9 @@ export default function ContactPage() {
                   <Checkbox
                     id="privacy-agreement"
                     checked={privacyAgreed}
-                    onCheckedChange={(checked) => setPrivacyAgreed(checked as boolean)}
+                    onChange={(event) =>
+                      setPrivacyAgreed(event.target.checked)
+                    }
                     className="mt-1 border-2 border-gray-300 bg-white data-[state=checked]:bg-[#002c5b] data-[state=checked]:border-[#002c5b]"
                   />
                   <Label htmlFor="privacy-agreement" className="text-lg font-medium text-gray-700 leading-relaxed">

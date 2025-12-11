@@ -61,6 +61,11 @@ export function Footer() {
                   特定商取引法に基づく表記
                 </a>
               </li>
+              <li>
+                <a href="/outage-info" className="hover:text-[#F39C12] transition-colors font-bold cursor-pointer">
+                  障害情報
+                </a>
+              </li>
             </ul>
           </div>
 

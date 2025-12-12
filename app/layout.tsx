@@ -10,6 +10,26 @@ export const metadata: Metadata = {
   title: "AI電話サービス-DELNE",
   description:
     "認知症患者様とご家族をつなぐ革新的な音声対話サービス。簡単な操作で安心のコミュニケーションを実現します。",
+    keywords: [
+    "DELNE",
+    "デルネ",
+    "でるね",
+    "DELNE AI電話",
+    "AI電話 DELNE",
+    "AI電話サービス",
+    "AI電話",
+    "認知症",
+    "電話",
+    "オノゴロ",
+    "認知症 電話",
+    "認知症 介護 電話",
+    "認知症 家族 電話",
+    "介護 電話",
+    "AI 音声 対話",
+    "介護 電話 代行",
+    "AI 自動応答",
+    "介護者 支援 サービス",
+  ],
   generator: "v0.app",
   icons: {
     icon: [

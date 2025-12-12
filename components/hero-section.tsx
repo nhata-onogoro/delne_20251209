@@ -130,11 +130,7 @@ export function HeroSection() {
                   font-bold
                 "
               >
-<<<<<<< HEAD
-                認知症ご家族からの電話を
-=======
                 認知症ご家族からの電話に
->>>>>>> lp/main
               </span>
               
               {/* 2行目 */}

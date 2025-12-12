@@ -59,7 +59,11 @@ export function FaqSection() {
 
           <div className="mt-10 md:mt-12 text-center p-6 md:p-8 bg-[#e6f0f7] rounded-xl">
             <p className="text-sm md:text-lg text-gray-800 mb-3 md:mb-4 font-bold">
+<<<<<<< HEAD
               ご不明な点やご質問などありましたら、気軽にお問合せください！
+=======
+              ご不明な点やご質問などありましたら、お気軽にお問い合わせください！
+>>>>>>> lp/main
             </p>
             <Button className="bg-[#F39C12] hover:bg-[#D35400] text-white font-bold cursor-pointer">
               <a href="/contact">お問い合わせ</a>

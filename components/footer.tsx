@@ -62,6 +62,11 @@ export function Footer() {
                 </a>
               </li>
               <li>
+                <a href="/disclaimer" className="hover:text-[#F39C12] transition-colors font-bold cursor-pointer">
+                  免責事項
+                </a>
+              </li>
+              <li>
                 <a href="/outage-info" className="hover:text-[#F39C12] transition-colors font-bold cursor-pointer">
                   障害情報
                 </a>

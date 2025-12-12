@@ -10,7 +10,11 @@ export function StorySection() {
         {/* --- ヘッダー部分 --- */}
         <div className="text-center mb-16 md:mb-24">
           <h2 className="text-3xl md:text-5xl font-black text-[#072C5A] leading-tight">
+<<<<<<< HEAD
             こんなお悩み抱えていませんか？
+=======
+            こんなお悩みを抱えていませんか？
+>>>>>>> lp/main
           </h2>
           <div className="w-24 h-1.5 bg-[#F39C12] mx-auto rounded-full mt-6"></div>
         </div>

@@ -179,7 +179,7 @@ export default function DemoSection() {
                 <p className="text-lg font-bold text-gray-800 mb-2 border-b border-gray-200 pb-2">ご注意事項</p>
                 <ul className="text-sm md:text-base font-medium text-gray-700 list-disc pl-5 leading-relaxed space-y-2">
                   <li>通話料はお客様のご負担となります。</li>
-                  <li>デモ用に、広島弁での応答を設定しています。</li>
+                  <li>デモ用に、標準語での応答を設定しています。</li>
                   <li>
                     デモ電話には
                     <a

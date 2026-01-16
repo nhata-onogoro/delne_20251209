@@ -4,12 +4,7 @@ import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 
 const incidents = [
-  {
-    date: "2024年12月11日",
-    occurredAt: "10:20～",
-    detail: "学習音声AI機能が利用できない",
-    status: "復旧中",
-  },
+  // 現在、報告中の障害はありません。
 ]
 
 export default function OutageInfoPage() {
@@ -26,36 +21,37 @@ export default function OutageInfoPage() {
 
           <div className="bg-white rounded-lg shadow-sm p-6">
             <h2 className="text-xl font-semibold text-gray-900 mb-4">現在の障害</h2>
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse text-sm md:text-base">
-                <thead>
-                  <tr className="bg-gray-100 text-left">
-                    <th className="py-3 px-4 font-semibold text-gray-900">発生日</th>
-                    <th className="py-3 px-4 font-semibold text-gray-900">発生日時</th>
-                    <th className="py-3 px-4 font-semibold text-gray-900">障害内容</th>
-                    <th className="py-3 px-4 font-semibold text-gray-900">復旧状況</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {incidents.map((incident) => (
-                    <tr key={`${incident.date}-${incident.occurredAt}`} className="border-t">
-                      <td className="py-3 px-4 align-top text-gray-800">{incident.date}</td>
-                      <td className="py-3 px-4 align-top text-gray-800">{incident.occurredAt}</td>
-                      <td className="py-3 px-4 align-top text-gray-800">{incident.detail}</td>
-                      <td className="py-3 px-4 align-top text-gray-800 font-semibold">{incident.status}</td>
+            {incidents.length === 0 ? (
+              <p className="text-gray-700 text-sm md:text-base">現在、障害は発生していません。</p>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse text-sm md:text-base">
+                  <thead>
+                    <tr className="bg-gray-100 text-left">
+                      <th className="py-3 px-4 font-semibold text-gray-900">発生日</th>
+                      <th className="py-3 px-4 font-semibold text-gray-900">発生日時</th>
+                      <th className="py-3 px-4 font-semibold text-gray-900">障害内容</th>
+                      <th className="py-3 px-4 font-semibold text-gray-900">復旧状況</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody>
+                    {incidents.map((incident) => (
+                      <tr key={`${incident.date}-${incident.occurredAt}`} className="border-t">
+                        <td className="py-3 px-4 align-top text-gray-800">{incident.date}</td>
+                        <td className="py-3 px-4 align-top text-gray-800">{incident.occurredAt}</td>
+                        <td className="py-3 px-4 align-top text-gray-800">{incident.detail}</td>
+                        <td className="py-3 px-4 align-top text-gray-800 font-semibold">{incident.status}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </div>
 
           <div className="bg-white rounded-lg shadow-sm p-6 space-y-4 text-gray-800">
-            <h2 className="text-xl font-semibold text-gray-900">現在の状況と原因</h2>
-            <p>
-              原因として、開発に利用している外部サービスのAPIにて障害が発生しているため、学習音声AI機能が利用できない状況となっ
-              ています。外部サービスの影響であり、現時点で復旧の目途が分からない状況です。復旧の目途が分かり次第、修正を実施します。
-            </p>
+            <h2 className="text-xl font-semibold text-gray-900">現在の状況</h2>
+            <p>現在、障害は発生していません。サービスは通常どおりご利用いただけます。</p>
             <p className="text-sm text-gray-600">
               ※ 障害が発生するたびに本ページへ最新の情報を追加いたします。
             </p>

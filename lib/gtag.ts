@@ -26,6 +26,12 @@ export const trackCtaClick = (
   })
 }
 
+export const trackFreeTrialClick = (location: string) => {
+  trackGtagEvent("free_trial_click", {
+    location,
+  })
+}
+
 export const trackAudioSamplePlay = (sampleName: string) => {
   trackGtagEvent("audio_sample_play", {
     sample_name: sampleName,

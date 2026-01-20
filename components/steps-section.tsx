@@ -2,6 +2,7 @@
 
 import { ArrowRight } from "lucide-react"
 import { trackButtonClick } from "@/lib/analytics"
+import { trackCtaClick, trackFreeTrialClick } from "@/lib/gtag"
 
 export function StepsSection() {
   const steps = [
@@ -87,7 +88,11 @@ export function StepsSection() {
               href="https://app.delne.jp/auth/disclaimer/"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackButtonClick("steps_free_trial", "steps")}
+              onClick={() => {
+                trackButtonClick("steps_free_trial", "steps")
+                trackCtaClick("free_trial", { ctaType: "steps" })
+                trackFreeTrialClick("steps")
+              }}
               className="
                 inline-flex items-center gap-3
                 bg-[#F39C12] hover:bg-[#D35400]

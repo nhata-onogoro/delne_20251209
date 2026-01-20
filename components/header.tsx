@@ -44,7 +44,7 @@ export function Header() {
   const handleFreeTrialClick = () => {
     trackButtonClick("header_free_trial", "header_cta")
     trackCtaClick("free_trial", { ctaType: "header" })
-    trackFreeTrialClick("header")
+    trackFreeTrialClick("header_free_trial_click")
   }
 
   return (

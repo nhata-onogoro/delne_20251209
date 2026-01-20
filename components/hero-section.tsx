@@ -171,7 +171,7 @@ export function HeroSection() {
               onClick={() => {
                 trackButtonClick("hero_free_trial", "hero")
                 trackCtaClick("free_trial", { ctaType: "hero" })
-                trackFreeTrialClick("hero")
+                trackFreeTrialClick("hero_free_trial_click")
               }}
               className="
                 inline-flex items-center justify-center gap-1.5

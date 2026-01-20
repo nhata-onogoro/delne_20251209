@@ -91,7 +91,7 @@ export function StepsSection() {
               onClick={() => {
                 trackButtonClick("steps_free_trial", "steps")
                 trackCtaClick("free_trial", { ctaType: "steps" })
-                trackFreeTrialClick("steps")
+                trackFreeTrialClick("step_free_trial_click")
               }}
               className="
                 inline-flex items-center gap-3

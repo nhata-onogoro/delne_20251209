@@ -1,13 +1,14 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import { useState } from "react"
 import { useRouter, usePathname } from "next/navigation"
 import Image from "next/image"
 import Script from "next/script"   // ← 追加
 import { trackButtonClick } from "@/lib/analytics"
-import { trackCtaClick } from "@/lib/gtag"
+import { trackCtaClick, trackFreeTrialClick } from "@/lib/gtag"
+import { cn } from "@/lib/utils"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -38,6 +39,12 @@ export function Header() {
   const goToHome = () => {
     trackButtonClick("nav_home_logo", "header_nav")
     router.push("/")
+  }
+
+  const handleFreeTrialClick = () => {
+    trackButtonClick("header_free_trial", "header_cta")
+    trackCtaClick("free_trial", { ctaType: "header" })
+    trackFreeTrialClick("header")
   }
 
   return (
@@ -102,21 +109,18 @@ export function Header() {
           </nav>
 
           <div className="flex items-center space-x-4">
-            <Button
-              className="bg-[#F39C12] text-white hover:bg-[#D35400] transition-colors whitespace-nowrap font-bold cursor-pointer"
-              onClick={() => {
-                trackButtonClick("header_free_trial", "header_cta")
-                trackCtaClick("free_trial", { ctaType: "header" })
-              }}
+            <a
+              href="https://app.delne.jp/auth/disclaimer/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleFreeTrialClick}
+              className={cn(
+                buttonVariants({ variant: "default" }),
+                "bg-[#F39C12] text-white hover:bg-[#D35400] transition-colors whitespace-nowrap font-bold cursor-pointer"
+              )}
             >
-              <a
-                href="https://app.delne.jp/auth/disclaimer/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                無料トライアル
-              </a>
-            </Button>
+              無料トライアル
+            </a>
             <Button
               className="hidden md:inline-flex bg-[#F39C12] text-white hover:bg-[#D35400] transition-colors whitespace-nowrap font-bold cursor-pointer"
               onClick={() => trackButtonClick("header_login", "header_cta")}

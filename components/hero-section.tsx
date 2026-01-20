@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { trackButtonClick } from "@/lib/analytics"
-import { trackCtaClick } from "@/lib/gtag"
+import { trackCtaClick, trackFreeTrialClick } from "@/lib/gtag"
 // Button コンポーネントがインポートされていないため、ここでは削除します
 // import { Button } from "@/components/ui/button"
 import { ArrowRight, Phone } from "lucide-react"
@@ -171,6 +171,7 @@ export function HeroSection() {
               onClick={() => {
                 trackButtonClick("hero_free_trial", "hero")
                 trackCtaClick("free_trial", { ctaType: "hero" })
+                trackFreeTrialClick("hero")
               }}
               className="
                 inline-flex items-center justify-center gap-1.5

@@ -165,7 +165,7 @@ export function HeroSection() {
           {/* CTAボタン */}
           <div className="w-full flex justify-center mt-1 md:mt-4">
             <a
-              href="https://app.delne.jp/auth/disclaimer/"
+              href="https://app.delne.jp/auth/welcome/"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => {

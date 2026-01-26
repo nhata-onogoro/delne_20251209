@@ -85,7 +85,7 @@ export function StepsSection() {
           {/* CTAボタン */}
           <div className="text-center mt-16 md:mt-20">
             <a
-              href="https://app.delne.jp/auth/disclaimer/"
+              href="https://app.delne.jp/auth/welcome/"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => {

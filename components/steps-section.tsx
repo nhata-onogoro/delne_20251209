@@ -22,7 +22,7 @@ export function StepsSection() {
       step: "STEP3",
       title: "利用開始",
       description: "DELNEが発行する\n「専用番号」にかけるだけで\nすぐにご利用いただけます。",
-      image: "/step3-phone-call.jpg",
+      image: "/step3.jpg",
     },
   ]
 

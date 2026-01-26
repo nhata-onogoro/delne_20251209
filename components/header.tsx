@@ -110,7 +110,7 @@ export function Header() {
 
           <div className="flex items-center space-x-4">
             <a
-              href="https://app.delne.jp/auth/disclaimer/"
+              href="https://app.delne.jp/auth/welcome/"
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleFreeTrialClick}

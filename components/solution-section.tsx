@@ -3,11 +3,13 @@
 import { Clock, Heart, Mail, Phone, Shield, Play, Pause } from "lucide-react"
 import { useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { trackButtonClick } from "@/lib/analytics"
+import { trackButtonClick, trackVideoComplete, trackVideoStart } from "@/lib/analytics"
 
 export default function SolutionSection() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
+  const hasStartedRef = useRef(false)
+  const hasCompletedRef = useRef(false)
 
   const handlePlayPause = () => {
     if (videoRef.current) {
@@ -19,6 +21,28 @@ export default function SolutionSection() {
       trackButtonClick(isPlaying ? "solution_video_pause" : "solution_video_play", "features")
       setIsPlaying(!isPlaying)
     }
+  }
+
+  const handleVideoPlay = () => {
+    setIsPlaying(true)
+    const video = videoRef.current
+    if (!video) return
+    if (!hasStartedRef.current || video.currentTime < 0.1 || hasCompletedRef.current) {
+      trackVideoStart("solution_intro")
+      hasStartedRef.current = true
+      hasCompletedRef.current = false
+    }
+  }
+
+  const handleVideoPause = () => {
+    setIsPlaying(false)
+  }
+
+  const handleVideoEnded = () => {
+    setIsPlaying(false)
+    trackVideoComplete("solution_intro")
+    hasCompletedRef.current = true
+    hasStartedRef.current = false
   }
 
   // モバイル時にアイコンを少し小さく
@@ -119,8 +143,9 @@ export default function SolutionSection() {
                     className="w-full h-full object-cover"
                     playsInline
                     poster="/video-thumbnail.png"
-                    onPlay={() => setIsPlaying(true)}
-                    onPause={() => setIsPlaying(false)}
+                    onPlay={handleVideoPlay}
+                    onPause={handleVideoPause}
+                    onEnded={handleVideoEnded}
                   >
                     <source
                       src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DELNE%20%E7%B4%B9%E4%BB%8B%E5%8B%95%E7%94%BB-sDf2Z5NGJ2jVDtaqN0STlDlDxrDXND.mp4"

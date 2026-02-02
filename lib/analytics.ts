@@ -31,3 +31,11 @@ export const trackButtonClick = (label: string, location?: string) => {
 export const trackSectionView = (sectionName: string) => {
   sendAnalyticsEvent({ action: "section_view", category: "section", label: sectionName })
 }
+
+export const trackVideoStart = (label: string, category = "video") => {
+  sendAnalyticsEvent({ action: "video_start", category, label })
+}
+
+export const trackVideoComplete = (label: string, category = "video") => {
+  sendAnalyticsEvent({ action: "video_complete", category, label })
+}

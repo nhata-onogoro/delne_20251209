@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     "認知症患者様とご家族をつなぐ革新的な音声対話サービス。簡単な操作で安心のコミュニケーションを実現します。",
     keywords: [
     "DELNE",
+    "derune",
+    "介護離職",
+    "寝不足"
     "デルネ",
     "でるね",
     "DELNE AI電話",

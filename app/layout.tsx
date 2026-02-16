@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "DELNE",
     "derune",
     "介護離職",
-    "寝不足"
+    "寝不足",
     "デルネ",
     "でるね",
     "DELNE AI電話",

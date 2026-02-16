@@ -160,7 +160,7 @@ export default function DemoSection() {
               <p className="mt-4 text-sm md:text-base font-medium text-gray-600 leading-relaxed">
                 認知症の方に合わせた「口調」と「速度」で応答します。
                 <br />
-                健常者の方には少し遅く感じられる場合があります。
+                健常者の方には少し緩やかに感じられる場合があります。
               </p>
             </div>
 

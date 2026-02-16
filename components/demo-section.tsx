@@ -156,6 +156,12 @@ export default function DemoSection() {
               >
                 {DEMO_PHONE_NUMBER}
               </p>
+
+              <p className="mt-4 text-sm md:text-base font-medium text-gray-600 leading-relaxed">
+                認知症の方に合わせた「優しい口調」と「聞き取りやすい速度」で応答します。
+                <br />
+                健常者の方には少し遅く感じられる場合があります。
+              </p>
             </div>
 
             {/* ボタンエリア: mt-8 で隙間を詰める */}

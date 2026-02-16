@@ -185,7 +185,7 @@ export function HeroSection() {
                 w-full sm:w-auto
               "
             >
-              無料トライアル
+              7日間無料トライアル
               <ArrowRight className="w-4 h-4 md:w-6 md:h-6" strokeWidth={3} />
             </a>
           </div>

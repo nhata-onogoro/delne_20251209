@@ -101,7 +101,7 @@ export function StepsSection() {
                 font-bold rounded-full transition-all duration-300
               "
             >
-              無料トライアル実施中
+              7日間無料トライアル
               <ArrowRight className="w-6 h-6 stroke-[3]" />
             </a>
           </div>

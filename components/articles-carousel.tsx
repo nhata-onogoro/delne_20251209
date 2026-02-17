@@ -6,7 +6,8 @@ import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react"
 import { articles, getArticleImageUrl } from "@/lib/articles"
 
 const AUTO_SLIDE_INTERVAL = 4000
-const MIN_DISPLAY_CARDS = 4
+const LOOP_COPIES = 3
+const LOOP_EDGE_THRESHOLD = 24
 
 export function ArticlesCarousel() {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -22,17 +23,10 @@ export function ArticlesCarousel() {
     [],
   )
 
-  const displayArticles = useMemo(() => {
-    if (sortedArticles.length === 0) {
-      return []
-    }
-
-    if (sortedArticles.length >= MIN_DISPLAY_CARDS) {
-      return sortedArticles
-    }
-
-    return [...sortedArticles, ...sortedArticles]
-  }, [sortedArticles])
+  const displayArticles = useMemo(
+    () => Array.from({ length: LOOP_COPIES }, () => sortedArticles).flat(),
+    [sortedArticles],
+  )
 
   const scrollToIndex = (index: number) => {
     const articleCount = sortedArticles.length
@@ -96,6 +90,20 @@ export function ArticlesCarousel() {
   }, [])
 
   useEffect(() => {
+    const container = containerRef.current
+
+    if (!container || sortedArticles.length === 0) {
+      return
+    }
+
+    const frame = window.requestAnimationFrame(() => {
+      container.scrollLeft = container.scrollWidth / LOOP_COPIES
+    })
+
+    return () => window.cancelAnimationFrame(frame)
+  }, [sortedArticles.length, displayArticles.length])
+
+  useEffect(() => {
     if (sortedArticles.length <= 1) {
       return
     }
@@ -121,6 +129,19 @@ export function ArticlesCarousel() {
     }
 
     const handleScroll = () => {
+      const oneLoopWidth = container.scrollWidth / LOOP_COPIES
+
+      if (oneLoopWidth > 0) {
+        if (container.scrollLeft <= LOOP_EDGE_THRESHOLD) {
+          container.scrollLeft += oneLoopWidth
+        } else if (
+          container.scrollLeft >=
+          oneLoopWidth * (LOOP_COPIES - 1) - LOOP_EDGE_THRESHOLD
+        ) {
+          container.scrollLeft -= oneLoopWidth
+        }
+      }
+
       const containerLeft = container.getBoundingClientRect().left
 
       let nearestIndex = 0

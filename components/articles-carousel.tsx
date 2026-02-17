@@ -5,7 +5,6 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react"
 import { articles, getArticleImageUrl } from "@/lib/articles"
 
-const AUTO_SLIDE_INTERVAL = 4000
 const LOOP_COPIES = 3
 const LOOP_EDGE_THRESHOLD = 24
 
@@ -13,7 +12,6 @@ export function ArticlesCarousel() {
   const [activeIndex, setActiveIndex] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
   const cardRefs = useRef<Array<HTMLAnchorElement | null>>([])
-  const isPausedRef = useRef(false)
 
   const sortedArticles = useMemo(
     () =>
@@ -64,34 +62,6 @@ export function ArticlesCarousel() {
   useEffect(() => {
     const container = containerRef.current
 
-    if (!container) {
-      return
-    }
-
-    const handlePointerEnter = () => {
-      isPausedRef.current = true
-    }
-
-    const handlePointerLeave = () => {
-      isPausedRef.current = false
-    }
-
-    container.addEventListener("mouseenter", handlePointerEnter)
-    container.addEventListener("mouseleave", handlePointerLeave)
-    container.addEventListener("focusin", handlePointerEnter)
-    container.addEventListener("focusout", handlePointerLeave)
-
-    return () => {
-      container.removeEventListener("mouseenter", handlePointerEnter)
-      container.removeEventListener("mouseleave", handlePointerLeave)
-      container.removeEventListener("focusin", handlePointerEnter)
-      container.removeEventListener("focusout", handlePointerLeave)
-    }
-  }, [])
-
-  useEffect(() => {
-    const container = containerRef.current
-
     if (!container || sortedArticles.length === 0) {
       return
     }
@@ -102,24 +72,6 @@ export function ArticlesCarousel() {
 
     return () => window.cancelAnimationFrame(frame)
   }, [sortedArticles.length, displayArticles.length])
-
-  useEffect(() => {
-    if (sortedArticles.length <= 1) {
-      return
-    }
-
-    const intervalId = window.setInterval(() => {
-      if (!isPausedRef.current) {
-        setActiveIndex((prev) => {
-          const nextIndex = (prev + 1) % sortedArticles.length
-          scrollToIndex(nextIndex)
-          return nextIndex
-        })
-      }
-    }, AUTO_SLIDE_INTERVAL)
-
-    return () => window.clearInterval(intervalId)
-  }, [sortedArticles.length, displayArticles])
 
   useEffect(() => {
     const container = containerRef.current

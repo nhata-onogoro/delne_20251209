@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/care-service-background-desktop.jpg",
+        url: "https://lp.delne.jp/care-service-background-desktop.jpg",
         width: 1200,
         height: 630,
         alt: "AI電話サービス DELNE トップページ画像",
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     title: "AI電話サービス-DELNE",
     description:
       "認知症患者様とご家族をつなぐ革新的な音声対話サービス。簡単な操作で安心のコミュニケーションを実現します。",
-    images: ["/care-service-background-desktop.jpg"],
+    images: ["https://lp.delne.jp/care-service-background-desktop.jpg"],
   },
   generator: "v0.app",
   icons: {

@@ -5,12 +5,13 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react"
 import { articles, getArticleImageUrl } from "@/lib/articles"
 
-const AUTO_SLIDE_MS = 4000
+const AUTO_SCROLL_SPEED = 45
 
 export function ArticlesCarousel() {
   const [activeIndex, setActiveIndex] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
   const cardRefs = useRef<Array<HTMLAnchorElement | null>>([])
+  const isPausedRef = useRef(false)
 
   const sortedArticles = useMemo(
     () =>
@@ -20,10 +21,27 @@ export function ArticlesCarousel() {
     [],
   )
 
+  const displayArticles = useMemo(() => {
+    if (sortedArticles.length <= 1) {
+      return sortedArticles
+    }
+
+    return [...sortedArticles, ...sortedArticles]
+  }, [sortedArticles])
+
   const scrollToIndex = (index: number) => {
     const safeIndex = (index + sortedArticles.length) % sortedArticles.length
     const container = containerRef.current
-    const targetCard = cardRefs.current[safeIndex]
+    const firstHalfTarget = cardRefs.current[safeIndex]
+    const secondHalfTarget = cardRefs.current[safeIndex + sortedArticles.length]
+
+    const targetCard =
+      !firstHalfTarget || !secondHalfTarget
+        ? firstHalfTarget ?? secondHalfTarget
+        : Math.abs(container?.scrollLeft ?? 0 - firstHalfTarget.offsetLeft) <=
+            Math.abs(container?.scrollLeft ?? 0 - secondHalfTarget.offsetLeft)
+          ? firstHalfTarget
+          : secondHalfTarget
 
     if (!container || !targetCard) {
       return
@@ -38,25 +56,77 @@ export function ArticlesCarousel() {
   }
 
   useEffect(() => {
-    if (!sortedArticles.length) {
+    const container = containerRef.current
+
+    if (!container) {
       return
     }
 
-    const timer = setInterval(() => {
-      setActiveIndex((prev) => {
-        const nextIndex = (prev + 1) % sortedArticles.length
-        const container = containerRef.current
-        const targetCard = cardRefs.current[nextIndex]
+    const handlePointerEnter = () => {
+      isPausedRef.current = true
+    }
 
-        if (container && targetCard) {
-          container.scrollTo({ left: targetCard.offsetLeft, behavior: "smooth" })
+    const handlePointerLeave = () => {
+      isPausedRef.current = false
+    }
+
+    container.addEventListener("mouseenter", handlePointerEnter)
+    container.addEventListener("mouseleave", handlePointerLeave)
+    container.addEventListener("focusin", handlePointerEnter)
+    container.addEventListener("focusout", handlePointerLeave)
+
+    return () => {
+      container.removeEventListener("mouseenter", handlePointerEnter)
+      container.removeEventListener("mouseleave", handlePointerLeave)
+      container.removeEventListener("focusin", handlePointerEnter)
+      container.removeEventListener("focusout", handlePointerLeave)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (sortedArticles.length <= 1) {
+      return
+    }
+
+    const container = containerRef.current
+
+    if (!container) {
+      return
+    }
+
+    let animationFrame = 0
+    let previousTime = performance.now()
+
+    const updateActiveIndex = () => {
+      const loopWidth = container.scrollWidth / 2
+      const normalizedLeft = container.scrollLeft % loopWidth
+      const itemWidth = loopWidth / sortedArticles.length
+      const nextActiveIndex = Math.round(normalizedLeft / itemWidth) % sortedArticles.length
+
+      setActiveIndex((prev) => (prev === nextActiveIndex ? prev : nextActiveIndex))
+    }
+
+    const animate = (currentTime: number) => {
+      const deltaSeconds = (currentTime - previousTime) / 1000
+      previousTime = currentTime
+
+      if (!isPausedRef.current) {
+        container.scrollLeft += AUTO_SCROLL_SPEED * deltaSeconds
+
+        const loopWidth = container.scrollWidth / 2
+        if (container.scrollLeft >= loopWidth) {
+          container.scrollLeft -= loopWidth
         }
 
-        return nextIndex
-      })
-    }, AUTO_SLIDE_MS)
+        updateActiveIndex()
+      }
 
-    return () => clearInterval(timer)
+      animationFrame = requestAnimationFrame(animate)
+    }
+
+    animationFrame = requestAnimationFrame(animate)
+
+    return () => cancelAnimationFrame(animationFrame)
   }, [sortedArticles.length])
 
   return (
@@ -83,7 +153,7 @@ export function ArticlesCarousel() {
             ref={containerRef}
             className="flex gap-4 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
-            {sortedArticles.map((article, index) => {
+            {displayArticles.map((article, index) => {
               const imageUrl = getArticleImageUrl(article)
               const articleHref = article.externalUrl ?? `/articles/${article.slug}`
 

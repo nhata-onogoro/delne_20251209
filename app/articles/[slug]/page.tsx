@@ -5,6 +5,8 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { getArticleBySlug, getArticleImageUrl } from "@/lib/articles"
 
+export const runtime = 'edge'
+
 type ArticleDetailPageProps = {
   params: Promise<{
     slug: string

@@ -3,18 +3,23 @@ import { notFound } from "next/navigation"
 import { ExternalLink } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { getArticleBySlug, getArticleImageUrl } from "@/lib/articles"
+import { articles, getArticleBySlug, getArticleImageUrl } from "@/lib/articles"
 
-export const runtime = 'edge'
+export const dynamic = 'force-static'
+export const dynamicParams = false
 
 type ArticleDetailPageProps = {
-  params: Promise<{
+  params: {
     slug: string
-  }>
+  }
 }
 
-export default async function ArticleDetailPage({ params }: ArticleDetailPageProps) {
-  const { slug } = await params
+export function generateStaticParams() {
+  return articles.map((article) => ({ slug: article.slug }))
+}
+
+export default function ArticleDetailPage({ params }: ArticleDetailPageProps) {
+  const { slug } = params
   const article = getArticleBySlug(slug)
 
   if (!article) {

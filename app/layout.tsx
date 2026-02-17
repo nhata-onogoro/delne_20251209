@@ -1,14 +1,18 @@
-import type React from "react"
+// app/layout.tsx
 import type { Metadata, Viewport } from "next"
 import Script from "next/script"
+import type { ReactNode } from "react"
 import { GeistSans } from "geist/font/sans"
 import "./globals.css"
 
 const geistSans = GeistSans
+
 const siteUrl = "https://lp.delne.jp"
 const pageTitle = "AI電話サービス-DELNE"
 const pageDescription =
   "認知症患者様とご家族をつなぐ革新的な音声対話サービス。簡単な操作で安心のコミュニケーションを実現します。"
+
+// ※ここは「必ず 200 で取得できる」画像URLにしてください（noteはここを取りに来ます）
 const ogImagePath = `${siteUrl}/care-service-background-desktop.jpg`
 const ogImageType = "image/jpeg"
 
@@ -16,6 +20,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: pageTitle,
   description: pageDescription,
+  alternates: {
+    canonical: siteUrl,
+  },
   keywords: [
     "DELNE",
     "derune",
@@ -71,18 +78,14 @@ export const metadata: Metadata = {
     description: pageDescription,
     images: [ogImagePath],
   },
+  // noteのリンクカード最適化（これが重要）
+  other: {
+    "note:card": "summary_large_image",
+  },
   generator: "v0.app",
   icons: {
-    icon: [
-      { url: "/favicon.ico", type: "image/x-icon" },
-    ],
-    apple: [
-      {
-        url: "/apple-touch-icon.png",
-        sizes: "180x180",
-        type: "image/png",
-      },
-    ],
+    icon: [{ url: "/favicon.ico", type: "image/x-icon" }],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
 }
 
@@ -93,34 +96,10 @@ export const viewport: Viewport = {
   userScalable: false,
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja" className={geistSans.variable}>
-      <head>
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:url" content={siteUrl} />
-        <meta property="og:site_name" content="DELNE" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content={ogImagePath} />
-        <meta property="og:image:secure_url" content={ogImagePath} />
-        <meta property="og:image:type" content={ogImageType} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:title" content={pageTitle} />
-        <meta property="twitter:description" content={pageDescription} />
-        <meta property="twitter:image" content={ogImagePath} />
+      <body className="font-sans antialiased">
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-KPPZ1W3GDE"
@@ -128,14 +107,12 @@ export default function RootLayout({
         <Script id="gtag-init" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);} 
+            function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-
             gtag('config', 'G-KPPZ1W3GDE');
           `}
         </Script>
-      </head>
-      <body className="font-sans antialiased">
+
         {children}
       </body>
     </html>

@@ -64,6 +64,22 @@ export const articles: Article[] = [
     ],
   },
   {
+    slug: "onogoro-note-n36f283c357e7",
+    title: "オノゴロ公式note記事",
+    summary:
+      "株式会社オノゴロが公開したnote記事を、ランディングページ内で読めるように再構成した記事です。",
+    category: "オノゴロ記事",
+    publishedAt: "2026-02-17",
+    sourceName: "オノゴロ",
+    content: [
+      {
+        heading: "本文",
+        body:
+          "指定いただいたnote記事（https://note.com/onogoro_5656/n/n36f283c357e7?from=notice）をランディングページ内記事として掲載予定です。現環境から外部URLへ接続できず本文を取得できなかったため、本文は取得後に差し替えてください。",
+      },
+    ],
+  },
+  {
     slug: "voice-ai-trend-2026",
     title: "2026年版：音声AI見守りサービスの最新トレンド",
     summary:

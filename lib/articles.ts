@@ -84,33 +84,6 @@ export const articles: Article[] = [
     ],
   },
   {
-    slug: "family-care-dx-case-study",
-    title: "家族介護のDX事例：電話見守りで実現した安心運用",
-    summary:
-      "DELNEの音声対話を活用し、離れて暮らす家族の安心確認を効率化した事例を紹介します。",
-    category: "導入事例",
-    publishedAt: "2026-01-08",
-    sourceName: "DELNE編集部",
-    externalUrl: "https://onogoro.co.jp/",
-    content: [
-      {
-        heading: "導入前の課題",
-        body:
-          "毎日の安否確認が家族の負担になっており、電話がつながらない時間帯には不安が高まるという課題がありました。",
-      },
-      {
-        heading: "DELNE導入後の変化",
-        body:
-          "定時の自動発信と会話ログの共有により、家族は必要なタイミングで状況を把握できるようになりました。",
-      },
-      {
-        heading: "今後の展望",
-        body:
-          "自治体や介護事業者との連携を進め、見守り体制の標準化に向けた実証を継続していく予定です。",
-      },
-    ],
-  },
-  {
     slug: "hiroshima-ai-sandbox-report",
     title: "ひろしまAIサンドボックス採択プロジェクト紹介",
     summary:

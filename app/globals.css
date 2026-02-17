@@ -126,3 +126,22 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes article-card-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@layer components {
+  .article-card-slider {
+    animation: article-card-marquee 40s linear infinite;
+  }
+
+  .article-card-slider:hover {
+    animation-play-state: paused;
+  }
+}

@@ -5,7 +5,8 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react"
 import { articles, getArticleImageUrl } from "@/lib/articles"
 
-const AUTO_SCROLL_SPEED = 45
+const AUTO_SLIDE_INTERVAL = 4000
+const MIN_DISPLAY_CARDS = 4
 
 export function ArticlesCarousel() {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -22,7 +23,11 @@ export function ArticlesCarousel() {
   )
 
   const displayArticles = useMemo(() => {
-    if (sortedArticles.length <= 1) {
+    if (sortedArticles.length === 0) {
+      return []
+    }
+
+    if (sortedArticles.length >= MIN_DISPLAY_CARDS) {
       return sortedArticles
     }
 
@@ -30,20 +35,27 @@ export function ArticlesCarousel() {
   }, [sortedArticles])
 
   const scrollToIndex = (index: number) => {
-    const safeIndex = (index + sortedArticles.length) % sortedArticles.length
+    const articleCount = sortedArticles.length
     const container = containerRef.current
-    const firstHalfTarget = cardRefs.current[safeIndex]
-    const secondHalfTarget = cardRefs.current[safeIndex + sortedArticles.length]
 
-    const targetCard =
-      !firstHalfTarget || !secondHalfTarget
-        ? firstHalfTarget ?? secondHalfTarget
-        : Math.abs(container?.scrollLeft ?? 0 - firstHalfTarget.offsetLeft) <=
-            Math.abs(container?.scrollLeft ?? 0 - secondHalfTarget.offsetLeft)
-          ? firstHalfTarget
-          : secondHalfTarget
+    if (articleCount === 0 || !container) {
+      return
+    }
 
-    if (!container || !targetCard) {
+    const safeIndex = (index + articleCount) % articleCount
+    const candidateIndexes = displayArticles
+      .map((_, displayIndex) => displayIndex)
+      .filter((displayIndex) => displayIndex % articleCount === safeIndex)
+
+    const targetCard = candidateIndexes
+      .map((displayIndex) => cardRefs.current[displayIndex])
+      .filter((card): card is HTMLAnchorElement => card !== null)
+      .sort(
+        (a, b) =>
+          Math.abs(container.scrollLeft - a.offsetLeft) - Math.abs(container.scrollLeft - b.offsetLeft),
+      )[0]
+
+    if (!targetCard) {
       return
     }
 
@@ -88,46 +100,53 @@ export function ArticlesCarousel() {
       return
     }
 
+    const intervalId = window.setInterval(() => {
+      if (!isPausedRef.current) {
+        setActiveIndex((prev) => {
+          const nextIndex = (prev + 1) % sortedArticles.length
+          scrollToIndex(nextIndex)
+          return nextIndex
+        })
+      }
+    }, AUTO_SLIDE_INTERVAL)
+
+    return () => window.clearInterval(intervalId)
+  }, [sortedArticles.length, displayArticles])
+
+  useEffect(() => {
     const container = containerRef.current
 
-    if (!container) {
+    if (!container || sortedArticles.length === 0) {
       return
     }
 
-    let animationFrame = 0
-    let previousTime = performance.now()
+    const handleScroll = () => {
+      const containerLeft = container.getBoundingClientRect().left
 
-    const updateActiveIndex = () => {
-      const loopWidth = container.scrollWidth / 2
-      const normalizedLeft = container.scrollLeft % loopWidth
-      const itemWidth = loopWidth / sortedArticles.length
-      const nextActiveIndex = Math.round(normalizedLeft / itemWidth) % sortedArticles.length
+      let nearestIndex = 0
+      let nearestDistance = Number.POSITIVE_INFINITY
 
-      setActiveIndex((prev) => (prev === nextActiveIndex ? prev : nextActiveIndex))
-    }
-
-    const animate = (currentTime: number) => {
-      const deltaSeconds = (currentTime - previousTime) / 1000
-      previousTime = currentTime
-
-      if (!isPausedRef.current) {
-        container.scrollLeft += AUTO_SCROLL_SPEED * deltaSeconds
-
-        const loopWidth = container.scrollWidth / 2
-        if (container.scrollLeft >= loopWidth) {
-          container.scrollLeft -= loopWidth
+      cardRefs.current.slice(0, displayArticles.length).forEach((card, displayIndex) => {
+        if (!card) {
+          return
         }
 
-        updateActiveIndex()
-      }
+        const distance = Math.abs(card.getBoundingClientRect().left - containerLeft)
+        if (distance < nearestDistance) {
+          nearestDistance = distance
+          nearestIndex = displayIndex % sortedArticles.length
+        }
+      })
 
-      animationFrame = requestAnimationFrame(animate)
+      setActiveIndex((prev) => (prev === nearestIndex ? prev : nearestIndex))
     }
 
-    animationFrame = requestAnimationFrame(animate)
+    container.addEventListener("scroll", handleScroll, { passive: true })
 
-    return () => cancelAnimationFrame(animationFrame)
-  }, [sortedArticles.length])
+    return () => {
+      container.removeEventListener("scroll", handleScroll)
+    }
+  }, [sortedArticles.length, displayArticles.length])
 
   return (
     <section className="py-16 bg-gray-50">
@@ -151,7 +170,7 @@ export function ArticlesCarousel() {
 
           <div
             ref={containerRef}
-            className="flex gap-4 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {displayArticles.map((article, index) => {
               const imageUrl = getArticleImageUrl(article)
@@ -159,12 +178,12 @@ export function ArticlesCarousel() {
 
               return (
                 <Link
-                  key={article.slug}
+                  key={`${article.slug}-${index}`}
                   href={articleHref}
                   ref={(el) => {
                     cardRefs.current[index] = el
                   }}
-                  className="w-[280px] shrink-0 rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md md:w-[320px]"
+                  className="w-[280px] shrink-0 snap-start rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md md:w-[320px]"
                 >
                   <div className="mb-4 overflow-hidden rounded-lg border border-gray-100 bg-gray-100">
                     {imageUrl ? (

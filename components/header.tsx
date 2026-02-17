@@ -5,7 +5,6 @@ import { Menu, X } from "lucide-react"
 import { useState } from "react"
 import { useRouter, usePathname } from "next/navigation"
 import Image from "next/image"
-import Script from "next/script"   // ← 追加
 import { trackButtonClick } from "@/lib/analytics"
 import { trackCtaClick, trackFreeTrialClick } from "@/lib/gtag"
 import { cn } from "@/lib/utils"
@@ -39,6 +38,12 @@ export function Header() {
   const goToHome = () => {
     trackButtonClick("nav_home_logo", "header_nav")
     router.push("/")
+  }
+
+  const goToArticles = () => {
+    trackButtonClick("nav_articles", "header_nav")
+    router.push("/articles")
+    setIsMenuOpen(false)
   }
 
   const handleFreeTrialClick = () => {
@@ -105,6 +110,12 @@ export function Header() {
               className="text-white hover:text-[#F39C12] transition-colors whitespace-nowrap font-bold cursor-pointer"
             >
               よくあるご質問
+            </button>
+            <button
+              onClick={goToArticles}
+              className="text-white hover:text-[#F39C12] transition-colors whitespace-nowrap font-bold cursor-pointer"
+            >
+              記事
             </button>
           </nav>
 
@@ -182,6 +193,12 @@ export function Header() {
                 className="block text-white hover:text-[#F39C12] transition-colors w-full text-left font-bold cursor-pointer"
               >
                 よくあるご質問
+              </button>
+              <button
+                onClick={goToArticles}
+                className="block text-white hover:text-[#F39C12] transition-colors w-full text-left font-bold cursor-pointer"
+              >
+                記事
               </button>
               <div className="pt-4 space-y-2">
                 <Button

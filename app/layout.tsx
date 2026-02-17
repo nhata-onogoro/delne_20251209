@@ -5,12 +5,17 @@ import { GeistSans } from "geist/font/sans"
 import "./globals.css"
 
 const geistSans = GeistSans
+const siteUrl = "https://lp.delne.jp"
+const pageTitle = "AI電話サービス-DELNE"
+const pageDescription =
+  "認知症患者様とご家族をつなぐ革新的な音声対話サービス。簡単な操作で安心のコミュニケーションを実現します。"
+const ogImagePath = `${siteUrl}/care-service-background-desktop.jpg`
+const ogImageType = "image/jpeg"
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://lp.delne.jp"),
-  title: "AI電話サービス-DELNE",
-  description:
-    "認知症患者様とご家族をつなぐ革新的な音声対話サービス。簡単な操作で安心のコミュニケーションを実現します。",
+  metadataBase: new URL(siteUrl),
+  title: pageTitle,
+  description: pageDescription,
   keywords: [
     "DELNE",
     "derune",
@@ -44,28 +49,27 @@ export const metadata: Metadata = {
     "認知症ケア",
   ],
   openGraph: {
-    title: "AI電話サービス-DELNE",
-    description:
-      "認知症患者様とご家族をつなぐ革新的な音声対話サービス。簡単な操作で安心のコミュニケーションを実現します。",
-    url: "https://lp.delne.jp",
+    title: pageTitle,
+    description: pageDescription,
+    url: siteUrl,
     siteName: "DELNE",
     locale: "ja_JP",
     type: "website",
     images: [
       {
-        url: "https://lp.delne.jp/care-service-background-desktop.jpg",
+        url: ogImagePath,
         width: 1200,
         height: 630,
         alt: "AI電話サービス DELNE トップページ画像",
+        type: ogImageType,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI電話サービス-DELNE",
-    description:
-      "認知症患者様とご家族をつなぐ革新的な音声対話サービス。簡単な操作で安心のコミュニケーションを実現します。",
-    images: ["https://lp.delne.jp/care-service-background-desktop.jpg"],
+    title: pageTitle,
+    description: pageDescription,
+    images: [ogImagePath],
   },
   generator: "v0.app",
   icons: {
@@ -103,6 +107,20 @@ export default function RootLayout({
           sizes="180x180"
           href="/apple-touch-icon.png"
         />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={siteUrl} />
+        <meta property="og:site_name" content="DELNE" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={ogImagePath} />
+        <meta property="og:image:secure_url" content={ogImagePath} />
+        <meta property="og:image:type" content={ogImageType} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content={pageTitle} />
+        <meta property="twitter:description" content={pageDescription} />
+        <meta property="twitter:image" content={ogImagePath} />
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-KPPZ1W3GDE"

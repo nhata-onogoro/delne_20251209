@@ -13,8 +13,8 @@ const pageDescription =
   "認知症患者様とご家族をつなぐ革新的な音声対話サービス。簡単な操作で安心のコミュニケーションを実現します。"
 
 // ※ここは「必ず 200 で取得できる」画像URLにしてください（noteはここを取りに来ます）
-const ogImagePath = `${siteUrl}/ogp-note.png`
-const ogImageType = "image/png"
+const ogImagePath = `${siteUrl}/ogp-note.jpeg`
+const ogImageType = "image/jpeg"
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -54,6 +54,8 @@ export const metadata: Metadata = {
     "介護うつ",
     "介護DX",
     "認知症ケア",
+    "しつこい",
+    "対策"
   ],
   openGraph: {
     title: pageTitle,

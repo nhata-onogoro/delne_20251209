@@ -91,7 +91,7 @@ export default function DemoSection() {
             <div className="w-full mt-8 space-y-6">
               <audio
                 ref={audioRef}
-                src="https://lp.delne.jp/demo_audio.mp3"
+                src="https://lp.delne.jp/demo_audio.m4a"
                 onEnded={handleAudioEnded}
                 onError={handleAudioError}
                 preload="metadata"

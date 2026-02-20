@@ -59,13 +59,13 @@ export default function ArticleDetailPage({ params }: ArticleDetailPageProps) {
             )}
           </div>
 
-          <p className="mt-8 text-lg leading-relaxed text-gray-700">{article.summary}</p>
+          <p className="mt-8 whitespace-pre-line text-lg leading-relaxed text-gray-700">{article.summary}</p>
 
           <div className="mt-10 space-y-8">
             {article.content.map((section) => (
               <section key={section.heading}>
                 <h2 className="text-xl font-bold text-[#002c5b]">{section.heading}</h2>
-                <p className="mt-3 leading-relaxed text-gray-700">{section.body}</p>
+                <p className="mt-3 whitespace-pre-line leading-relaxed text-gray-700">{section.body}</p>
               </section>
             ))}
           </div>

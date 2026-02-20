@@ -9,17 +9,49 @@ export const dynamic = 'force-static'
 export const dynamicParams = false
 
 type ArticleDetailPageProps = {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
+}
+
+const renderTextWithLinks = (text: string) => {
+  const urlPattern = /(https?:\/\/[^\s]+)/g
+  const lines = text.split("\n")
+
+  return lines.map((line, lineIndex) => {
+    const segments = line.split(urlPattern)
+
+    return (
+      <span key={`line-${lineIndex}`}>
+        {segments.map((segment, segmentIndex) => {
+          if (/^https?:\/\/[^\s]+$/.test(segment)) {
+            return (
+              <a
+                key={`segment-${lineIndex}-${segmentIndex}`}
+                href={segment}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-[#002c5b] underline break-all"
+              >
+                {segment}
+              </a>
+            )
+          }
+
+          return <span key={`segment-${lineIndex}-${segmentIndex}`}>{segment}</span>
+        })}
+        {lineIndex < lines.length - 1 && <br />}
+      </span>
+    )
+  })
 }
 
 export function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }))
 }
 
-export default function ArticleDetailPage({ params }: ArticleDetailPageProps) {
-  const { slug } = params
+export default async function ArticleDetailPage({ params }: ArticleDetailPageProps) {
+  const { slug } = await params
   const article = getArticleBySlug(slug)
 
   if (!article) {
@@ -50,7 +82,7 @@ export default function ArticleDetailPage({ params }: ArticleDetailPageProps) {
               <img
                 src={articleImageUrl}
                 alt={`${article.title} のイメージ`}
-                className="h-64 w-full object-cover md:h-80"
+                className="w-full max-h-[32rem] object-contain"
               />
             ) : (
               <div className="flex h-64 w-full items-center justify-center bg-gradient-to-r from-[#002c5b] to-[#014182] text-white md:h-80">
@@ -65,7 +97,7 @@ export default function ArticleDetailPage({ params }: ArticleDetailPageProps) {
             {article.content.map((section) => (
               <section key={section.heading}>
                 <h2 className="text-xl font-bold text-[#002c5b]">{section.heading}</h2>
-                <p className="mt-3 whitespace-pre-line leading-relaxed text-gray-700">{section.body}</p>
+                <p className="mt-3 leading-relaxed text-gray-700">{renderTextWithLinks(section.body)}</p>
               </section>
             ))}
           </div>

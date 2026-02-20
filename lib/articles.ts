@@ -22,7 +22,7 @@ export const articles: Article[] = [
     category: "体験記事",
     publishedAt: "2026-02-20",
     sourceName: "DELNE",
-    imageUrl: "/tired-night-phone.jpg",
+    imageUrl: "/column_image_1.png",
     content: [
       {
         heading: "「私が弱いんじゃない」追い詰められるのには理由がある",

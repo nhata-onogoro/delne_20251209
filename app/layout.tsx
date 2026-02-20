@@ -99,9 +99,20 @@ export const viewport: Viewport = {
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const websiteStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "DELNE",
+    alternateName: "delne.jp",
+    url: siteUrl,
+  }
+
   return (
     <html lang="ja" className={geistSans.variable}>
       <body className="font-sans antialiased">
+        <Script id="website-structured-data" type="application/ld+json">
+          {JSON.stringify(websiteStructuredData)}
+        </Script>
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-KPPZ1W3GDE"

@@ -91,7 +91,7 @@ export default function DemoSection() {
             <div className="w-full mt-8 space-y-6">
               <audio
                 ref={audioRef}
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sample_voice%20%28mp3cut.net%29-3fMF2mF0HsaPgBVAOM4tJJSoR2krL8.mp3"
+                src="https://lp.delne.jp/demo_audio.mp3"
                 onEnded={handleAudioEnded}
                 onError={handleAudioError}
                 preload="metadata"

@@ -151,6 +151,51 @@
   animation: ringShake 1.5s ease-in-out 2.5s 1 both;
 }
 
+.landing-loader {
+  background: #ffffff;
+}
+
+.landing-loader--revealing {
+  animation: landingReveal 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.landing-loader--revealing svg {
+  animation: loaderMarkLift 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes landingReveal {
+  0% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+  55% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+@keyframes loaderMarkLift {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.92) translateY(-24px);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-loader--revealing,
+  .landing-loader--revealing svg {
+    animation-duration: 0.25s;
+  }
+}
+
 @keyframes ringShake {
   0% {
     transform: rotate(0deg);

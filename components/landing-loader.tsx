@@ -2,19 +2,30 @@
 
 import { useEffect, useState } from "react"
 
-const LOADING_DURATION_MS = 5000
+const TEXT_REVEAL_END_MS = 4600
+const LOADING_DURATION_MS = 5800
 
 export function LandingLoader() {
   const [isVisible, setIsVisible] = useState(true)
+  const [isRevealing, setIsRevealing] = useState(false)
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
-    const duration = mediaQuery.matches ? 800 : LOADING_DURATION_MS
-    const timer = window.setTimeout(() => {
-      setIsVisible(false)
-    }, duration)
+    const revealStart = mediaQuery.matches ? 650 : TEXT_REVEAL_END_MS
+    const hideAt = mediaQuery.matches ? 900 : LOADING_DURATION_MS
 
-    return () => window.clearTimeout(timer)
+    const revealTimer = window.setTimeout(() => {
+      setIsRevealing(true)
+    }, revealStart)
+
+    const hideTimer = window.setTimeout(() => {
+      setIsVisible(false)
+    }, hideAt)
+
+    return () => {
+      window.clearTimeout(revealTimer)
+      window.clearTimeout(hideTimer)
+    }
   }, [])
 
   if (!isVisible) {
@@ -22,8 +33,12 @@ export function LandingLoader() {
   }
 
   return (
-    <div className="landing-loader fixed inset-0 z-[100] flex items-center justify-center bg-slate-50/95 px-4">
-      <div className="w-full max-w-[700px] rounded-xl bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.05)]">
+    <div
+      className={`landing-loader fixed inset-0 z-[100] flex items-center justify-center px-4 ${
+        isRevealing ? "landing-loader--revealing" : ""
+      }`}
+    >
+      <div className="w-full max-w-[700px] p-8">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
           <g className="logo-shake">
             <svg x="180" y="60" width="240" height="240" viewBox="0 0 1000 1000">

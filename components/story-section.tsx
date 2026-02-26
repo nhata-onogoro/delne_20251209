@@ -59,7 +59,7 @@ export function StorySection() {
     <section id="story" className="bg-white py-20 md:py-28">
       <div className="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="mb-20 text-center md:mb-28">
-          <h2 className="mb-6 text-3xl font-bold tracking-wide text-[#0e2a47] md:text-4xl">
+          <h2 className="mb-6 whitespace-nowrap text-2xl font-bold tracking-wide text-[#0e2a47] md:text-4xl">
             こんな方に使っていただきたい
           </h2>
           <div className="mx-auto h-1 w-16 bg-amber-500" />

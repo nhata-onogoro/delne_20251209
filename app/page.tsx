@@ -9,10 +9,12 @@ import { PricingSection } from "@/components/pricing-section"
 import { FaqSection } from "@/components/faq-section"
 import { Footer } from "@/components/footer"
 import { AnalyticsTracker } from "@/components/analytics-tracker"
+import { LandingLoader } from "@/components/landing-loader"
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
+      <LandingLoader />
       <AnalyticsTracker
         sections={[
           { id: "hero", label: "hero" },

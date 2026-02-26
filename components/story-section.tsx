@@ -8,7 +8,7 @@ const useCases = [
     heading: "鳴りやまない親からの電話。",
     headingLine2: "優しく話せない自分に",
     headingLine3: "疲れていませんか？",
-    supportTitle: "本当はもっと、穏やかに話したい。",
+    supportTitle: "本当はもっと、優しく話したい。",
     supportText:
       "優しくできない今の自分が苦しいのは、それだけあなたが親御様を大切に想っている証拠です。DELNEが、あなたの心と時間を守ります。",
     supportClass: "bg-slate-50 border-[#0e2a47]",

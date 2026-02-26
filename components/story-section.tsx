@@ -49,7 +49,7 @@ const useCases = [
     imageWrapClass: "md:order-1",
     imageAccentClass:
       "-top-4 -left-4 bg-green-50 group-hover:-translate-x-2 group-hover:-translate-y-2",
-    image: "/customer3.png",
+    image: "/target3.png",
     alt: "遠方から家族を想い、スマホを見つめる様子",
   },
 ]

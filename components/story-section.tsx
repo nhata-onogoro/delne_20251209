@@ -2,15 +2,15 @@ import { Building2, House, UserRound } from "lucide-react"
 
 const useCases = [
   {
-    badge: "直接介護されている方へ",
+    badge: "直接介護されている方",
     badgeClass: "bg-sky-500 text-white",
     Icon: UserRound,
     heading: "鳴りやまない親からの電話。",
-    headingLine2: "",
-    headingLine3: "優しく話せない自分に疲れていませんか？",
+    headingLine2: "優しく話せない自分に",
+    headingLine3: "疲れていませんか？",
     supportTitle: "本当はもっと、穏やかに話したい。",
     supportText:
-      "優しくできない今の自分が苦しいのは、それだけあなたが親御様を大切に想っている証拠です。デルネが一次対応を担い、あなたの心と時間を守ります。",
+      "優しくできない今の自分が苦しいのは、それだけあなたが親御様を大切に想っている証拠です。DELNEが、あなたの心と時間を守ります。",
     supportClass: "bg-slate-50 border-[#0e2a47]",
     imageWrapClass: "md:order-1",
     imageAccentClass:
@@ -19,7 +19,7 @@ const useCases = [
     alt: "深夜にスマホを見て寝不足で疲れている様子",
   },
   {
-    badge: "経営者・人事担当者様へ",
+    badge: "経営者・人事担当者様",
     badgeClass: "bg-orange-500 text-white",
     Icon: Building2,
     heading: "優秀な社員が、",
@@ -27,7 +27,7 @@ const useCases = [
     headingLine3: "仕事を中断・退職してしまう。",
     supportTitle: "企業としてのサポートが、社員の安心に繋がる。",
     supportText:
-      "福利厚生としてデルネを導入することで、従業員の介護負担を大幅に軽減。大切な社員が離職することなく、安心して仕事に集中できる環境を提供できます。",
+      "福利厚生としてDELNEを導入することで、従業員の介護負担を大幅に軽減。大切な社員が介護離職することなく、安心して仕事に集中できる環境を提供できます。",
     supportClass: "bg-orange-50/60 border-orange-500",
     imageWrapClass: "md:order-2",
     imageAccentClass:
@@ -36,15 +36,15 @@ const useCases = [
     alt: "仕事中にストレスや寝不足で頭を抱える様子",
   },
   {
-    badge: "遠方にお住いで直接介護が難しい方へ",
+    badge: "遠方にお住いで直接介護が難しい方",
     badgeClass: "bg-green-600 text-white",
     Icon: House,
     heading: "遠方にいて手伝えない。",
     headingLine2: "地元で頑張る兄弟に",
     headingLine3: "申し訳なさを感じている。",
-    supportTitle: "せめて、負担軽減のサービスでお金で支援したい。",
+    supportTitle: "せめて、介護負担軽減のサービスでお金で支援したい。",
     supportText:
-      "物理的な距離があって直接介護を手伝えなくても、サービスの費用を負担するという形で、現場で頑張る兄弟を助けることができます。ご家族全体の負担と罪悪感を和らげます。",
+      "物理的な距離があって直接介護を手伝えなくても、サービスの費用を負担するという形で、地元で介護してくれる兄弟を助けることができます。ご家族みんなの介護負担を支援できます。",
     supportClass: "bg-green-50/60 border-green-600",
     imageWrapClass: "md:order-1",
     imageAccentClass:
@@ -60,9 +60,7 @@ export function StorySection() {
       <div className="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="mb-20 text-center md:mb-28">
           <h2 className="mb-6 text-3xl font-bold tracking-wide text-[#0e2a47] md:text-4xl">
-            デルネは、こんな方に
-            <br className="md:hidden" />
-            使っていただきたいサービスです
+            こんな方に使っていただきたい
           </h2>
           <div className="mx-auto h-1 w-16 bg-amber-500" />
         </div>

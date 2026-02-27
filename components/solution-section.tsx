@@ -1,25 +1,18 @@
 "use client"
 
 import { Clock, Heart, Mail, Phone, Shield, Bot, PhoneForwarded, MessageCircle, HeartHandshake, Smartphone } from "lucide-react"
-import { type ReactNode, useEffect, useState } from "react"
+import { type ReactNode } from "react"
 
 export default function SolutionSection() {
-  const [currentStep, setCurrentStep] = useState(0)
-
   const steps = [
-    { id: 0, title: "050番号の付与", desc: "契約後、DELNE専用の050番号が発行されます。" },
+    { id: 0, title: "AI専用番号の付与", desc: "DELNEアカウント作成時にAI専用番号を付与します。" },
     { id: 1, title: "電話発信・転送", desc: "患者様の電話は、必要に応じてAIへつながります。" },
     { id: 2, title: "AIとの会話", desc: "患者様とAIが、発信と応答で会話を続けます。" },
     { id: 3, title: "会話内容の通知", desc: "通話後、要点をメール/SMSでご家族へ通知します。" },
     { id: 4, title: "直接介護", desc: "通知を見て、必要なタイミングで直接介護します。" },
   ]
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentStep((prev) => (prev + 1) % steps.length)
-    }, 7000)
-    return () => clearInterval(interval)
-  }, [steps.length])
+  const currentStep = 0
 
 
   const Badge = ({
@@ -47,7 +40,7 @@ export default function SolutionSection() {
 
     return (
       <div
-        className={`absolute -translate-x-1/2 -translate-y-1/2 px-3 py-1.5 md:px-4 md:py-2 rounded-full border shadow-md text-xs md:text-sm font-bold flex items-center gap-1.5 z-20 transition-all duration-300 animate-fade-in-up ${colorClasses[color]}`}
+        className={`absolute -translate-x-1/2 -translate-y-1/2 px-3 py-1.5 md:px-4 md:py-2 rounded-full border shadow-md text-xs md:text-sm font-bold flex items-center gap-1.5 z-20 ${colorClasses[color]}`}
         style={{ top, left, animationDelay: delay }}
       >
         {icon} <span>{children}</span>
@@ -96,45 +89,6 @@ export default function SolutionSection() {
             <style
               dangerouslySetInnerHTML={{
                 __html: `
-                @keyframes flow-forward {
-                  from { stroke-dashoffset: 30; }
-                  to { stroke-dashoffset: 0; }
-                }
-                @keyframes flow-backward {
-                  from { stroke-dashoffset: 0; }
-                  to { stroke-dashoffset: 30; }
-                }
-                .flow-line { stroke-dasharray: 8 12; animation: flow-forward 1.3s linear infinite; }
-                .flow-line-reverse { stroke-dasharray: 8 12; animation: flow-backward 1.3s linear infinite; }
-                @keyframes fade-in-up {
-                  0% { opacity: 0; transform: translate(-50%, 10px); }
-                  100% { opacity: 1; transform: translate(-50%, -50%); }
-                }
-                .animate-fade-in-up { animation: fade-in-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-                @keyframes fade-in-card {
-                  0% { opacity: 0; transform: translateY(10px); }
-                  100% { opacity: 1; transform: translateY(0); }
-                }
-                .animate-fade-in-card { animation: fade-in-card 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-                @keyframes pulse-ring {
-                  0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.6); transform: scale(1); }
-                  50% { box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); transform: scale(1.05); }
-                  100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); transform: scale(1); }
-                }
-                .ring-active-blue { animation: pulse-ring 2s infinite cubic-bezier(0.66, 0, 0, 1); border-color: #2563eb; }
-                @keyframes pulse-ring-green {
-                  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
-                  50% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
-                  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-                }
-                .ring-active-green { animation: pulse-ring-green 2s infinite cubic-bezier(0.66, 0, 0, 1); border-color: #10b981; }
-                @keyframes pulse-ring-rose {
-                  0% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.6); }
-                  50% { box-shadow: 0 0 0 15px rgba(244, 63, 94, 0); }
-                  100% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0); }
-                }
-                .ring-active-rose { animation: pulse-ring-rose 2s infinite cubic-bezier(0.66, 0, 0, 1); border-color: #f43f5e; }
-                @keyframes progress { from { width: 0%; } to { width: 100%; } }
               `,
               }}
             />
@@ -152,20 +106,21 @@ export default function SolutionSection() {
                   >
                     <p className={`text-xs md:text-sm font-black ${currentStep === index ? "text-blue-600" : "text-slate-500"}`}>STEP {index + 1}</p>
                     <p className={`text-sm md:text-base font-bold leading-tight ${currentStep === index ? "text-blue-950" : "text-slate-700"}`}>{step.title}</p>
+                    <p className={`text-xs md:text-sm mt-1 leading-snug ${currentStep === index ? "text-slate-700" : "text-slate-600"}`}>{step.desc}</p>
                   </div>
                 ))}
               </div>
             </div>
 
             <div className="relative w-full aspect-[4/3] md:aspect-[16/9] overflow-visible mb-10">
-              <div key={currentStep} className="absolute top-4 left-4 md:top-6 md:left-6 z-30 max-w-[84%] md:max-w-lg rounded-xl border border-blue-200 bg-white/95 backdrop-blur-sm px-4 py-3 md:px-6 md:py-5 shadow-md animate-fade-in-card">
+              <div className="absolute top-4 left-4 md:top-6 md:left-6 z-30 max-w-[84%] md:max-w-lg rounded-xl border border-blue-200 bg-white/95 backdrop-blur-sm px-4 py-3 md:px-6 md:py-5 shadow-md">
                 <p className="text-sm md:text-base font-black text-blue-600 mb-1">STEP {currentStep + 1}</p>
                 <p className="text-base md:text-xl font-bold text-blue-950 leading-snug">{steps[currentStep].title}</p>
                 <p className="text-sm md:text-lg text-slate-700 mt-1.5 leading-relaxed">{steps[currentStep].desc}</p>
               </div>
               <svg viewBox="0 0 1000 562.5" className="absolute inset-0 w-full h-full pointer-events-none z-0">
                 <defs>
-                  <marker id="flowArrowTiny" markerWidth="5.5" markerHeight="5.5" refX="4.8" refY="2.75" orient="auto" markerUnits="strokeWidth">
+                  <marker id="flowArrowTiny" markerWidth="5.5" markerHeight="5.5" refX="4.8" refY="2.75" orient="auto" markerUnits="userSpaceOnUse">
                     <path d="M 0 0 L 5.5 2.75 L 0 5.5 z" fill="context-stroke" />
                   </marker>
                 </defs>
@@ -174,52 +129,30 @@ export default function SolutionSection() {
                 <line x1="200" y1="380" x2="800" y2="380" stroke="#f1f5f9" strokeWidth="8" strokeDasharray="10 10" strokeLinecap="round" />
                 <path d="M 800 380 L 800 480 L 200 480 L 200 380" fill="none" stroke="#f1f5f9" strokeWidth="12" strokeLinejoin="round" />
 
-                {currentStep === 1 && (
-                  <>
-                    <polyline points="222,364 360,266 468,188" fill="none" stroke="#3b82f6" strokeWidth="6" className="flow-line" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
-                    <polyline points="225,380 500,380 768,380" fill="none" stroke="#94a3b8" strokeWidth="4" className="flow-line" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
-                    <polyline points="770,364 640,266 532,188" fill="none" stroke="#94a3b8" strokeWidth="4" className="flow-line-reverse" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
-                  </>
-                )}
-
-                {currentStep === 2 && (
-                  <>
-                    <polyline points="235,352 332,281 430,210" fill="none" stroke="#10b981" strokeWidth="6" className="flow-line" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
-                    <polyline points="455,224 358,295 261,366" fill="none" stroke="#34d399" strokeWidth="6" className="flow-line-reverse" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
-                  </>
-                )}
-
-                {currentStep === 3 && <line x1="500" y1="160" x2="800" y2="380" stroke="#f59e0b" strokeWidth="6" className="flow-line" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />}
-
-                {currentStep === 4 && (
-                  <path d="M 800 380 L 800 480 L 200 480 L 200 380" fill="none" stroke="#f97316" strokeWidth="8" className="flow-line" strokeLinejoin="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
-                )}
+                <polyline points="222,364 360,266 468,188" fill="none" stroke="#3b82f6" strokeWidth="6" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
+                <polyline points="225,380 500,380 768,380" fill="none" stroke="#94a3b8" strokeWidth="4" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
+                <polyline points="770,364 640,266 532,188" fill="none" stroke="#94a3b8" strokeWidth="4" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
+                <line x1="212" y1="368" x2="488" y2="172" stroke="#10b981" strokeWidth="6" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
+                <line x1="188" y1="392" x2="512" y2="148" stroke="#34d399" strokeWidth="6" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
+                <line x1="500" y1="160" x2="800" y2="380" stroke="#f59e0b" strokeWidth="6" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
+                <path d="M 800 380 L 800 480 L 200 480 L 200 380" fill="none" stroke="#f97316" strokeWidth="8" strokeLinejoin="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
               </svg>
 
               <div className="absolute inset-0 z-10 pointer-events-none">
                 <div className="absolute top-[28.4%] left-[50%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
-                  <div className={`absolute -top-12 transition-all duration-500 whitespace-nowrap ${currentStep === 0 ? "scale-110 opacity-100 translate-y-0" : "scale-90 opacity-80 -translate-y-2"}`}>
+                  <div className="absolute -top-12 whitespace-nowrap">
                     <div
-                      className={`px-4 py-1.5 rounded-full font-bold shadow-md flex items-center gap-2 text-sm md:text-base border-2 ${
-                        currentStep === 0 ? "bg-blue-600 text-white border-blue-400" : "bg-white text-blue-900 border-blue-200"
-                      }`}
+                      className="px-4 py-1.5 rounded-full font-bold shadow-md flex items-center gap-2 text-sm md:text-base border-2 bg-blue-600 text-white border-blue-400"
                     >
-                      <Phone size={16} className={currentStep === 0 ? "animate-pulse" : ""} />
+                      <Phone size={16} />
                       050-XXXX-XXXX
                     </div>
                   </div>
 
                   <div
-                    className={`relative w-24 h-24 md:w-32 md:h-32 rounded-full bg-blue-950 flex items-center justify-center shadow-xl border-4 transition-all duration-300 ${
-                      currentStep === 2 ? "ring-active-blue border-blue-400" : "border-blue-900"
-                    }`}
+                    className="relative w-24 h-24 md:w-32 md:h-32 rounded-full bg-blue-950 flex items-center justify-center shadow-xl border-4 border-blue-900"
                   >
-                    <Bot size={48} className={`text-white transition-transform duration-300 ${currentStep === 2 ? "scale-110" : ""}`} />
-                    {currentStep === 2 && (
-                      <div className="absolute -right-4 -top-4 bg-emerald-500 text-white p-2 rounded-full shadow-lg animate-bounce">
-                        <MessageCircle size={20} />
-                      </div>
-                    )}
+                    <Bot size={48} className="text-white" />
                   </div>
                   <div className="mt-3 bg-white/80 px-3 py-1 rounded-full backdrop-blur-sm shadow-sm border border-slate-100">
                     <span className="font-extrabold text-blue-950 text-base md:text-xl tracking-wide">AI (DELNE)</span>
@@ -228,11 +161,9 @@ export default function SolutionSection() {
 
                 <div className="absolute top-[67.5%] left-[20%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
                   <div
-                    className={`relative w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center shadow-lg border-4 overflow-hidden transition-all duration-300 ${
-                      currentStep === 1 || currentStep === 2 ? "ring-active-green border-[#a3cbe0] bg-[#c3deeb]" : "border-transparent bg-[#c3deeb]"
-                    }`}
+                    className="relative w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center shadow-lg border-4 overflow-hidden border-[#a3cbe0] bg-[#c3deeb]"
                   >
-                    <img src="https://delne-20251209-4fe5.vercel.app/dementia_patient.png" alt="認知症患者" className={`w-[82%] h-[82%] object-contain ${currentStep === 1 ? "animate-pulse" : ""}`} />
+                    <img src="https://delne-20251209-4fe5.vercel.app/dementia_patient.png" alt="認知症患者" className="w-[82%] h-[82%] object-contain" />
                   </div>
                   <div className="mt-3 bg-white/80 px-3 py-1 rounded-full backdrop-blur-sm shadow-sm border border-slate-100">
                     <span className="font-bold text-slate-800 text-base md:text-lg">認知症患者</span>
@@ -241,58 +172,36 @@ export default function SolutionSection() {
 
                 <div className="absolute top-[67.5%] left-[80%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
                   <div
-                    className={`w-20 h-20 md:w-28 md:h-28 rounded-full bg-rose-50 flex items-center justify-center shadow-lg border-4 transition-all duration-300 ${
-                      currentStep === 3 || currentStep === 4 ? "ring-active-rose border-rose-400 bg-white" : "border-rose-200"
-                    }`}
+                    className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-white flex items-center justify-center shadow-lg border-4 border-rose-400"
                   >
                     <img src="https://delne-20251209-4fe5.vercel.app/care_family.png" alt="介護家族" className="w-[82%] h-[82%] object-contain" />
-                    {currentStep === 3 && (
-                      <div className="absolute -right-3 -top-3 bg-amber-500 text-white p-2 rounded-full shadow-lg animate-bounce">
-                        <Mail size={18} />
-                      </div>
-                    )}
                   </div>
                   <div className="mt-3 bg-white/80 px-3 py-1 rounded-full backdrop-blur-sm shadow-sm border border-slate-100">
                     <span className="font-bold text-slate-800 text-base md:text-lg">介護家族</span>
                   </div>
                 </div>
 
-                {currentStep === 1 && (
-                  <>
-                    <Badge top="45%" left="35%" color="blue" icon={<Phone size={16} className="animate-pulse" />}>
-                      直接電話
-                    </Badge>
-                    <Badge top="62%" left="50%" color="slate" icon={<Smartphone size={16} />}>
-                      家族へ電話
-                    </Badge>
-                    <Badge top="45%" left="65%" color="slate" icon={<PhoneForwarded size={16} />} delay="0.2s">
-                      AIへ転送
-                    </Badge>
-                  </>
-                )}
-
-                {currentStep === 2 && (
-                  <>
-                    <Badge top="42%" left="36%" color="green" icon={<MessageCircle size={16} />}>
-                      発信
-                    </Badge>
-                    <Badge top="54%" left="40%" color="green" icon={<MessageCircle size={16} />}>
-                      応答
-                    </Badge>
-                  </>
-                )}
-
-                {currentStep === 3 && (
-                  <Badge top="54%" left="65%" color="yellow" icon={<Mail size={16} />}>
-                    メール/SMS通知
-                  </Badge>
-                )}
-
-                {currentStep === 4 && (
-                  <Badge top="74%" left="50%" color="orange" icon={<HeartHandshake size={18} />}>
-                    適切なタイミングで直接介護
-                  </Badge>
-                )}
+                <Badge top="45%" left="35%" color="blue" icon={<Phone size={16} />}>
+                  直接電話
+                </Badge>
+                <Badge top="62%" left="50%" color="slate" icon={<Smartphone size={16} />}>
+                  家族へ電話
+                </Badge>
+                <Badge top="45%" left="65%" color="slate" icon={<PhoneForwarded size={16} />}>
+                  AIへ転送
+                </Badge>
+                <Badge top="42%" left="36%" color="green" icon={<MessageCircle size={16} />}>
+                  発信
+                </Badge>
+                <Badge top="54%" left="40%" color="green" icon={<MessageCircle size={16} />}>
+                  応答
+                </Badge>
+                <Badge top="54%" left="65%" color="yellow" icon={<Mail size={16} />}>
+                  メール/SMS通知
+                </Badge>
+                <Badge top="74%" left="50%" color="orange" icon={<HeartHandshake size={18} />}>
+                  適切なタイミングで直接介護
+                </Badge>
               </div>
             </div>
 

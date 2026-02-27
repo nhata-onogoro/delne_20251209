@@ -130,14 +130,6 @@ export default function SolutionSection() {
 
               <div className="absolute inset-0 z-10 pointer-events-none">
                 <div className="absolute top-[28.4%] left-[50%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
-                  <div className="absolute -top-12 whitespace-nowrap">
-                    <div
-                      className="px-4 py-1.5 rounded-full font-bold shadow-md flex items-center gap-2 text-sm md:text-base border-2 bg-blue-600 text-white border-blue-400"
-                    >
-                      <Phone size={16} />
-                      050-XXXX-XXXX
-                    </div>
-                  </div>
 
                   <div
                     className="relative w-24 h-24 md:w-32 md:h-32 rounded-full bg-blue-950 flex items-center justify-center shadow-xl border-4 border-blue-900"
@@ -146,8 +138,8 @@ export default function SolutionSection() {
                   </div>
                   <div className="mt-3 bg-white/80 px-3 py-1 rounded-full backdrop-blur-sm shadow-sm border border-slate-100">
                     <span className="font-extrabold text-blue-950 text-base md:text-xl tracking-wide flex items-center gap-1.5">
-                      <Phone size={16} />
-                      <span className="leading-tight text-left">AI電話<br />（050-XXXX-XXXX）</span>
+                      
+                      <span className="leading-tight text-center"><Phone size={16} />AI（DELNE）<br />（050-XXXX-XXXX）</span>
                     </span>
                   </div>
                 </div>

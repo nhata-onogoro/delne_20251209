@@ -6,8 +6,8 @@ const useCases = [
     badgeClass: "bg-[#F5B041] text-white",
     Icon: UserRound,
     heading: "鳴りやまない親からの電話。",
-    headingLine2: "優しく話せない自分に",
-    headingLine3: "疲れていませんか？",
+    headingLine2: "優しく話せない自分を",
+    headingLine3: "責めていませんか？",
     supportTitle: "本当はもっと、優しく話したい。",
     supportText:
       "優しくできない今の自分が苦しいのは、それだけあなたが親御様を大切に想っている証拠です。DELNEが、あなたの心と時間を守ります。",
@@ -24,7 +24,7 @@ const useCases = [
     Icon: Building2,
     heading: "優秀な社員が、",
     headingLine2: "親の介護を理由に",
-    headingLine3: "仕事を中断・退職してしまう。",
+    headingLine3: "仕事を中断・退職していませんか？。",
     supportTitle: "企業としてのサポートが、社員の安心に繋がる。",
     supportText:
       "福利厚生としてDELNEを導入することで、従業員の介護負担を大幅に軽減。大切な社員が介護離職することなく、安心して仕事に集中できる環境を提供できます。",
@@ -40,8 +40,8 @@ const useCases = [
     badgeClass: "bg-[#F5B041] text-white",
     Icon: House,
     heading: "遠方にいて手伝えない。",
-    headingLine2: "地元で頑張る兄弟に",
-    headingLine3: "申し訳なさを感じている。",
+    headingLine2: "地元で頑張る兄弟姉妹に",
+    headingLine3: "申し訳なさを感じていませんか？",
     supportTitle: "せめて、介護負担軽減のサービスでお金で支援したい。",
     supportText:
       "物理的な距離があって直接介護を手伝えなくても、サービスの費用を負担するという形で、地元で介護してくれる兄弟を助けることができます。ご家族みんなの介護負担を支援できます。",

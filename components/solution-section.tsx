@@ -139,7 +139,7 @@ export default function SolutionSection() {
                   <div className="mt-3 bg-white/80 px-3 py-1 rounded-full backdrop-blur-sm shadow-sm border border-slate-100">
                     <span className="font-extrabold text-blue-950 text-base md:text-xl tracking-wide flex items-center gap-1.5">
                       
-                      <span className="leading-tight text-center"><Phone size={16} />AI（DELNE）<br />（050-XXXX-XXXX）</span>
+                      <span className="leading-tight text-center"><Phone size={16} />AI（DELNE）</span>
                     </span>
                   </div>
                 </div>

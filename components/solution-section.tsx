@@ -7,17 +7,17 @@ export default function SolutionSection() {
   const [currentStep, setCurrentStep] = useState(0)
 
   const steps = [
-    { id: 0, title: "050番号の付与", desc: "DELNEに契約すると、AI専用の「050」から始まる電話番号が付与されます。" },
-    { id: 1, title: "電話発信・転送", desc: "認知症患者様が直接050番号にかけるか、ご家族への電話がAIへ転送されます。" },
-    { id: 2, title: "AIとの会話", desc: "認知症患者様とAI（DELNE）が自然な対話・応答を行います。" },
-    { id: 3, title: "会話内容の通知", desc: "通話終了後、ご家族のメールやSMSに会話内容が通知されます。" },
-    { id: 4, title: "直接介護", desc: "通知内容を確認し、ご家族のタイミングで適切な直接介護を行います。" },
+    { id: 0, title: "050番号の付与", desc: "契約後、DELNE専用の050番号が発行されます。" },
+    { id: 1, title: "電話発信・転送", desc: "患者様の電話は、必要に応じてAIへつながります。" },
+    { id: 2, title: "AIとの会話", desc: "患者様とAIが、発信と応答で会話を続けます。" },
+    { id: 3, title: "会話内容の通知", desc: "通話後、要点をメール/SMSでご家族へ通知します。" },
+    { id: 4, title: "直接介護", desc: "通知を見て、必要なタイミングで直接介護します。" },
   ]
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentStep((prev) => (prev + 1) % steps.length)
-    }, 4500)
+    }, 7000)
     return () => clearInterval(interval)
   }, [steps.length])
 
@@ -104,8 +104,8 @@ export default function SolutionSection() {
                   from { stroke-dashoffset: 0; }
                   to { stroke-dashoffset: 30; }
                 }
-                .flow-line { stroke-dasharray: 10 10; animation: flow-forward 0.5s linear infinite; }
-                .flow-line-reverse { stroke-dasharray: 10 10; animation: flow-backward 0.5s linear infinite; }
+                .flow-line { stroke-dasharray: 10 10; animation: flow-forward 1.6s linear infinite; }
+                .flow-line-reverse { stroke-dasharray: 10 10; animation: flow-backward 1.6s linear infinite; }
                 @keyframes fade-in-up {
                   0% { opacity: 0; transform: translate(-50%, 10px); }
                   100% { opacity: 1; transform: translate(-50%, -50%); }
@@ -140,15 +140,18 @@ export default function SolutionSection() {
             />
 
             <div className="relative w-full aspect-[4/3] md:aspect-[16/9] overflow-visible mb-10">
-              <div key={currentStep} className="absolute top-4 left-4 md:top-6 md:left-6 z-30 max-w-[75%] md:max-w-md rounded-xl border border-blue-200 bg-white/95 backdrop-blur-sm px-4 py-3 md:px-5 md:py-4 shadow-md animate-fade-in-card">
-                <p className="text-[11px] md:text-xs font-black text-blue-600 mb-1">STEP {currentStep + 1}</p>
-                <p className="text-sm md:text-base font-bold text-blue-950 leading-snug">{steps[currentStep].title}</p>
-                <p className="text-xs md:text-sm text-slate-700 mt-1.5 leading-relaxed">{steps[currentStep].desc}</p>
+              <div key={currentStep} className="absolute top-4 left-4 md:top-6 md:left-6 z-30 max-w-[84%] md:max-w-lg rounded-xl border border-blue-200 bg-white/95 backdrop-blur-sm px-4 py-3 md:px-6 md:py-5 shadow-md animate-fade-in-card">
+                <p className="text-sm md:text-base font-black text-blue-600 mb-1">STEP {currentStep + 1}</p>
+                <p className="text-base md:text-xl font-bold text-blue-950 leading-snug">{steps[currentStep].title}</p>
+                <p className="text-sm md:text-lg text-slate-700 mt-1.5 leading-relaxed">{steps[currentStep].desc}</p>
               </div>
               <svg viewBox="0 0 1000 562.5" className="absolute inset-0 w-full h-full pointer-events-none z-0">
                 <defs>
                   <marker id="flowArrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
                     <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke" />
+                  </marker>
+                  <marker id="flowArrowTiny" markerWidth="7" markerHeight="7" refX="5.8" refY="3.5" orient="auto" markerUnits="strokeWidth">
+                    <path d="M 0 0 L 7 3.5 L 0 7 z" fill="context-stroke" />
                   </marker>
                 </defs>
                 <line x1="200" y1="380" x2="500" y2="160" stroke="#f1f5f9" strokeWidth="12" strokeLinecap="round" />
@@ -158,26 +161,16 @@ export default function SolutionSection() {
 
                 {currentStep === 1 && (
                   <>
-                    <line x1="200" y1="380" x2="500" y2="160" stroke="#3b82f6" strokeWidth="6" className="flow-line" strokeLinecap="round" markerEnd="url(#flowArrow)" />
-                    <line x1="200" y1="380" x2="800" y2="380" stroke="#94a3b8" strokeWidth="4" className="flow-line" strokeLinecap="round" markerEnd="url(#flowArrow)" />
-                    <line
-                      x1="800"
-                      y1="380"
-                      x2="500"
-                      y2="160"
-                      stroke="#94a3b8"
-                      strokeWidth="4"
-                      className="flow-line-reverse"
-                      strokeLinecap="round"
-                      markerEnd="url(#flowArrow)"
-                    />
+                    <polyline points="222,364 360,266 468,188" fill="none" stroke="#3b82f6" strokeWidth="6" className="flow-line" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
+                    <polyline points="225,380 500,380 768,380" fill="none" stroke="#94a3b8" strokeWidth="4" className="flow-line" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
+                    <polyline points="770,364 640,266 532,188" fill="none" stroke="#94a3b8" strokeWidth="4" className="flow-line-reverse" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
                   </>
                 )}
 
                 {currentStep === 2 && (
                   <>
-                    <line x1="200" y1="380" x2="500" y2="160" stroke="#10b981" strokeWidth="8" className="flow-line" strokeLinecap="round" markerEnd="url(#flowArrow)" />
-                    <line x1="500" y1="160" x2="200" y2="380" stroke="#34d399" strokeWidth="4" className="flow-line" strokeLinecap="round" markerEnd="url(#flowArrow)" />
+                    <polyline points="220,366 340,278 464,188" fill="none" stroke="#10b981" strokeWidth="7" className="flow-line" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
+                    <polyline points="540,188 410,274 244,350" fill="none" stroke="#34d399" strokeWidth="5" className="flow-line-reverse" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
                   </>
                 )}
 
@@ -214,7 +207,7 @@ export default function SolutionSection() {
                     )}
                   </div>
                   <div className="mt-3 bg-white/80 px-3 py-1 rounded-full backdrop-blur-sm shadow-sm border border-slate-100">
-                    <span className="font-extrabold text-blue-950 md:text-lg tracking-wide">AI (DELNE)</span>
+                    <span className="font-extrabold text-blue-950 text-base md:text-xl tracking-wide">AI (DELNE)</span>
                   </div>
                 </div>
 
@@ -227,7 +220,7 @@ export default function SolutionSection() {
                     <img src="https://delne-20251209-4fe5.vercel.app/dementia_patient.png" alt="認知症患者" className={`w-[82%] h-[82%] object-contain ${currentStep === 1 ? "animate-pulse" : ""}`} />
                   </div>
                   <div className="mt-3 bg-white/80 px-3 py-1 rounded-full backdrop-blur-sm shadow-sm border border-slate-100">
-                    <span className="font-bold text-slate-800 md:text-base">認知症患者</span>
+                    <span className="font-bold text-slate-800 text-base md:text-lg">認知症患者</span>
                   </div>
                 </div>
 
@@ -237,7 +230,7 @@ export default function SolutionSection() {
                       currentStep === 3 || currentStep === 4 ? "ring-active-rose border-rose-400 bg-white" : "border-rose-200"
                     }`}
                   >
-                    <img src="https://delne-20251209-4fe5.vercel.app/care_family.png" alt="介護家族" className={`w-[82%] h-[82%] object-contain ${currentStep === 4 ? "animate-bounce" : ""}`} />
+                    <img src="https://delne-20251209-4fe5.vercel.app/care_family.png" alt="介護家族" className="w-[82%] h-[82%] object-contain" />
                     {currentStep === 3 && (
                       <div className="absolute -right-3 -top-3 bg-amber-500 text-white p-2 rounded-full shadow-lg animate-bounce">
                         <Mail size={18} />
@@ -245,7 +238,7 @@ export default function SolutionSection() {
                     )}
                   </div>
                   <div className="mt-3 bg-white/80 px-3 py-1 rounded-full backdrop-blur-sm shadow-sm border border-slate-100">
-                    <span className="font-bold text-slate-800 md:text-base">介護家族</span>
+                    <span className="font-bold text-slate-800 text-base md:text-lg">介護家族</span>
                   </div>
                 </div>
 
@@ -264,19 +257,24 @@ export default function SolutionSection() {
                 )}
 
                 {currentStep === 2 && (
-                  <Badge top="45%" left="35%" color="green" icon={<MessageCircle size={16} />}>
-                    対話・応答
-                  </Badge>
+                  <>
+                    <Badge top="42%" left="36%" color="green" icon={<MessageCircle size={16} />}>
+                      発信
+                    </Badge>
+                    <Badge top="54%" left="40%" color="green" icon={<MessageCircle size={16} />}>
+                      応答
+                    </Badge>
+                  </>
                 )}
 
                 {currentStep === 3 && (
-                  <Badge top="45%" left="65%" color="yellow" icon={<Mail size={16} />}>
+                  <Badge top="54%" left="65%" color="yellow" icon={<Mail size={16} />}>
                     メール/SMS通知
                   </Badge>
                 )}
 
                 {currentStep === 4 && (
-                  <Badge top="85%" left="50%" color="orange" icon={<HeartHandshake size={18} />}>
+                  <Badge top="74%" left="50%" color="orange" icon={<HeartHandshake size={18} />}>
                     適切なタイミングで直接介護
                   </Badge>
                 )}
@@ -291,8 +289,8 @@ export default function SolutionSection() {
             <div key={index} className="flex flex-col items-center w-full">
               <div className="w-full sm:w-full sm:max-w-none mx-auto aspect-square bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border-t-4 border-[#FDC702] px-3 py-4 flex flex-col items-center justify-center text-center group">
                 <div className="mb-2 transform group-hover:-translate-y-1 transition-transform duration-300">{item.icon}</div>
-                <h3 className="text-base sm:text-lg lg:text-xl font-black text-gray-800 mb-1 whitespace-pre-line leading-tight">{item.title}</h3>
-                <p className="text-[11px] sm:text-xs font-bold leading-relaxed text-gray-600 whitespace-pre-line">{item.description}</p>
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-black text-gray-800 mb-1 whitespace-pre-line leading-tight">{item.title}</h3>
+                <p className="text-sm sm:text-base font-bold leading-relaxed text-gray-600 whitespace-pre-line">{item.description}</p>
               </div>
             </div>
           ))}

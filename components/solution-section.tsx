@@ -104,8 +104,8 @@ export default function SolutionSection() {
                   from { stroke-dashoffset: 0; }
                   to { stroke-dashoffset: 30; }
                 }
-                .flow-line { stroke-dasharray: 10 10; animation: flow-forward 1.6s linear infinite; }
-                .flow-line-reverse { stroke-dasharray: 10 10; animation: flow-backward 1.6s linear infinite; }
+                .flow-line { stroke-dasharray: 8 12; animation: flow-forward 1.3s linear infinite; }
+                .flow-line-reverse { stroke-dasharray: 8 12; animation: flow-backward 1.3s linear infinite; }
                 @keyframes fade-in-up {
                   0% { opacity: 0; transform: translate(-50%, 10px); }
                   100% { opacity: 1; transform: translate(-50%, -50%); }
@@ -139,6 +139,24 @@ export default function SolutionSection() {
               }}
             />
 
+            <div className="mb-6 md:mb-8">
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-5 md:gap-3">
+                {steps.map((step, index) => (
+                  <div
+                    key={step.id}
+                    className={`rounded-xl border px-3 py-2 text-center shadow-sm transition-all duration-300 ${
+                      currentStep === index
+                        ? "border-blue-400 bg-blue-50"
+                        : "border-slate-200 bg-white"
+                    }`}
+                  >
+                    <p className={`text-xs md:text-sm font-black ${currentStep === index ? "text-blue-600" : "text-slate-500"}`}>STEP {index + 1}</p>
+                    <p className={`text-sm md:text-base font-bold leading-tight ${currentStep === index ? "text-blue-950" : "text-slate-700"}`}>{step.title}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             <div className="relative w-full aspect-[4/3] md:aspect-[16/9] overflow-visible mb-10">
               <div key={currentStep} className="absolute top-4 left-4 md:top-6 md:left-6 z-30 max-w-[84%] md:max-w-lg rounded-xl border border-blue-200 bg-white/95 backdrop-blur-sm px-4 py-3 md:px-6 md:py-5 shadow-md animate-fade-in-card">
                 <p className="text-sm md:text-base font-black text-blue-600 mb-1">STEP {currentStep + 1}</p>
@@ -147,11 +165,8 @@ export default function SolutionSection() {
               </div>
               <svg viewBox="0 0 1000 562.5" className="absolute inset-0 w-full h-full pointer-events-none z-0">
                 <defs>
-                  <marker id="flowArrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
-                    <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke" />
-                  </marker>
-                  <marker id="flowArrowTiny" markerWidth="7" markerHeight="7" refX="5.8" refY="3.5" orient="auto" markerUnits="strokeWidth">
-                    <path d="M 0 0 L 7 3.5 L 0 7 z" fill="context-stroke" />
+                  <marker id="flowArrowTiny" markerWidth="5.5" markerHeight="5.5" refX="4.8" refY="2.75" orient="auto" markerUnits="strokeWidth">
+                    <path d="M 0 0 L 5.5 2.75 L 0 5.5 z" fill="context-stroke" />
                   </marker>
                 </defs>
                 <line x1="200" y1="380" x2="500" y2="160" stroke="#f1f5f9" strokeWidth="12" strokeLinecap="round" />
@@ -169,15 +184,15 @@ export default function SolutionSection() {
 
                 {currentStep === 2 && (
                   <>
-                    <polyline points="220,366 340,278 464,188" fill="none" stroke="#10b981" strokeWidth="7" className="flow-line" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
-                    <polyline points="540,188 410,274 244,350" fill="none" stroke="#34d399" strokeWidth="5" className="flow-line-reverse" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
+                    <polyline points="235,352 332,281 430,210" fill="none" stroke="#10b981" strokeWidth="6" className="flow-line" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
+                    <polyline points="455,224 358,295 261,366" fill="none" stroke="#34d399" strokeWidth="6" className="flow-line-reverse" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
                   </>
                 )}
 
-                {currentStep === 3 && <line x1="500" y1="160" x2="800" y2="380" stroke="#f59e0b" strokeWidth="6" className="flow-line" strokeLinecap="round" markerEnd="url(#flowArrow)" />}
+                {currentStep === 3 && <line x1="500" y1="160" x2="800" y2="380" stroke="#f59e0b" strokeWidth="6" className="flow-line" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />}
 
                 {currentStep === 4 && (
-                  <path d="M 800 380 L 800 480 L 200 480 L 200 380" fill="none" stroke="#f97316" strokeWidth="8" className="flow-line" strokeLinejoin="round" markerEnd="url(#flowArrow)" />
+                  <path d="M 800 380 L 800 480 L 200 480 L 200 380" fill="none" stroke="#f97316" strokeWidth="8" className="flow-line" strokeLinejoin="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
                 )}
               </svg>
 

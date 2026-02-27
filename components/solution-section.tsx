@@ -92,7 +92,7 @@ export default function SolutionSection() {
         </div>
 
         <div className="mb-20">
-          <div className="w-full max-w-6xl mx-auto p-4 md:p-8 font-sans bg-white rounded-2xl shadow-lg border border-slate-200">
+          <div className="w-full max-w-6xl mx-auto font-sans">
             <style
               dangerouslySetInnerHTML={{
                 __html: `
@@ -111,6 +111,11 @@ export default function SolutionSection() {
                   100% { opacity: 1; transform: translate(-50%, -50%); }
                 }
                 .animate-fade-in-up { animation: fade-in-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+                @keyframes fade-in-card {
+                  0% { opacity: 0; transform: translateY(10px); }
+                  100% { opacity: 1; transform: translateY(0); }
+                }
+                .animate-fade-in-card { animation: fade-in-card 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
                 @keyframes pulse-ring {
                   0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.6); transform: scale(1); }
                   50% { box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); transform: scale(1.05); }
@@ -134,13 +139,18 @@ export default function SolutionSection() {
               }}
             />
 
-            <div className="relative w-full aspect-[4/3] md:aspect-[16/9] overflow-hidden mb-10">
-              <div key={currentStep} className="absolute top-4 left-4 md:top-6 md:left-6 z-30 max-w-[75%] md:max-w-md rounded-xl border border-blue-200 bg-white/95 backdrop-blur-sm px-4 py-3 md:px-5 md:py-4 shadow-md animate-fade-in-up">
+            <div className="relative w-full aspect-[4/3] md:aspect-[16/9] overflow-visible mb-10">
+              <div key={currentStep} className="absolute top-4 left-4 md:top-6 md:left-6 z-30 max-w-[75%] md:max-w-md rounded-xl border border-blue-200 bg-white/95 backdrop-blur-sm px-4 py-3 md:px-5 md:py-4 shadow-md animate-fade-in-card">
                 <p className="text-[11px] md:text-xs font-black text-blue-600 mb-1">STEP {currentStep + 1}</p>
                 <p className="text-sm md:text-base font-bold text-blue-950 leading-snug">{steps[currentStep].title}</p>
                 <p className="text-xs md:text-sm text-slate-700 mt-1.5 leading-relaxed">{steps[currentStep].desc}</p>
               </div>
               <svg viewBox="0 0 1000 562.5" className="absolute inset-0 w-full h-full pointer-events-none z-0">
+                <defs>
+                  <marker id="flowArrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke" />
+                  </marker>
+                </defs>
                 <line x1="200" y1="380" x2="500" y2="160" stroke="#f1f5f9" strokeWidth="12" strokeLinecap="round" />
                 <line x1="800" y1="380" x2="500" y2="160" stroke="#f1f5f9" strokeWidth="12" strokeLinecap="round" />
                 <line x1="200" y1="380" x2="800" y2="380" stroke="#f1f5f9" strokeWidth="8" strokeDasharray="10 10" strokeLinecap="round" />
@@ -148,8 +158,8 @@ export default function SolutionSection() {
 
                 {currentStep === 1 && (
                   <>
-                    <line x1="200" y1="380" x2="500" y2="160" stroke="#3b82f6" strokeWidth="6" className="flow-line" strokeLinecap="round" />
-                    <line x1="200" y1="380" x2="800" y2="380" stroke="#94a3b8" strokeWidth="4" className="flow-line" strokeLinecap="round" />
+                    <line x1="200" y1="380" x2="500" y2="160" stroke="#3b82f6" strokeWidth="6" className="flow-line" strokeLinecap="round" markerEnd="url(#flowArrow)" />
+                    <line x1="200" y1="380" x2="800" y2="380" stroke="#94a3b8" strokeWidth="4" className="flow-line" strokeLinecap="round" markerEnd="url(#flowArrow)" />
                     <line
                       x1="800"
                       y1="380"
@@ -159,21 +169,22 @@ export default function SolutionSection() {
                       strokeWidth="4"
                       className="flow-line-reverse"
                       strokeLinecap="round"
+                      markerEnd="url(#flowArrow)"
                     />
                   </>
                 )}
 
                 {currentStep === 2 && (
                   <>
-                    <line x1="200" y1="380" x2="500" y2="160" stroke="#10b981" strokeWidth="8" className="flow-line" strokeLinecap="round" />
-                    <line x1="500" y1="160" x2="200" y2="380" stroke="#34d399" strokeWidth="4" className="flow-line" strokeLinecap="round" />
+                    <line x1="200" y1="380" x2="500" y2="160" stroke="#10b981" strokeWidth="8" className="flow-line" strokeLinecap="round" markerEnd="url(#flowArrow)" />
+                    <line x1="500" y1="160" x2="200" y2="380" stroke="#34d399" strokeWidth="4" className="flow-line" strokeLinecap="round" markerEnd="url(#flowArrow)" />
                   </>
                 )}
 
-                {currentStep === 3 && <line x1="500" y1="160" x2="800" y2="380" stroke="#f59e0b" strokeWidth="6" className="flow-line" strokeLinecap="round" />}
+                {currentStep === 3 && <line x1="500" y1="160" x2="800" y2="380" stroke="#f59e0b" strokeWidth="6" className="flow-line" strokeLinecap="round" markerEnd="url(#flowArrow)" />}
 
                 {currentStep === 4 && (
-                  <path d="M 800 380 L 800 480 L 200 480 L 200 380" fill="none" stroke="#f97316" strokeWidth="8" className="flow-line" strokeLinejoin="round" />
+                  <path d="M 800 380 L 800 480 L 200 480 L 200 380" fill="none" stroke="#f97316" strokeWidth="8" className="flow-line" strokeLinejoin="round" markerEnd="url(#flowArrow)" />
                 )}
               </svg>
 

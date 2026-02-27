@@ -1,12 +1,12 @@
 "use client"
 
-import { Clock, Heart, Mail, Phone, Shield, Bot, PhoneForwarded, MessageCircle, HeartHandshake, Smartphone } from "lucide-react"
+import { Clock, Heart, Mail, Phone, Shield, Bot, MessageCircle, HeartHandshake } from "lucide-react"
 import { type ReactNode } from "react"
 
 export default function SolutionSection() {
   const steps = [
     { id: 0, title: "AI専用番号の付与", desc: "DELNEアカウント作成時にAI専用番号を付与します。" },
-    { id: 1, title: "電話発信・転送", desc: "患者様の電話は、必要に応じてAIへつながります。" },
+    { id: 1, title: "電話発信", desc: "患者様の電話は、必要に応じてAIへつながります。" },
     { id: 2, title: "AIとの会話", desc: "患者様とAIが、発信と応答で会話を続けます。" },
     { id: 3, title: "会話内容の通知", desc: "通話後、要点をメール/SMSでご家族へ通知します。" },
     { id: 4, title: "直接介護", desc: "通知を見て、必要なタイミングで直接介護します。" },
@@ -113,29 +113,19 @@ export default function SolutionSection() {
             </div>
 
             <div className="relative w-full aspect-[4/3] md:aspect-[16/9] overflow-visible mb-10">
-              <div className="absolute top-4 left-4 md:top-6 md:left-6 z-30 max-w-[84%] md:max-w-lg rounded-xl border border-blue-200 bg-white/95 backdrop-blur-sm px-4 py-3 md:px-6 md:py-5 shadow-md">
-                <p className="text-sm md:text-base font-black text-blue-600 mb-1">STEP {currentStep + 1}</p>
-                <p className="text-base md:text-xl font-bold text-blue-950 leading-snug">{steps[currentStep].title}</p>
-                <p className="text-sm md:text-lg text-slate-700 mt-1.5 leading-relaxed">{steps[currentStep].desc}</p>
-              </div>
               <svg viewBox="0 0 1000 562.5" className="absolute inset-0 w-full h-full pointer-events-none z-0">
                 <defs>
-                  <marker id="flowArrowTiny" markerWidth="5.5" markerHeight="5.5" refX="4.8" refY="2.75" orient="auto" markerUnits="userSpaceOnUse">
+                  <marker id="flowArrowTiny" markerWidth="5.5" markerHeight="5.5" refX="4.8" refY="2.75" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
                     <path d="M 0 0 L 5.5 2.75 L 0 5.5 z" fill="context-stroke" />
                   </marker>
                 </defs>
                 <line x1="200" y1="380" x2="500" y2="160" stroke="#f1f5f9" strokeWidth="12" strokeLinecap="round" />
                 <line x1="800" y1="380" x2="500" y2="160" stroke="#f1f5f9" strokeWidth="12" strokeLinecap="round" />
                 <line x1="200" y1="380" x2="800" y2="380" stroke="#f1f5f9" strokeWidth="8" strokeDasharray="10 10" strokeLinecap="round" />
-                <path d="M 800 380 L 800 480 L 200 480 L 200 380" fill="none" stroke="#f1f5f9" strokeWidth="12" strokeLinejoin="round" />
 
-                <polyline points="222,364 360,266 468,188" fill="none" stroke="#3b82f6" strokeWidth="6" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
-                <polyline points="225,380 500,380 768,380" fill="none" stroke="#94a3b8" strokeWidth="4" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
-                <polyline points="770,364 640,266 532,188" fill="none" stroke="#94a3b8" strokeWidth="4" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
-                <line x1="212" y1="368" x2="488" y2="172" stroke="#10b981" strokeWidth="6" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
-                <line x1="188" y1="392" x2="512" y2="148" stroke="#34d399" strokeWidth="6" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
-                <line x1="500" y1="160" x2="800" y2="380" stroke="#f59e0b" strokeWidth="6" strokeLinecap="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
-                <path d="M 800 380 L 800 480 L 200 480 L 200 380" fill="none" stroke="#f97316" strokeWidth="8" strokeLinejoin="round" markerMid="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
+                <line x1="236" y1="355" x2="468" y2="185" stroke="#10b981" strokeWidth="6" strokeLinecap="round" markerStart="url(#flowArrowTiny)" markerEnd="url(#flowArrowTiny)" />
+                <line x1="532" y1="185" x2="764" y2="355" stroke="#f59e0b" strokeWidth="6" strokeLinecap="round" markerEnd="url(#flowArrowTiny)" />
+                <line x1="760" y1="380" x2="240" y2="380" stroke="#f59e0b" strokeWidth="6" strokeLinecap="round" markerEnd="url(#flowArrowTiny)" />
               </svg>
 
               <div className="absolute inset-0 z-10 pointer-events-none">
@@ -155,7 +145,10 @@ export default function SolutionSection() {
                     <Bot size={48} className="text-white" />
                   </div>
                   <div className="mt-3 bg-white/80 px-3 py-1 rounded-full backdrop-blur-sm shadow-sm border border-slate-100">
-                    <span className="font-extrabold text-blue-950 text-base md:text-xl tracking-wide">AI (DELNE)</span>
+                    <span className="font-extrabold text-blue-950 text-base md:text-xl tracking-wide flex items-center gap-1.5">
+                      <Phone size={16} />
+                      <span className="leading-tight text-left">AI電話<br />（050-XXXX-XXXX）</span>
+                    </span>
                   </div>
                 </div>
 
@@ -181,15 +174,6 @@ export default function SolutionSection() {
                   </div>
                 </div>
 
-                <Badge top="45%" left="35%" color="blue" icon={<Phone size={16} />}>
-                  直接電話
-                </Badge>
-                <Badge top="62%" left="50%" color="slate" icon={<Smartphone size={16} />}>
-                  家族へ電話
-                </Badge>
-                <Badge top="45%" left="65%" color="slate" icon={<PhoneForwarded size={16} />}>
-                  AIへ転送
-                </Badge>
                 <Badge top="42%" left="36%" color="green" icon={<MessageCircle size={16} />}>
                   発信
                 </Badge>

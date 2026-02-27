@@ -23,8 +23,8 @@ const useCases = [
     badgeClass: "bg-[#F5B041] text-white",
     Icon: Building2,
     heading: "優秀な社員が、",
-    headingLine2: "親の介護を理由に仕事を",
-    headingLine3: "中断・退職していませんか？。",
+    headingLine2: "親の介護を理由に",
+    headingLine3: "仕事を中断・退職していませんか？",
     supportTitle: "企業としてのサポートが、社員の安心に繋がる。",
     supportText:
       "福利厚生としてDELNEを導入することで、従業員の介護負担を大幅に軽減。大切な社員が介護離職することなく、安心して仕事に集中できる環境を提供できます。",

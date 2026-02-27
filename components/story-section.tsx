@@ -86,7 +86,7 @@ export function StorySection() {
                 </div>
 
                 <div className="flex flex-col justify-center">
-                  <div className="mb-5">
+                  <div className="mb-5 flex justify-center md:justify-start">
                     <span
                       className={`inline-flex items-center rounded-full px-5 py-2.5 text-base font-bold tracking-wide shadow-md md:text-lg ${useCase.badgeClass}`}
                     >
@@ -95,7 +95,7 @@ export function StorySection() {
                     </span>
                   </div>
 
-                  <h3 className="mb-5 text-2xl font-bold leading-snug text-[#0e2a47] md:text-3xl">
+                  <h3 className="mb-5 text-center text-2xl font-bold leading-snug text-[#0e2a47] md:text-left md:text-3xl">
                     {useCase.heading}
                     <br />
                     {useCase.headingLine2}

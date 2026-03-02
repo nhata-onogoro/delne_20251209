@@ -1,6 +1,6 @@
 "use client"
 
-import { Clock, Heart, Mail, Shield, Bot, MessageCircle, HeartHandshake } from "lucide-react"
+import { Clock, Heart, Mail, Shield, Bot, MessageCircle, HeartHandshake, Phone } from "lucide-react"
 import { type ReactNode } from "react"
 
 export default function SolutionSection() {

@@ -2,14 +2,14 @@
 
 import SolutionSection from "@/components/solution-section"
 import DemoSection from "@/components/demo-section"
-import FeedbackChat from "@/components/feedback-chat"
+import TrialBanner from "@/components/trial-banner"
 
 export function ClientSections() {
   return (
     <>
       <SolutionSection />
       <DemoSection />
-      <FeedbackChat />
+      <TrialBanner />
     </>
   )
 }

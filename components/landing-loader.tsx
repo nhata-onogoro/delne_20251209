@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react"
 
-const TEXT_REVEAL_END_MS = 4600
-const LOADING_DURATION_MS = 5800
+const TEXT_REVEAL_END_MS = 2600
+const LOADING_DURATION_MS = 3400
 
 export function LandingLoader() {
   const [isVisible, setIsVisible] = useState(true)

@@ -10,6 +10,7 @@ import { ArrowRight, Phone } from "lucide-react"
 export function HeroSection() {
   const [isImageLoaded, setIsImageLoaded] = useState(false)
   const fallbackTimerRef = useRef<number | null>(null)
+  const conversationAudioRef = useRef<HTMLAudioElement | null>(null)
 
   const pickSrc = () => {
     if (typeof window === "undefined") return "/care-service-background-mobile.jpg"
@@ -163,15 +164,18 @@ export function HeroSection() {
           </div>
           
           {/* CTAボタン */}
-          <div className="w-full flex justify-center mt-1 md:mt-4">
-            <a
-              href="https://app.delne.jp/auth/welcome/"
-              target="_blank"
-              rel="noopener noreferrer"
+          <div className="w-full flex flex-col items-center justify-center gap-3 mt-1 md:mt-4">
+            <button
+              type="button"
               onClick={() => {
                 trackButtonClick("hero_free_trial", "hero")
                 trackCtaClick("free_trial", { ctaType: "hero" })
                 trackFreeTrialClick("hero_free_trial_click")
+
+                if (conversationAudioRef.current) {
+                  conversationAudioRef.current.currentTime = 0
+                  void conversationAudioRef.current.play()
+                }
               }}
               className="
                 inline-flex items-center justify-center gap-1.5
@@ -185,9 +189,14 @@ export function HeroSection() {
                 w-full sm:w-auto
               "
             >
-              7日間無料トライアル
+              実際の会話を聞く
               <ArrowRight className="w-4 h-4 md:w-6 md:h-6" strokeWidth={3} />
-            </a>
+            </button>
+            <audio ref={conversationAudioRef} preload="metadata" src="/conversation.m4a" />
+            <div className="text-xs md:text-sm text-slate-700 font-medium space-y-1 text-left md:text-center">
+              <p>※認知症のお母様と、「娘の声を再現したAI」の会話音声です。</p>
+              <p>※事前に予定（デイサービス等）を登録すると、AIが状況に合わせて回答します。</p>
+            </div>
           </div>
           
         </div>

@@ -148,7 +148,7 @@
 
 .logo-shake {
   transform-origin: 300px 180px;
-  animation: ringShake 1.5s ease-in-out 2.5s 1 both;
+  animation: ringShake 1.5s ease-in-out 1s 1 both;
 }
 
 .landing-loader {

@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react"
 
-const LOGO_SHAKE_END_MS = 1800
+const LOGO_SHAKE_END_MS = 1500
 const TEXT_REVEAL_END_MS = 2000
-const LOADING_DURATION_MS = 3200
+const LOADING_DURATION_MS = 3500
 
 export function LandingLoader() {
   const [isVisible, setIsVisible] = useState(true)

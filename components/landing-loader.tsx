@@ -64,25 +64,25 @@ export function LandingLoader() {
           </g>
 
           <text x="300" y="260" className="anim-text" textAnchor="middle">
-            <tspan className="char" style={{ animationDelay: "0.5s" }}>
+            <tspan className="char" style={{ animationDelay: "0.3s" }}>
               で
             </tspan>
-            <tspan className="char" style={{ animationDelay: "1.0s" }}>
+            <tspan className="char" style={{ animationDelay: "0.6s" }}>
               ん
             </tspan>
-            <tspan className="char" style={{ animationDelay: "1.5s" }}>
+            <tspan className="char" style={{ animationDelay: "0.9s" }}>
               わ
             </tspan>
-            <tspan className="char" style={{ animationDelay: "2.0s" }}>
+            <tspan className="char" style={{ animationDelay: "1.2s" }}>
               に
             </tspan>
-            <tspan className="char" style={{ animationDelay: "2.5s" }}>
+            <tspan className="char" style={{ animationDelay: "1.5s" }}>
               デ
             </tspan>
-            <tspan className="char" style={{ animationDelay: "3.0s" }}>
+            <tspan className="char" style={{ animationDelay: "1.8s" }}>
               ル
             </tspan>
-            <tspan className="char" style={{ animationDelay: "3.5s" }}>
+            <tspan className="char" style={{ animationDelay: "2.1s" }}>
               ネ
             </tspan>
           </text>

@@ -131,7 +131,7 @@ export function HeroSection() {
                   font-bold
                 "
               >
-                認知症ご家族からの電話に
+                認知症のご家族からの電話に
               </span>
               
               {/* 2行目 */}
@@ -194,7 +194,7 @@ export function HeroSection() {
             </button>
             <audio ref={conversationAudioRef} preload="metadata" src="/conversation.m4a" />
             <div className="text-xs md:text-sm text-slate-700 font-medium space-y-1 text-left md:text-center">
-              <p>※認知症のお母様と、「娘の声を再現したAI」の会話音声です。</p>
+              <p>※認知症のご家族と、「娘さんの声を再現したAI(デルネ)」の会話音声です。</p>
               <p>※事前に予定（デイサービス等）を登録すると、AIが状況に合わせて回答します。</p>
             </div>
           </div>

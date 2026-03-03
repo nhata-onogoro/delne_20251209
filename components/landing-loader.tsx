@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react"
 
-const TEXT_REVEAL_END_MS = 1500
-const LOADING_DURATION_MS = 3000
+const LOGO_SHAKE_END_MS = 1800
+const TEXT_REVEAL_END_MS = 2000
+const LOADING_DURATION_MS = 3200
 
 export function LandingLoader() {
   const [isVisible, setIsVisible] = useState(true)
@@ -11,7 +12,7 @@ export function LandingLoader() {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
-    const revealStart = mediaQuery.matches ? 650 : TEXT_REVEAL_END_MS
+    const revealStart = mediaQuery.matches ? 650 : Math.max(LOGO_SHAKE_END_MS, TEXT_REVEAL_END_MS)
     const hideAt = mediaQuery.matches ? 900 : LOADING_DURATION_MS
 
     const revealTimer = window.setTimeout(() => {

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { trackButtonClick } from "@/lib/analytics"
-import { trackCtaClick, trackFreeTrialClick } from "@/lib/gtag"
+import { trackTopAudioSamplePlay } from "@/lib/gtag"
 // Button コンポーネントがインポートされていないため、ここでは削除します
 // import { Button } from "@/components/ui/button"
 import { ArrowRight, Phone } from "lucide-react"
@@ -169,8 +169,7 @@ export function HeroSection() {
               type="button"
               onClick={() => {
                 trackButtonClick("hero_free_trial", "hero")
-                trackCtaClick("free_trial", { ctaType: "hero" })
-                trackFreeTrialClick("hero_free_trial_click")
+                trackTopAudioSamplePlay()
 
                 if (conversationAudioRef.current) {
                   conversationAudioRef.current.currentTime = 0

@@ -2,10 +2,12 @@
 
 import { Button } from "@/components/ui/button"
 import { trackButtonClick } from "@/lib/analytics"
+import { trackFreeTrialClick } from "@/lib/gtag"
 
 export default function TrialBanner() {
   const handleFreeTrialClick = () => {
     trackButtonClick("floating_free_trial", "floating_cta")
+    trackFreeTrialClick("banner_free_trial_click")
   }
 
   return (

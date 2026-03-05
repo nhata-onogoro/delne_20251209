@@ -35,3 +35,7 @@ export const trackAudioSamplePlay = (sampleName: string) => {
     sample_name: sampleName,
   })
 }
+
+export const trackTopAudioSamplePlay = () => {
+  trackGtagEvent("top_audio_sample_play")
+}

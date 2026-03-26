@@ -5,12 +5,13 @@ import { trackButtonClick } from "@/lib/analytics"
 import { trackTopAudioSamplePlay } from "@/lib/gtag"
 // Button コンポーネントがインポートされていないため、ここでは削除します
 // import { Button } from "@/components/ui/button"
-import { ArrowRight, Phone } from "lucide-react"
+import { Pause, Phone, Play } from "lucide-react"
 
 export function HeroSection() {
   const [isImageLoaded, setIsImageLoaded] = useState(false)
   const fallbackTimerRef = useRef<number | null>(null)
   const conversationAudioRef = useRef<HTMLAudioElement | null>(null)
+  const [isConversationPlaying, setIsConversationPlaying] = useState(false)
 
   const pickSrc = () => {
     if (typeof window === "undefined") return "/care-service-background-mobile.jpg"
@@ -45,9 +46,22 @@ export function HeroSection() {
     }
     mq.addEventListener?.("change", onChange)
     fallbackTimerRef.current = window.setTimeout(() => setIsImageLoaded(true), 1500)
+
+    const audioEl = conversationAudioRef.current
+    const onEnded = () => setIsConversationPlaying(false)
+    const onPause = () => setIsConversationPlaying(false)
+    const onPlay = () => setIsConversationPlaying(true)
+    audioEl?.addEventListener("ended", onEnded)
+    audioEl?.addEventListener("pause", onPause)
+    audioEl?.addEventListener("play", onPlay)
+
     return () => {
       mq.removeEventListener?.("change", onChange)
       if (fallbackTimerRef.current) clearTimeout(fallbackTimerRef.current)
+      audioEl?.removeEventListener("ended", onEnded)
+      audioEl?.removeEventListener("pause", onPause)
+      audioEl?.removeEventListener("play", onPlay)
+      audioEl?.pause()
     }
   }, [])
 
@@ -169,12 +183,16 @@ export function HeroSection() {
               type="button"
               onClick={() => {
                 trackButtonClick("hero_free_trial", "hero")
-                trackTopAudioSamplePlay()
 
-                if (conversationAudioRef.current) {
-                  conversationAudioRef.current.currentTime = 0
-                  void conversationAudioRef.current.play()
+                if (!conversationAudioRef.current) return
+
+                if (isConversationPlaying) {
+                  conversationAudioRef.current.pause()
+                  return
                 }
+
+                trackTopAudioSamplePlay()
+                void conversationAudioRef.current.play()
               }}
               className="
                 inline-flex items-center justify-center gap-1.5
@@ -189,7 +207,11 @@ export function HeroSection() {
               "
             >
               実際の会話を聞く
-              <ArrowRight className="w-4 h-4 md:w-6 md:h-6" strokeWidth={3} />
+              {isConversationPlaying ? (
+                <Pause className="w-4 h-4 md:w-6 md:h-6 fill-current" />
+              ) : (
+                <Play className="w-4 h-4 md:w-6 md:h-6 fill-current" />
+              )}
             </button>
             <audio ref={conversationAudioRef} preload="metadata" src="/conversation.m4a" />
             <div className="text-xs md:text-sm text-slate-700 font-medium space-y-1 text-left md:text-center">

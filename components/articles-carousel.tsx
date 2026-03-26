@@ -7,6 +7,9 @@ import { articles, getArticleImageUrl } from "@/lib/articles"
 
 export function ArticlesCarousel() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [canScrollPrev, setCanScrollPrev] = useState(false)
+  const [canScrollNext, setCanScrollNext] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const cardRefs = useRef<Array<HTMLAnchorElement | null>>([])
 
@@ -23,6 +26,9 @@ export function ArticlesCarousel() {
   const getCenteredScrollLeft = (container: HTMLDivElement, card: HTMLAnchorElement) =>
     card.offsetLeft - (container.clientWidth - card.clientWidth) / 2
 
+  const getScrollLeftForCard = (container: HTMLDivElement, card: HTMLAnchorElement) =>
+    isDesktop ? card.offsetLeft : getCenteredScrollLeft(container, card)
+
   const scrollToIndex = (index: number) => {
     const container = containerRef.current
 
@@ -38,12 +44,26 @@ export function ArticlesCarousel() {
     }
 
     container.scrollTo({
-      left: getCenteredScrollLeft(container, targetCard),
+      left: getScrollLeftForCard(container, targetCard),
       behavior: "smooth",
     })
 
     setActiveIndex(safeIndex)
   }
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 768px)")
+    const updateDesktopState = (event?: MediaQueryListEvent) => {
+      setIsDesktop(event ? event.matches : mediaQuery.matches)
+    }
+
+    updateDesktopState()
+    mediaQuery.addEventListener("change", updateDesktopState)
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateDesktopState)
+    }
+  }, [])
 
   useEffect(() => {
     const container = containerRef.current
@@ -57,12 +77,12 @@ export function ArticlesCarousel() {
       if (!firstCard) {
         return
       }
-      container.scrollLeft = getCenteredScrollLeft(container, firstCard)
+      container.scrollLeft = getScrollLeftForCard(container, firstCard)
       setActiveIndex(0)
     })
 
     return () => window.cancelAnimationFrame(frame)
-  }, [sortedArticles.length])
+  }, [sortedArticles.length, isDesktop])
 
   useEffect(() => {
     const container = containerRef.current
@@ -72,20 +92,25 @@ export function ArticlesCarousel() {
     }
 
     const handleScroll = () => {
-      const containerRect = container.getBoundingClientRect()
-      const containerCenter = containerRect.left + containerRect.width / 2
+      const maxScrollLeft = container.scrollWidth - container.clientWidth
+      const epsilon = 2
+      setCanScrollPrev(container.scrollLeft > epsilon)
+      setCanScrollNext(container.scrollLeft < maxScrollLeft - epsilon)
 
       let nearestIndex = 0
       let nearestDistance = Number.POSITIVE_INFINITY
+
+      const containerRect = container.getBoundingClientRect()
+      const containerCenter = containerRect.left + containerRect.width / 2
 
       cardRefs.current.slice(0, sortedArticles.length).forEach((card, displayIndex) => {
         if (!card) {
           return
         }
 
-        const cardRect = card.getBoundingClientRect()
-        const cardCenter = cardRect.left + cardRect.width / 2
-        const distance = Math.abs(cardCenter - containerCenter)
+        const distance = isDesktop
+          ? Math.abs(card.offsetLeft - container.scrollLeft)
+          : Math.abs(card.getBoundingClientRect().left + card.getBoundingClientRect().width / 2 - containerCenter)
         if (distance < nearestDistance) {
           nearestDistance = distance
           nearestIndex = displayIndex
@@ -96,11 +121,12 @@ export function ArticlesCarousel() {
     }
 
     container.addEventListener("scroll", handleScroll, { passive: true })
+    handleScroll()
 
     return () => {
       container.removeEventListener("scroll", handleScroll)
     }
-  }, [sortedArticles.length])
+  }, [sortedArticles.length, isDesktop])
 
   return (
     <section id="articles" className="py-16 bg-gray-50">
@@ -113,7 +139,7 @@ export function ArticlesCarousel() {
         </div>
 
         <div className="relative mt-10">
-          {activeIndex > 0 && (
+          {canScrollPrev && (
             <button
               type="button"
               aria-label="前の記事へ"
@@ -175,7 +201,7 @@ export function ArticlesCarousel() {
             })}
           </div>
 
-          {activeIndex < articleCount - 1 && (
+          {canScrollNext && (
             <button
               type="button"
               aria-label="次の記事へ"

@@ -92,10 +92,17 @@ export function ArticlesCarousel() {
     }
 
     const handleScroll = () => {
-      const maxScrollLeft = container.scrollWidth - container.clientWidth
       const epsilon = 2
-      setCanScrollPrev(container.scrollLeft > epsilon)
-      setCanScrollNext(container.scrollLeft < maxScrollLeft - epsilon)
+      const firstCard = cardRefs.current[0]
+      const lastCard = cardRefs.current[sortedArticles.length - 1]
+
+      if (firstCard && lastCard) {
+        const firstCardScrollLeft = getScrollLeftForCard(container, firstCard)
+        const lastCardScrollLeft = getScrollLeftForCard(container, lastCard)
+
+        setCanScrollPrev(container.scrollLeft > firstCardScrollLeft + epsilon)
+        setCanScrollNext(container.scrollLeft < lastCardScrollLeft - epsilon)
+      }
 
       let nearestIndex = 0
       let nearestDistance = Number.POSITIVE_INFINITY

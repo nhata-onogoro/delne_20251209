@@ -7,10 +7,20 @@ const TEXT_REVEAL_END_MS = 2000
 const LOADING_DURATION_MS = 6000
 
 export function LandingLoader() {
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
   const [isRevealing, setIsRevealing] = useState(false)
 
   useEffect(() => {
+    const sessionKey = "landing-loader-shown"
+    const hasShownLoader = window.sessionStorage.getItem(sessionKey) === "1"
+
+    if (hasShownLoader) {
+      return
+    }
+
+    setIsVisible(true)
+    window.sessionStorage.setItem(sessionKey, "1")
+
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
     const revealStart = mediaQuery.matches ? 650 : Math.max(LOGO_SHAKE_END_MS, TEXT_REVEAL_END_MS)
     const hideAt = mediaQuery.matches ? 900 : LOADING_DURATION_MS

@@ -122,10 +122,10 @@ export function ArticlesCarousel() {
   }, [sortedArticles.length, displayArticles.length])
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section id="articles" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="mb-8 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold text-[#002c5b]">関連記事</h1>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#002c5b]">関連記事</h2>
           <p className="mt-3 text-gray-600">
             外部掲載情報と、ランディングページ内で読める記事をまとめています。
           </p>

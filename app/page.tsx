@@ -6,6 +6,7 @@ import { ClientSections } from "@/components/client-sections"
 import { StepsSection } from "@/components/steps-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { PricingSection } from "@/components/pricing-section"
+import { ArticlesCarousel } from "@/components/articles-carousel"
 import { FaqSection } from "@/components/faq-section"
 import { Footer } from "@/components/footer"
 import { AnalyticsTracker } from "@/components/analytics-tracker"
@@ -24,6 +25,7 @@ export default function Home() {
           { id: "steps", label: "steps" },
           { id: "testimonials", label: "testimonials" },
           { id: "pricing", label: "pricing" },
+          { id: "articles", label: "articles" },
           { id: "faq", label: "faq" },
         ]}
       />
@@ -37,6 +39,7 @@ export default function Home() {
       <StepsSection />
       <TestimonialsSection />
       <PricingSection />
+      <ArticlesCarousel />
       <FaqSection />
       <Footer />
     </main>

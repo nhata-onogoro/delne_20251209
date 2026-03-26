@@ -40,12 +40,6 @@ export function Header() {
     router.push("/")
   }
 
-  const goToArticles = () => {
-    trackButtonClick("nav_articles", "header_nav")
-    router.push("/articles")
-    setIsMenuOpen(false)
-  }
-
   const handleFreeTrialClick = () => {
     trackButtonClick("header_free_trial", "header_cta")
     trackCtaClick("free_trial", { ctaType: "header" })
@@ -112,7 +106,7 @@ export function Header() {
               よくあるご質問
             </button>
             <button
-              onClick={goToArticles}
+              onClick={() => handleNavigation("articles")}
               className="text-white hover:text-[#F39C12] transition-colors whitespace-nowrap font-bold cursor-pointer"
             >
               記事
@@ -195,7 +189,7 @@ export function Header() {
                 よくあるご質問
               </button>
               <button
-                onClick={goToArticles}
+                onClick={() => handleNavigation("articles")}
                 className="block text-white hover:text-[#F39C12] transition-colors w-full text-left font-bold cursor-pointer"
               >
                 記事

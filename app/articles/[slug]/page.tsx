@@ -64,7 +64,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
     <main className="min-h-screen bg-gray-50">
       <Header />
       <section className="container mx-auto px-4 py-16">
-        <Link href="/articles" className="text-sm font-bold text-[#002c5b] hover:underline">
+        <Link href="/#articles" className="text-sm font-bold text-[#002c5b] hover:underline">
           ← 記事一覧へ戻る
         </Link>
 

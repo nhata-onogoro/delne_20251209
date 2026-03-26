@@ -100,16 +100,16 @@ export function Header() {
               料金プラン
             </button>
             <button
-              onClick={() => handleNavigation("faq")}
-              className="text-white hover:text-[#F39C12] transition-colors whitespace-nowrap font-bold cursor-pointer"
-            >
-              よくあるご質問
-            </button>
-            <button
               onClick={() => handleNavigation("articles")}
               className="text-white hover:text-[#F39C12] transition-colors whitespace-nowrap font-bold cursor-pointer"
             >
               記事
+            </button>
+            <button
+              onClick={() => handleNavigation("faq")}
+              className="text-white hover:text-[#F39C12] transition-colors whitespace-nowrap font-bold cursor-pointer"
+            >
+              よくあるご質問
             </button>
           </nav>
 
@@ -183,16 +183,16 @@ export function Header() {
                 料金プラン
               </button>
               <button
-                onClick={() => handleNavigation("faq")}
-                className="block text-white hover:text-[#F39C12] transition-colors w-full text-left font-bold cursor-pointer"
-              >
-                よくあるご質問
-              </button>
-              <button
                 onClick={() => handleNavigation("articles")}
                 className="block text-white hover:text-[#F39C12] transition-colors w-full text-left font-bold cursor-pointer"
               >
                 記事
+              </button>
+              <button
+                onClick={() => handleNavigation("faq")}
+                className="block text-white hover:text-[#F39C12] transition-colors w-full text-left font-bold cursor-pointer"
+              >
+                よくあるご質問
               </button>
               <div className="pt-4 space-y-2">
                 <Button

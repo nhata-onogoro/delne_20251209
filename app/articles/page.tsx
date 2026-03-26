@@ -1,13 +1,5 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { ArticlesCarousel } from "@/components/articles-carousel"
+import { redirect } from "next/navigation"
 
 export default function ArticlesPage() {
-  return (
-    <main className="min-h-screen bg-background">
-      <Header />
-      <ArticlesCarousel />
-      <Footer />
-    </main>
-  )
+  redirect("/#articles")
 }

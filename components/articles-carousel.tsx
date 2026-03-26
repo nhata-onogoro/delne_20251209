@@ -5,9 +5,6 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react"
 import { articles, getArticleImageUrl } from "@/lib/articles"
 
-const LOOP_COPIES = 3
-const LOOP_EDGE_THRESHOLD = 24
-
 export function ArticlesCarousel() {
   const [activeIndex, setActiveIndex] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -21,38 +18,27 @@ export function ArticlesCarousel() {
     [],
   )
 
-  const displayArticles = useMemo(
-    () => Array.from({ length: LOOP_COPIES }, () => sortedArticles).flat(),
-    [sortedArticles],
-  )
+  const articleCount = sortedArticles.length
+
+  const getCenteredScrollLeft = (container: HTMLDivElement, card: HTMLAnchorElement) =>
+    card.offsetLeft - (container.clientWidth - card.clientWidth) / 2
 
   const scrollToIndex = (index: number) => {
-    const articleCount = sortedArticles.length
     const container = containerRef.current
 
     if (articleCount === 0 || !container) {
       return
     }
 
-    const safeIndex = (index + articleCount) % articleCount
-    const candidateIndexes = displayArticles
-      .map((_, displayIndex) => displayIndex)
-      .filter((displayIndex) => displayIndex % articleCount === safeIndex)
-
-    const targetCard = candidateIndexes
-      .map((displayIndex) => cardRefs.current[displayIndex])
-      .filter((card): card is HTMLAnchorElement => card !== null)
-      .sort(
-        (a, b) =>
-          Math.abs(container.scrollLeft - a.offsetLeft) - Math.abs(container.scrollLeft - b.offsetLeft),
-      )[0]
+    const safeIndex = Math.min(Math.max(index, 0), articleCount - 1)
+    const targetCard = cardRefs.current[safeIndex]
 
     if (!targetCard) {
       return
     }
 
     container.scrollTo({
-      left: targetCard.offsetLeft,
+      left: getCenteredScrollLeft(container, targetCard),
       behavior: "smooth",
     })
 
@@ -67,11 +53,16 @@ export function ArticlesCarousel() {
     }
 
     const frame = window.requestAnimationFrame(() => {
-      container.scrollLeft = container.scrollWidth / LOOP_COPIES
+      const firstCard = cardRefs.current[0]
+      if (!firstCard) {
+        return
+      }
+      container.scrollLeft = getCenteredScrollLeft(container, firstCard)
+      setActiveIndex(0)
     })
 
     return () => window.cancelAnimationFrame(frame)
-  }, [sortedArticles.length, displayArticles.length])
+  }, [sortedArticles.length])
 
   useEffect(() => {
     const container = containerRef.current
@@ -81,33 +72,23 @@ export function ArticlesCarousel() {
     }
 
     const handleScroll = () => {
-      const oneLoopWidth = container.scrollWidth / LOOP_COPIES
-
-      if (oneLoopWidth > 0) {
-        if (container.scrollLeft <= LOOP_EDGE_THRESHOLD) {
-          container.scrollLeft += oneLoopWidth
-        } else if (
-          container.scrollLeft >=
-          oneLoopWidth * (LOOP_COPIES - 1) - LOOP_EDGE_THRESHOLD
-        ) {
-          container.scrollLeft -= oneLoopWidth
-        }
-      }
-
-      const containerLeft = container.getBoundingClientRect().left
+      const containerRect = container.getBoundingClientRect()
+      const containerCenter = containerRect.left + containerRect.width / 2
 
       let nearestIndex = 0
       let nearestDistance = Number.POSITIVE_INFINITY
 
-      cardRefs.current.slice(0, displayArticles.length).forEach((card, displayIndex) => {
+      cardRefs.current.slice(0, sortedArticles.length).forEach((card, displayIndex) => {
         if (!card) {
           return
         }
 
-        const distance = Math.abs(card.getBoundingClientRect().left - containerLeft)
+        const cardRect = card.getBoundingClientRect()
+        const cardCenter = cardRect.left + cardRect.width / 2
+        const distance = Math.abs(cardCenter - containerCenter)
         if (distance < nearestDistance) {
           nearestDistance = distance
-          nearestIndex = displayIndex % sortedArticles.length
+          nearestIndex = displayIndex
         }
       })
 
@@ -119,7 +100,7 @@ export function ArticlesCarousel() {
     return () => {
       container.removeEventListener("scroll", handleScroll)
     }
-  }, [sortedArticles.length, displayArticles.length])
+  }, [sortedArticles.length])
 
   return (
     <section id="articles" className="py-16 bg-gray-50">
@@ -132,20 +113,22 @@ export function ArticlesCarousel() {
         </div>
 
         <div className="relative mt-10">
-          <button
-            type="button"
-            aria-label="前の記事へ"
-            onClick={() => scrollToIndex(activeIndex - 1)}
-            className="absolute -left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 bg-white text-[#002c5b] shadow-md transition hover:bg-gray-100 md:-left-5"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
+          {activeIndex > 0 && (
+            <button
+              type="button"
+              aria-label="前の記事へ"
+              onClick={() => scrollToIndex(activeIndex - 1)}
+              className="absolute left-1 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#002c5b] bg-[#002c5b] text-white shadow-md transition hover:bg-[#014182] md:left-3"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+          )}
 
           <div
             ref={containerRef}
-            className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-[max(1rem,calc((100vw-280px)/2))] pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:px-0"
           >
-            {displayArticles.map((article, index) => {
+            {sortedArticles.map((article, index) => {
               const imageUrl = getArticleImageUrl(article)
               const articleHref = article.externalUrl ?? `/articles/${article.slug}`
 
@@ -156,7 +139,7 @@ export function ArticlesCarousel() {
                   ref={(el) => {
                     cardRefs.current[index] = el
                   }}
-                  className="w-[280px] shrink-0 snap-start rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md md:w-[320px]"
+                  className="w-[280px] shrink-0 snap-center rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md md:w-[320px]"
                 >
                   <div className="mb-4 overflow-hidden rounded-lg border border-gray-100 bg-gray-100">
                     {imageUrl ? (
@@ -192,14 +175,16 @@ export function ArticlesCarousel() {
             })}
           </div>
 
-          <button
-            type="button"
-            aria-label="次の記事へ"
-            onClick={() => scrollToIndex(activeIndex + 1)}
-            className="absolute -right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 bg-white text-[#002c5b] shadow-md transition hover:bg-gray-100 md:-right-5"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
+          {activeIndex < articleCount - 1 && (
+            <button
+              type="button"
+              aria-label="次の記事へ"
+              onClick={() => scrollToIndex(activeIndex + 1)}
+              className="absolute right-1 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#002c5b] bg-[#002c5b] text-white shadow-md transition hover:bg-[#014182] md:right-3"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          )}
         </div>
       </div>
     </section>

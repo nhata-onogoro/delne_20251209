@@ -26,8 +26,13 @@ export function ArticlesCarousel() {
   const getCenteredScrollLeft = (container: HTMLDivElement, card: HTMLAnchorElement) =>
     card.offsetLeft - (container.clientWidth - card.clientWidth) / 2
 
+  const clampScrollLeft = (container: HTMLDivElement, value: number) => {
+    const maxScrollLeft = container.scrollWidth - container.clientWidth
+    return Math.max(0, Math.min(value, maxScrollLeft))
+  }
+
   const getScrollLeftForCard = (container: HTMLDivElement, card: HTMLAnchorElement) =>
-    isDesktop ? card.offsetLeft : getCenteredScrollLeft(container, card)
+    clampScrollLeft(container, isDesktop ? card.offsetLeft : getCenteredScrollLeft(container, card))
 
   const scrollToIndex = (index: number) => {
     const container = containerRef.current

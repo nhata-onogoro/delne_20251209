@@ -8,7 +8,7 @@ import "./globals.css"
 const geistSans = GeistSans
 
 const siteUrl = "https://lp.delne.jp"
-const pageTitle = "認知症向けAI電話サービス「DELNE（デルネ）」"
+const pageTitle = "認知症向けAI電話サービスDELNE（デルネ）｜介護と仕事の両立を支援する"
 const pageDescription =
   "認知症患者様とご家族をつなぐ革新的な音声対話サービス。簡単な操作で安心のコミュニケーションを実現します。"
 

@@ -22,7 +22,7 @@ export default function TrialBanner() {
   if (!isVisible) return null
 
   return (
-    <div className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-xl -translate-x-1/2 md:bottom-6 md:w-[calc(100%-3rem)] md:max-w-xl">
+    <div className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-xl -translate-x-1/2 md:bottom-6 md:left-auto md:right-6 md:w-[min(32rem,calc(100%-3rem))] md:translate-x-0">
           <div className="relative group">
             {/* Close Button */}
             <button
@@ -41,8 +41,8 @@ export default function TrialBanner() {
             >
               {/* Circular Badge - Positioned at top-left with tilted larger text */}
               <div className="absolute -left-3 -top-3 z-30 flex h-24 w-24 items-center justify-center rounded-full border-[3px] border-[#B8860B] bg-white shadow-xl md:-left-6 md:-top-6 md:h-36 md:w-36 md:border-4">
-                <div className="flex -rotate-12 flex-col items-center justify-center text-center leading-tight text-[#A03030] font-serif">
-                  <span className="text-xl font-black md:text-3xl">4月</span>
+                <div className="flex -rotate-12 flex-col items-center justify-center text-center font-sans leading-tight text-[#A03030]">
+                  <span className="text-2xl font-black leading-none md:text-4xl">4月</span>
                   <span className="text-xl font-black md:text-3xl">申込の</span>
                   <span className="text-xl font-black md:text-3xl">方限定</span>
                 </div>

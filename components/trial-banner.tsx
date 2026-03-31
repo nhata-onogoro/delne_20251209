@@ -2,9 +2,8 @@
 
 import { useState, MouseEvent } from "react"
 import { X, Sparkles } from "lucide-react"
-import { motion, AnimatePresence } from "motion/react"
-import { trackButtonClick } from "@/src/lib/analytics"
-import { trackFreeTrialClick } from "@/src/lib/gtag"
+import { trackButtonClick } from "@/lib/analytics"
+import { trackFreeTrialClick } from "@/lib/gtag"
 
 export default function TrialBanner() {
   const [isVisible, setIsVisible] = useState(true)
@@ -20,16 +19,10 @@ export default function TrialBanner() {
     setIsVisible(false)
   }
 
+  if (!isVisible) return null
+
   return (
-    <AnimatePresence>
-      {isVisible && (
-        <motion.div
-          initial={{ y: 100, opacity: 0, x: "-50%" }}
-          animate={{ y: 0, opacity: 1, x: "-50%" }}
-          exit={{ y: 100, opacity: 0, x: "-50%" }}
-          transition={{ type: "spring", damping: 25, stiffness: 200 }}
-          className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-xl md:bottom-6 md:w-[calc(100%-3rem)] md:max-w-xl"
-        >
+    <div className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-xl -translate-x-1/2 md:bottom-6 md:w-[calc(100%-3rem)] md:max-w-xl">
           <div className="relative group">
             {/* Close Button */}
             <button
@@ -93,10 +86,7 @@ export default function TrialBanner() {
               </div>
             </a>
           </div>
-        </motion.div>
-      )}
-
-      <style>{`\n        @keyframes sheen {\n          0% { background-position: 200% 0; }\n          100% { background-position: -200% 0; }\n        }\n      `}</style>
-    </AnimatePresence>
+    <style>{`\n      @keyframes sheen {\n        0% { background-position: 200% 0; }\n        100% { background-position: -200% 0; }\n      }\n    `}</style>
+    </div>
   )
 }

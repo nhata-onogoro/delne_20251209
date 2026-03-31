@@ -237,3 +237,51 @@
     opacity: 1;
   }
 }
+
+@keyframes trialBannerEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes trialBadgeWiggle {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.1) rotate(-5deg);
+  }
+  50% {
+    transform: scale(1.05) rotate(5deg);
+  }
+  75% {
+    transform: scale(1.1) rotate(-3deg);
+  }
+}
+
+.trial-banner-enter {
+  animation: trialBannerEnter 0.5s ease-out both;
+}
+
+.trial-badge-wiggle {
+  animation: trialBadgeWiggle 2s ease-in-out infinite;
+}
+
+.trial-shine {
+  transition: left 1s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trial-banner-enter,
+  .trial-badge-wiggle,
+  .trial-shine {
+    animation: none;
+    transition: none;
+  }
+}

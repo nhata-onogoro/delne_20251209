@@ -14,16 +14,22 @@ export default function TrialBanner() {
       <a
         href="https://app.delne.jp/auth/welcome/"
         onClick={handleFreeTrialClick}
-        aria-label="7日間無料トライアルへ移動"
+        aria-label="4月限定1か月無料キャンペーンのトライアルへ移動"
         className="
-          flex h-14 items-center justify-center rounded-full px-6
-          bg-[#F39C12] text-white
-          shadow-lg transition-all duration-300 ease-out
-          hover:-translate-y-1 hover:bg-[#D35400] hover:shadow-2xl
-          md:h-16 md:px-8
+          relative flex min-h-16 items-center gap-3 rounded-2xl px-5 py-3
+          bg-gradient-to-r from-[#F39C12] via-[#F1C40F] to-[#E67E22] text-white
+          shadow-xl transition-all duration-300 ease-out
+          hover:-translate-y-1 hover:shadow-2xl
+          md:min-h-20 md:px-6
         "
       >
-        <span className="text-sm md:text-base font-bold tracking-wide">7日間無料トライアル</span>
+        <span className="rounded-full bg-white/20 px-2 py-1 text-[10px] font-bold tracking-wider md:text-xs">
+          4月限定
+        </span>
+        <div className="leading-tight">
+          <p className="text-xs font-semibold md:text-sm">キャンペーン実施中</p>
+          <p className="text-sm font-extrabold tracking-wide md:text-base">1か月無料トライアル</p>
+        </div>
       </a>
     </div>
   )

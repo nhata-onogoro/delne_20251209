@@ -11,7 +11,7 @@ export default function TrialBanner() {
   }
 
   return (
-    <div className="fixed bottom-4 right-1/2 z-50 w-[calc(100%-1.5rem)] max-w-xl translate-x-1/2 md:bottom-6 md:right-6 md:w-[calc(100%-3rem)] md:max-w-2xl md:translate-x-0">
+    <div className="fixed bottom-4 right-1/2 z-50 w-[calc(100%-1.5rem)] max-w-xl translate-x-1/2 md:bottom-6 md:right-6 md:w-[calc(100%-3rem)] md:max-w-xl md:translate-x-0">
       <a
         href="https://app.delne.jp/auth/welcome/"
         onClick={handleFreeTrialClick}
@@ -55,8 +55,6 @@ export default function TrialBanner() {
             <p className="text-xl font-bold leading-tight tracking-tight text-[#28140a] drop-shadow-sm md:text-4xl">
               1ヶ月無料トライアル
             </p>
-
-            <p className="mt-1 text-[10px] font-semibold text-[#28140a]/80 md:mt-2 md:text-sm">タップして今すぐ開始</p>
 
             <div className="mx-auto mt-2 h-[1px] w-12 bg-[#28140a]/30 md:mt-4 md:w-16" />
           </div>

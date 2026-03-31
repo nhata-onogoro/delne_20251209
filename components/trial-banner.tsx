@@ -11,7 +11,7 @@ export default function TrialBanner() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 w-[calc(100%-3rem)] max-w-2xl">
+    <div className="fixed bottom-4 right-1/2 z-50 w-[calc(100%-1.5rem)] max-w-xl translate-x-1/2 md:bottom-6 md:right-6 md:w-[calc(100%-3rem)] md:max-w-2xl md:translate-x-0">
       <a
         href="https://app.delne.jp/auth/welcome/"
         onClick={handleFreeTrialClick}
@@ -19,7 +19,7 @@ export default function TrialBanner() {
         className="block"
       >
         <div
-          className="trial-banner-enter relative flex h-44 w-full flex-col items-center justify-center overflow-hidden rounded-2xl font-serif shadow-2xl md:h-48"
+          className="trial-banner-enter relative flex h-28 w-full flex-col items-center justify-center overflow-hidden rounded-xl font-serif shadow-xl md:h-40 md:rounded-2xl md:shadow-2xl"
           style={{
             background: "linear-gradient(135deg, #FF6B4A 0%, #FFB800 100%)",
           }}
@@ -34,25 +34,31 @@ export default function TrialBanner() {
             }}
           />
 
-          <div className="pointer-events-none absolute left-0 top-0 h-24 w-24">
+          <div className="pointer-events-none absolute left-0 top-0 h-16 w-16 md:h-24 md:w-24">
             <div
               className="absolute left-0 top-0 flex h-full w-full items-center justify-center bg-white/30 backdrop-blur-sm"
               style={{ clipPath: "polygon(0 0, 100% 0, 0 100%)" }}
             >
-              <span className="absolute left-2 top-6 -rotate-45 text-[14px] font-black tracking-wider text-[#451a03]">4月限定</span>
+              <span className="absolute left-1 top-4 -rotate-45 text-[10px] font-black tracking-wider text-[#451a03] md:left-2 md:top-6 md:text-[14px]">
+                4月限定
+              </span>
             </div>
           </div>
 
-          <div className="relative z-10 px-8 text-center">
-            <div className="mb-2 flex items-center justify-center gap-2 text-[#451a03]/80">
-              <Sparkles size={18} className="opacity-70" />
-              <span className="text-sm font-bold tracking-[0.2em] md:text-base">キャンペーン実施中</span>
-              <Sparkles size={18} className="opacity-70" />
+          <div className="relative z-10 px-4 text-center md:px-8">
+            <div className="mb-1 flex items-center justify-center gap-1.5 text-[#451a03]/80 md:mb-2 md:gap-2">
+              <Sparkles size={14} className="opacity-70 md:h-[18px] md:w-[18px]" />
+              <span className="text-[10px] font-bold tracking-[0.15em] md:text-base md:tracking-[0.2em]">キャンペーン実施中</span>
+              <Sparkles size={14} className="opacity-70 md:h-[18px] md:w-[18px]" />
             </div>
 
-            <p className="text-3xl font-bold leading-tight tracking-tight text-[#28140a] drop-shadow-sm md:text-5xl">1ヶ月無料トライアル</p>
+            <p className="text-xl font-bold leading-tight tracking-tight text-[#28140a] drop-shadow-sm md:text-4xl">
+              1ヶ月無料トライアル
+            </p>
 
-            <div className="mx-auto mt-4 h-[1px] w-16 bg-[#28140a]/30" />
+            <p className="mt-1 text-[10px] font-semibold text-[#28140a]/80 md:mt-2 md:text-sm">タップして今すぐ開始</p>
+
+            <div className="mx-auto mt-2 h-[1px] w-12 bg-[#28140a]/30 md:mt-4 md:w-16" />
           </div>
 
           <div className="pointer-events-none absolute inset-2 rounded-xl border border-white/20" />

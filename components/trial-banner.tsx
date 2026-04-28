@@ -36,13 +36,13 @@ export default function TrialBanner() {
             <a
               href="https://app.delne.jp/auth/welcome/"
               onClick={handleFreeTrialClick}
-              aria-label="4月申込の方限定1か月無料キャンペーンのトライアルへ移動"
+              aria-label="5月申込の方限定1か月無料キャンペーンのトライアルへ移動"
               className="relative block pl-6 md:pl-10"
             >
               {/* Circular Badge - Positioned at top-left with tilted larger text */}
               <div className="absolute -left-3 -top-3 z-30 flex h-24 w-24 items-center justify-center rounded-full border-[3px] border-[#B8860B] bg-white shadow-xl md:-left-6 md:-top-6 md:h-36 md:w-36 md:border-4">
                 <div className="flex -rotate-12 flex-col items-center justify-center text-center font-sans leading-tight text-[#A03030]">
-                  <span className="text-2xl font-black leading-none md:text-4xl">4月</span>
+                  <span className="text-2xl font-black leading-none md:text-4xl">5月</span>
                   <span className="text-xl font-black md:text-3xl">申込の</span>
                   <span className="text-xl font-black md:text-3xl">方限定</span>
                 </div>

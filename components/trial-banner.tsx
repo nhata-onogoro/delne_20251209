@@ -41,11 +41,11 @@ export default function TrialBanner() {
             >
               {/* Circular Badge - Positioned at top-left with tilted larger text */}
               <div className="absolute -left-3 -top-3 z-30 flex h-24 w-24 items-center justify-center rounded-full border-[3px] border-[#B8860B] bg-white shadow-xl md:-left-6 md:-top-6 md:h-36 md:w-36 md:border-4">
-                <svg className="absolute inset-0 h-full w-full" viewBox="0 0 96 96" aria-hidden="true">
+                <svg className="absolute inset-0 h-full w-full overflow-visible" viewBox="0 -20 96 116" aria-hidden="true">
                   <defs>
-                    <path id="topArcBadge" d="M 10,50 A 40,40,0,0,1,86,50" />
+                    <path id="topArcBadge" d="M 0,50 A 50,50,0,0,1,96,50" />
                   </defs>
-                  <text fill="#A03030" fontSize="8.5" fontWeight="900" fontFamily="sans-serif">
+                  <text fill="#A03030" fontSize="9" fontWeight="900" fontFamily="sans-serif">
                     <textPath href="#topArcBadge" startOffset="50%" textAnchor="middle">
                       ご好評につき期間延長！
                     </textPath>

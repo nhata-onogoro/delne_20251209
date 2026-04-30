@@ -44,7 +44,7 @@ export default function TrialBanner() {
                 <div className="flex -rotate-12 flex-col items-center justify-center text-center font-sans leading-tight text-[#A03030]">
                   <span className="text-2xl font-black leading-none md:text-4xl">5月</span>
                   <span className="text-xl font-black md:text-3xl">申込まで</span>
-                  <span className="text-[18px] font-black md:text-[28px]">期間延長</span>
+                  <span className="text-[16px] font-black md:text-[26px]">期間延長</span>
                 </div>
                 {/* Inner subtle border for the metallic look */}
                 <div className="absolute inset-0.5 rounded-full border border-[#DAA520]/30" />

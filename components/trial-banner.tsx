@@ -36,20 +36,23 @@ export default function TrialBanner() {
             <a
               href="https://app.delne.jp/auth/welcome/"
               onClick={handleFreeTrialClick}
-              aria-label="ご好評につき5月申込まで期間延長！1か月無料キャンペーンのトライアルへ移動"
+              aria-label="好評につき期間延長！5月申込の方限定1か月無料キャンペーンのトライアルへ移動"
               className="relative block pl-6 md:pl-10"
             >
               {/* Circular Badge - Positioned at top-left with tilted larger text */}
               <div className="absolute -left-3 -top-3 z-30 flex h-24 w-24 items-center justify-center rounded-full border-[3px] border-[#B8860B] bg-white shadow-xl md:-left-6 md:-top-6 md:h-36 md:w-36 md:border-4">
                 <div className="flex -rotate-12 flex-col items-center justify-center text-center font-sans leading-tight text-[#A03030]">
-                  <span className="text-2xl font-black leading-none md:text-4xl">5月</span>
-                  <span className="text-xl font-black md:text-3xl">申込まで</span>
-                  <span className="text-[16px] font-black md:text-[26px]">期間延長</span>
+                  <span className="text-2xl font-black leading-none md:text-4xl">5月申込</span>
+                  <span className="text-xl font-black md:text-3xl">の方</span>
+                  <span className="text-lg font-black md:text-2xl">限定</span>
                 </div>
                 {/* Inner subtle border for the metallic look */}
                 <div className="absolute inset-0.5 rounded-full border border-[#DAA520]/30" />
               </div>
 
+              <p className="mb-1 text-center text-[10px] font-bold text-[#A03030] md:text-sm">
+                好評につき期間延長！
+              </p>
               <div
                 className="relative flex h-28 w-full flex-col items-center justify-center overflow-hidden rounded-xl font-serif shadow-xl transition-transform duration-300 hover:scale-[1.02] md:h-40 md:rounded-2xl md:shadow-2xl"
                 style={{

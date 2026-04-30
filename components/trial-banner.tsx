@@ -40,20 +40,6 @@ export default function TrialBanner() {
               className="relative block pl-6 md:pl-10"
             >
               {/* Circular Badge - Positioned at top-left with tilted larger text */}
-              <svg
-                className="pointer-events-none absolute -left-3 -top-3 z-40 h-24 w-24 overflow-visible md:-left-6 md:-top-6 md:h-36 md:w-36"
-                viewBox="0 0 96 96"
-                aria-hidden="true"
-              >
-                <defs>
-                  <path id="topArcBadge" d="M 0,48 A 48,48,0,0,1,96,48" />
-                </defs>
-                <text fill="#A03030" fontSize="9" fontWeight="900" fontFamily="sans-serif">
-                  <textPath href="#topArcBadge" startOffset="50%" textAnchor="middle">
-                    好評につき期間延長！
-                  </textPath>
-                </text>
-              </svg>
               <div className="absolute -left-3 -top-3 z-30 flex h-24 w-24 items-center justify-center rounded-full border-[3px] border-[#B8860B] bg-white shadow-xl md:-left-6 md:-top-6 md:h-36 md:w-36 md:border-4">
                 <div className="flex -rotate-12 flex-col items-center justify-center text-center font-sans leading-tight text-[#A03030]">
                   <span className="text-2xl font-black leading-none md:text-4xl">5月</span>
@@ -64,6 +50,9 @@ export default function TrialBanner() {
                 <div className="absolute inset-0.5 rounded-full border border-[#DAA520]/30" />
               </div>
 
+              <p className="mb-1 text-center text-[10px] font-bold text-[#A03030] md:text-sm">
+                好評につき期間延長！
+              </p>
               <div
                 className="relative flex h-28 w-full flex-col items-center justify-center overflow-hidden rounded-xl font-serif shadow-xl transition-transform duration-300 hover:scale-[1.02] md:h-40 md:rounded-2xl md:shadow-2xl"
                 style={{

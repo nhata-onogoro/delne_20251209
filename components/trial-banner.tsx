@@ -40,6 +40,20 @@ export default function TrialBanner() {
               className="relative block pl-6 md:pl-10"
             >
               {/* Circular Badge - Positioned at top-left with tilted larger text */}
+              <svg
+                className="pointer-events-none absolute -left-3 -top-3 z-40 h-24 w-24 overflow-visible md:-left-6 md:-top-6 md:h-36 md:w-36"
+                viewBox="0 0 96 96"
+                aria-hidden="true"
+              >
+                <defs>
+                  <path id="topArcBadge" d="M 0,48 A 48,48,0,0,1,96,48" />
+                </defs>
+                <text fill="#A03030" fontSize="9" fontWeight="900" fontFamily="sans-serif">
+                  <textPath href="#topArcBadge" startOffset="50%" textAnchor="middle">
+                    好評につき期間延長！
+                  </textPath>
+                </text>
+              </svg>
               <div className="absolute -left-3 -top-3 z-30 flex h-24 w-24 items-center justify-center rounded-full border-[3px] border-[#B8860B] bg-white shadow-xl md:-left-6 md:-top-6 md:h-36 md:w-36 md:border-4">
                 <div className="flex -rotate-12 flex-col items-center justify-center text-center font-sans leading-tight text-[#A03030]">
                   <span className="text-2xl font-black leading-none md:text-4xl">5月</span>
@@ -70,7 +84,7 @@ export default function TrialBanner() {
                 <div className="relative z-10 pl-10 pr-4 text-center md:pl-16 md:pr-8">
                   <div className="mb-1 flex items-center justify-center gap-1.5 text-[#451a03]/80 md:mb-2 md:gap-2">
                     <Sparkles size={14} className="opacity-70 md:h-[18px] md:w-[18px]" />
-                    <span className="text-[10px] font-bold tracking-[0.15em] md:text-base md:tracking-[0.2em]">好評につきキャンペーン延長</span>
+                    <span className="text-[10px] font-bold tracking-[0.15em] md:text-base md:tracking-[0.2em]">キャンペーン実施中</span>
                     <Sparkles size={14} className="opacity-70 md:h-[18px] md:w-[18px]" />
                   </div>
 

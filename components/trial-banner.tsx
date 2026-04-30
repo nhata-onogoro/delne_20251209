@@ -70,7 +70,7 @@ export default function TrialBanner() {
                 <div className="relative z-10 pl-10 pr-4 text-center md:pl-16 md:pr-8">
                   <div className="mb-1 flex items-center justify-center gap-1.5 text-[#451a03]/80 md:mb-2 md:gap-2">
                     <Sparkles size={14} className="opacity-70 md:h-[18px] md:w-[18px]" />
-                    <span className="text-[10px] font-bold tracking-[0.15em] md:text-base md:tracking-[0.2em]">キャンペーン実施中</span>
+                    <span className="text-[10px] font-bold tracking-[0.15em] md:text-base md:tracking-[0.2em]">好評につきキャンペーン延長</span>
                     <Sparkles size={14} className="opacity-70 md:h-[18px] md:w-[18px]" />
                   </div>
 

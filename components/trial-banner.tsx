@@ -41,10 +41,20 @@ export default function TrialBanner() {
             >
               {/* Circular Badge - Positioned at top-left with tilted larger text */}
               <div className="absolute -left-3 -top-3 z-30 flex h-24 w-24 items-center justify-center rounded-full border-[3px] border-[#B8860B] bg-white shadow-xl md:-left-6 md:-top-6 md:h-36 md:w-36 md:border-4">
+                <svg className="absolute inset-0 h-full w-full" viewBox="0 0 96 96" aria-hidden="true">
+                  <defs>
+                    <path id="topArcBadge" d="M 10,50 A 40,40,0,0,1,86,50" />
+                  </defs>
+                  <text fill="#A03030" fontSize="8.5" fontWeight="900" fontFamily="sans-serif">
+                    <textPath href="#topArcBadge" startOffset="50%" textAnchor="middle">
+                      ご好評につき期間延長！
+                    </textPath>
+                  </text>
+                </svg>
                 <div className="flex -rotate-12 flex-col items-center justify-center text-center font-sans leading-tight text-[#A03030]">
-                  <span className="text-[9px] font-black leading-none md:text-sm">ご好評につき</span>
-                  <span className="text-[10px] font-black md:text-base">5月契約</span>
-                  <span className="text-[10px] font-black md:text-base">まで延長</span>
+                  <span className="text-2xl font-black leading-none md:text-4xl">5月</span>
+                  <span className="text-base font-black md:text-2xl">申込みの</span>
+                  <span className="text-xl font-black md:text-3xl">方限定</span>
                 </div>
                 {/* Inner subtle border for the metallic look */}
                 <div className="absolute inset-0.5 rounded-full border border-[#DAA520]/30" />

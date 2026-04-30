@@ -43,7 +43,7 @@ export default function TrialBanner() {
               <div className="absolute -left-3 -top-3 z-30 flex h-24 w-24 items-center justify-center rounded-full border-[3px] border-[#B8860B] bg-white shadow-xl md:-left-6 md:-top-6 md:h-36 md:w-36 md:border-4">
                 <div className="flex -rotate-12 flex-col items-center justify-center text-center font-sans leading-tight text-[#A03030]">
                   <span className="text-[11px] font-black md:text-[17px]">ご好評につき</span>
-                  <span className="text-xs font-black md:text-[19px]">5月申込まで</span>
+                  <span className="text-xs font-black md:text-[20px]">5月申込まで</span>
                   <span className="text-[11px] font-black md:text-[17px]">期間延長</span>
                 </div>
                 {/* Inner subtle border for the metallic look */}

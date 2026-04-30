@@ -41,10 +41,11 @@ export default function TrialBanner() {
             >
               {/* Circular Badge - Positioned at top-left with tilted larger text */}
               <div className="absolute -left-3 -top-3 z-30 flex h-24 w-24 items-center justify-center rounded-full border-[3px] border-[#B8860B] bg-white shadow-xl md:-left-6 md:-top-6 md:h-36 md:w-36 md:border-4">
-                <div className="flex -rotate-12 flex-col items-center justify-center text-center font-sans leading-snug text-[#A03030]">
-                  <span className="text-[7px] font-black md:text-[11px]">ご好評につき</span>
-                  <span className="text-[10px] font-black md:text-base">5月申込みまで</span>
-                  <span className="text-[7px] font-black md:text-[11px]">期間延長</span>
+                <div className="flex -rotate-12 flex-col items-center justify-center text-center font-sans leading-tight text-[#A03030]">
+                  <span className="text-[7px] font-black md:text-[10px]">ご好評につき</span>
+                  <span className="text-xl font-black md:text-3xl">5月</span>
+                  <span className="text-[9px] font-black md:text-sm">申込みまで</span>
+                  <span className="text-[7px] font-black md:text-[10px]">期間延長</span>
                 </div>
                 {/* Inner subtle border for the metallic look */}
                 <div className="absolute inset-0.5 rounded-full border border-[#DAA520]/30" />

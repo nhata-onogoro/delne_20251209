@@ -36,15 +36,29 @@ export default function TrialBanner() {
             <a
               href="https://app.delne.jp/auth/welcome/"
               onClick={handleFreeTrialClick}
-              aria-label="ご好評につき5月申込まで期間延長！1か月無料キャンペーンのトライアルへ移動"
+              aria-label="ご好評につき期間延長！5月申込の方限定1か月無料キャンペーンのトライアルへ移動"
               className="relative block pl-6 md:pl-10"
             >
               {/* Circular Badge - Positioned at top-left with tilted larger text */}
+              <svg
+                className="pointer-events-none absolute -left-3 -top-3 z-40 h-24 w-24 overflow-visible md:-left-6 md:-top-6 md:h-36 md:w-36"
+                viewBox="0 0 96 96"
+                aria-hidden="true"
+              >
+                <defs>
+                  <path id="topArcBadge" d="M 0,48 A 48,48,0,0,1,96,48" />
+                </defs>
+                <text fill="#A03030" fontSize="9" fontWeight="900" fontFamily="sans-serif">
+                  <textPath href="#topArcBadge" startOffset="50%" textAnchor="middle">
+                    ご好評につき期間延長！
+                  </textPath>
+                </text>
+              </svg>
               <div className="absolute -left-3 -top-3 z-30 flex h-24 w-24 items-center justify-center rounded-full border-[3px] border-[#B8860B] bg-white shadow-xl md:-left-6 md:-top-6 md:h-36 md:w-36 md:border-4">
                 <div className="flex -rotate-12 flex-col items-center justify-center text-center font-sans leading-tight text-[#A03030]">
-                  <span className="text-[11px] font-black md:text-base">ご好評につき</span>
-                  <span className="text-xs font-black md:text-lg">5月申込まで</span>
-                  <span className="text-[11px] font-black md:text-base">期間延長</span>
+                  <span className="text-2xl font-black leading-none md:text-4xl">5月</span>
+                  <span className="text-xl font-black md:text-3xl">申込の</span>
+                  <span className="text-xl font-black md:text-3xl">方限定</span>
                 </div>
                 {/* Inner subtle border for the metallic look */}
                 <div className="absolute inset-0.5 rounded-full border border-[#DAA520]/30" />

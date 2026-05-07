@@ -169,6 +169,9 @@ export function ArticlesCarousel() {
             {sortedArticles.map((article, index) => {
               const imageUrl = getArticleImageUrl(article)
               const articleHref = article.alternateUrl ?? article.externalUrl ?? `/articles/${article.slug}`
+              const summaryClassName = article.alternateUrl
+                ? "mt-2 whitespace-pre-line text-sm text-gray-600"
+                : "mt-2 line-clamp-2 text-sm text-gray-600"
 
               return (
                 <Link
@@ -196,7 +199,7 @@ export function ArticlesCarousel() {
 
                   <p className="text-sm font-semibold text-[#002c5b]">{article.category}</p>
                   <h3 className="mt-2 line-clamp-2 text-lg font-bold text-gray-900">{article.title}</h3>
-                  <p className="mt-2 line-clamp-3 whitespace-pre-line text-sm text-gray-600">{article.summary}</p>
+                  <p className={summaryClassName}>{article.summary}</p>
                   <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-gray-500">
                     <span>{article.sourceName}</span>
                     <span>・</span>

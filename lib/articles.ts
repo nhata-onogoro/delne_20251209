@@ -70,7 +70,7 @@ export const articles: Article[] = [
     slug: "yahoo-news-db82eaf97fb2a9ada326097beabbc4a56606b5c2",
     title: "中国新聞デジタル掲載記事",
     summary:
-      "中国新聞デジタルで公開された関連記事です。詳細は外部記事をご覧ください。\n\n2026-02-17 Yahoo!ニュースにも掲載\n※掲載期間終了",
+      "中国新聞デジタルで公開された記事です。詳細は外部記事をご覧ください。\n\nYahoo!ニュース・2026-02-17 にも掲載\n※掲載期間終了",
     category: "メディア掲載",
     publishedAt: "2026-01-09",
     sourceName: "中国新聞デジタル",

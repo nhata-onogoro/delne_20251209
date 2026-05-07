@@ -207,7 +207,7 @@ export function ArticlesCarousel() {
                   </div>
                   {(article.alternateUrl || article.externalUrl) && (
                     <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[#002c5b]">
-                      {article.alternateUrl ? "別の関連記事を閲覧する" : "外部記事あり"}
+                      外部記事あり
                       <ExternalLink className="h-3.5 w-3.5" />
                     </span>
                   )}

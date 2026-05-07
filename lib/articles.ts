@@ -68,21 +68,21 @@ export const articles: Article[] = [
   },
   {
     slug: "yahoo-news-db82eaf97fb2a9ada326097beabbc4a56606b5c2",
-    title: "Yahoo!ニュース掲載記事",
+    title: "中国新聞デジタル掲載記事",
     summary:
-      "Yahoo!ニュースで公開された関連記事です。詳細は外部記事をご覧ください。\n\n※掲載期間終了の為、同様に公開された別の関連記事をご覧ください。",
+      "中国新聞デジタルで公開された関連記事です。詳細は外部記事をご覧ください。\n\n2026-02-17 Yahoo!ニュースにも掲載\n※掲載期間終了",
     category: "メディア掲載",
-    publishedAt: "2026-02-17",
-    sourceName: "Yahoo!ニュース",
+    publishedAt: "2026-01-09",
+    sourceName: "中国新聞デジタル",
     externalUrl:
-      "https://news.yahoo.co.jp/articles/db82eaf97fb2a9ada326097beabbc4a56606b5c2?fbclid=IwY2xjawPufAFleHRuA2FlbQIxMABicmlkETF1VzlzemhwYW96WEswOFlic3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHsM04kUJDThVvQYyAPxUbB99YQdRH6x6RmW68m_VTaEZOGT14sMXc7RpnMFn_aem_Natf9M3rdQXCaoCtOvimkQ",
+      "https://www.chugoku-np.co.jp/articles/-/769779?fbclid=IwY2xjawRo2KtleHRuA2FlbQIxMABicmlkETFENDY0SmIyWmFuNXZqV0Ezc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHjg4qoUjxrzcWNbJRfyttJv-x2XQ_h0OPXP7WWwjECYQG2z3xW_GExt7Ceyy_aem_gD3T_nlTFoP1pMzAvJ4ZwA",
     alternateUrl:
       "https://www.chugoku-np.co.jp/articles/-/769779?fbclid=IwY2xjawRo2KtleHRuA2FlbQIxMABicmlkETFENDY0SmIyWmFuNXZqV0Ezc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHjg4qoUjxrzcWNbJRfyttJv-x2XQ_h0OPXP7WWwjECYQG2z3xW_GExt7Ceyy_aem_gD3T_nlTFoP1pMzAvJ4ZwA",
     content: [
       {
         heading: "外部記事について",
         body:
-          "本記事は指定いただいたYahoo!ニュース掲載記事へのリンクです。本文は外部ページでご確認ください。",
+          "本記事は中国新聞デジタル掲載記事へのリンクです。本文は外部ページでご確認ください。",
       },
     ],
   },

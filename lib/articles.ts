@@ -73,9 +73,7 @@ export const articles: Article[] = [
     category: "メディア掲載",
     publishedAt: "2026-02-17",
     sourceName: "Yahoo!ニュース",
-    externalUrl:
-      externalUrl:
-  "https://news.yahoo.co.jp/articles/db82eaf97fb2a9ada326097beabbc4a56606b5c2?fbclid=IwY2xjawPufAFleHRuA2FlbQIxMABicmlkETF1VzlzemhwYW96WEswOFlic3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHsM04kUJDThVvQYyAPxUbB99YQdRH6x6RmW68m_VTaEZOGT14sMXc7RpnMFn_aem_Natf9M3rdQXCaoCtOvimkQ",
+    externalUrl:"https://news.yahoo.co.jp/articles/db82eaf97fb2a9ada326097beabbc4a56606b5c2?fbclid=IwY2xjawPufAFleHRuA2FlbQIxMABicmlkETF1VzlzemhwYW96WEswOFlic3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHsM04kUJDThVvQYyAPxUbB99YQdRH6x6RmW68m_VTaEZOGT14sMXc7RpnMFn_aem_Natf9M3rdQXCaoCtOvimkQ",
     content: [
       {
         heading: "外部記事について",

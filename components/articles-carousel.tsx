@@ -201,13 +201,14 @@ export function ArticlesCarousel() {
                     <span>{article.publishedAt}</span>
                   </div>
                   {article.subExternalUrl && (
+                  <a
                     href={article.subExternalUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
                     className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-blue-600 underline"
                   >
-                  　別の記事を閲覧する
+                    別の記事を閲覧する
                     <ExternalLink className="h-3.5 w-3.5" />
                   </a>
                 )}

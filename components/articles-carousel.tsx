@@ -192,26 +192,27 @@ export function ArticlesCarousel() {
                     )}
                   </div>
 
-                  <p className="text-sm font-semibold text-[#002c5b]">{article.category}</p>
-                  <h3 className="mt-2 line-clamp-2 text-lg font-bold text-gray-900">{article.title}</h3>
-                  <p className="mt-2 text-sm text-gray-600 whitespace-pre-line">{article.summary}</p>
+                  <p className="mt-2 text-sm text-gray-600">{article.summary}</p>
+                  {article.note && (
+                    <p className="mt-3 text-sm text-gray-600">{article.note}</p>
+                  )}
+                  {article.subExternalUrl && (
+                    <a
+                      href={article.subExternalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-blue-600 underline"
+                    >
+                      別の記事を閲覧する
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  )}
                   <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-gray-500">
                     <span>{article.sourceName}</span>
                     <span>・</span>
                     <span>{article.publishedAt}</span>
                   </div>
-                  {article.subExternalUrl && (
-                  <a
-                    href={article.subExternalUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-blue-600 underline"
-                  >
-                    別の記事を閲覧する
-                    <ExternalLink className="h-3.5 w-3.5" />
-                  </a>
-                )}
                 {article.externalUrl && (
                   <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[#002c5b]">
                       外部記事あり

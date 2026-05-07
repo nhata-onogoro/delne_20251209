@@ -200,8 +200,19 @@ export function ArticlesCarousel() {
                     <span>・</span>
                     <span>{article.publishedAt}</span>
                   </div>
-                  {article.externalUrl && (
-                    <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[#002c5b]">
+                  {article.subExternalUrl && (
+                    href={article.subExternalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-blue-600 underline"
+                  >
+                  　別の記事を閲覧する
+                    <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                )}
+                {article.externalUrl && (
+                  <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[#002c5b]">
                       外部記事あり
                       <ExternalLink className="h-3.5 w-3.5" />
                     </span>

@@ -145,7 +145,9 @@ export function ArticlesCarousel() {
       <div className="container mx-auto px-4">
         <div className="mb-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-[#002c5b]">関連記事</h2>
-          <p className="mt-3 text-gray-600">外部掲載情報をまとめています。</p>
+          <p className="mt-3 text-gray-600">
+            外部掲載情報と、ランディングページ内で読める記事をまとめています。
+          </p>
         </div>
 
         <div className="relative mt-10">
@@ -226,6 +228,3 @@ export function ArticlesCarousel() {
     </section>
   )
 }
-
-
-

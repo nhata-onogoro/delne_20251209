@@ -168,7 +168,7 @@ export function ArticlesCarousel() {
           >
             {sortedArticles.map((article, index) => {
               const imageUrl = getArticleImageUrl(article)
-              const articleHref = article.externalUrl ?? `/articles/${article.slug}`
+              const articleHref = article.alternateUrl ?? article.externalUrl ?? `/articles/${article.slug}`
 
               return (
                 <Link
@@ -196,15 +196,15 @@ export function ArticlesCarousel() {
 
                   <p className="text-sm font-semibold text-[#002c5b]">{article.category}</p>
                   <h3 className="mt-2 line-clamp-2 text-lg font-bold text-gray-900">{article.title}</h3>
-                  <p className="mt-2 line-clamp-2 text-sm text-gray-600">{article.summary}</p>
+                  <p className="mt-2 line-clamp-3 whitespace-pre-line text-sm text-gray-600">{article.summary}</p>
                   <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-gray-500">
                     <span>{article.sourceName}</span>
                     <span>・</span>
                     <span>{article.publishedAt}</span>
                   </div>
-                  {article.externalUrl && (
+                  {(article.alternateUrl || article.externalUrl) && (
                     <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[#002c5b]">
-                      外部記事あり
+                      {article.alternateUrl ? "別の関連記事を閲覧する" : "外部記事あり"}
                       <ExternalLink className="h-3.5 w-3.5" />
                     </span>
                   )}

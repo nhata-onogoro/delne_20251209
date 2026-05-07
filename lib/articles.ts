@@ -69,7 +69,7 @@ export const articles: Article[] = [
     slug: "yahoo-news-db82eaf97fb2a9ada326097beabbc4a56606b5c2",
     title: "Yahoo!ニュース掲載記事",
     summary:
-      "Yahoo!ニュースで関連記事が公開されました。\n※掲載期間が終了した為、同様の関連記事をご覧ください。",
+      "Yahoo!ニュースで関連記事が公開されました。※掲載期間が終了した為、同様の関連記事をご覧ください。",
     category: "メディア掲載",
     publishedAt: "2026-02-17",
     sourceName: "Yahoo!ニュース",
